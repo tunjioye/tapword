@@ -8,7 +8,7 @@ class Row extends React.Component {
       rowLetters[i] = <Cell key={i.toString()} letter={(this.props.letters[i]) ? this.props.letters[i] : ' '} />
     }
     return (
-      <div>
+      <div class="row">
         {rowLetters}
         <br />
       </div>
