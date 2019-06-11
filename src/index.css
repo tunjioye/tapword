@@ -39,3 +39,9 @@ code {
 .row {
   display: flex;
 }
+
+/* Grid */
+.grid {
+  display: block;
+  margin: 1rem;
+}

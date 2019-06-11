@@ -31,7 +31,7 @@ class Grid extends React.Component {
       rows[i] = <Row key={i.toString()} size={this.state.size} letters={this.state.rows[i]} />
     }
     return (
-      <div>
+      <div class="grid">
         {rows}
       </div>
     );
