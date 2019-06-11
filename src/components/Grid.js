@@ -1,5 +1,6 @@
 import React from 'react';
 import Row from './Row';
+import Selection from './Selection';
 
 class Grid extends React.Component {
   constructor(props) {
@@ -33,6 +34,7 @@ class Grid extends React.Component {
     return (
       <div className="grid">
         {rows}
+        <Selection />
       </div>
     );
   }

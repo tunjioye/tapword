@@ -8,7 +8,7 @@ class Selection extends React.Component {
       word[i] = <Cell key={i.toString()} letter={(this.props.word[i]) ? this.props.word[i] : ' '} />
     }
     return (
-      <div>
+      <div className="selection">
         {word}
         <button id="submit">&#8629;</button>
       </div>

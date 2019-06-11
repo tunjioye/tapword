@@ -14,6 +14,7 @@ code {
 
 /* Cell */
 .cell {
+  display: inline-block;
   background: #345;
   text-align: center;
   vertical-align: middle;
@@ -38,12 +39,57 @@ code {
 /* Row */
 .row {
   display: flex;
+  justify-content: center;
 }
 
 /* Grid */
 .grid {
   display: block;
-  margin: 1rem;
+  align-items: center;
+  justify-content: center;
+  margin: 0.4rem;
+  /* border: 1px solid red; */
+}
+
+/* Selection */
+.selection {
+  min-width: 100%;
+  padding: 0.2rem 0 0.4rem 0;
+  height: 1.5rem;
+  text-align: center;
+  border-bottom: .2rem solid #28f;
+}
+
+#submit {
+  float: right;
+  width: 1.5rem;
+  height: 1.5rem;
+  font-size: 1rem;
+  font-weight: 500;
+  border: none;
+  background: none;
+  color: #28f;
+  text-align: center;
+  align-content: center;
+  margin: 0.1rem;
+  padding: 0.2rem;
+}
+
+#submit:hover, #submit:focus {
+  color: #48f;
+  cursor: pointer;
+}
+
+.selection .cell {
+  background: initial;
+  width: auto;
+  height: auto;
+  font-size: 0.8rem;
+  padding-top: 0.1rem;
+}
+
+.selection .cell:hover, .selection .cell:focus {
+  background: none;
 }
 
 /* RESPONSIVE : medium screen */
@@ -53,6 +99,22 @@ code {
     height: 3rem;
     font-size: 2rem;
   }
+
+  #submit {
+    width: 3rem;
+    height: 3rem;
+    font-size: 2rem;
+    padding-top: 0.4rem;
+  }
+
+  .selection {
+    height: 3rem;
+  }
+
+  .selection .cell {
+    font-size: 1.6rem;
+    padding-top: 0.4rem;
+  }
 }
 
 /* RESPONSIVE : large screen */
@@ -61,5 +123,21 @@ code {
     width: 4.5rem;
     height: 4.5rem;
     font-size: 3rem;
+  }
+
+  #submit {
+    width: 4.5rem;
+    height: 4.5rem;
+    font-size: 3rem;
+    padding-top: 0.8rem;
+  }
+
+  .selection {
+    height: 4.5rem;
+  }
+
+  .selection .cell {
+    font-size: 2.4rem;
+    padding-top: 0.8rem;
   }
 }

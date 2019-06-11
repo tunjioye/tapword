@@ -8,7 +8,12 @@ class Cell extends React.Component {
   }
   render() {
     return (
-      <div className="cell" onClick={this.handleClick.bind(this)}>{this.props.letter.charAt(0)}</div>
+      <div
+        className={(this.props.className) ? "cell " + this.props.className : "cell"}
+        onClick={this.handleClick.bind(this)}
+      >
+        {this.props.letter.charAt(0)}
+      </div>
     );
   }
 }
