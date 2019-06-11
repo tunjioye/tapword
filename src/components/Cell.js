@@ -23,6 +23,7 @@ const cellStyle = {
   padding: '.8rem',
   fontSize: '2rem',
   fontWeight: '500',
+  textTransform: 'uppercase',
 }
 
 export default Cell
