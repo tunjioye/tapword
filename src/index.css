@@ -12,7 +12,7 @@ code {
     monospace;
 }
 
-/* Cell Component */
+/* Cell */
 .cell {
   background: #345;
   display: inline-block;
@@ -30,4 +30,8 @@ code {
 .cell:hover, .cell:focus {
   background: #567;
   cursor: pointer;
+}
+
+.cell.selected {
+  background: #18f;
 }
