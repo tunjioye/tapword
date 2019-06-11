@@ -15,15 +15,15 @@ code {
 /* Cell */
 .cell {
   background: #345;
-  width: 3rem;
-  height: 3rem;
   text-align: center;
   vertical-align: middle;
   margin: 0.1rem;
   padding: 0.2rem;
-  font-size: 2rem;
   font-weight: 500;
   text-transform: uppercase;
+  width: 1.5rem;
+  height: 1.5rem;
+  font-size: 1rem;
 }
 
 .cell:hover, .cell:focus {
@@ -44,4 +44,22 @@ code {
 .grid {
   display: block;
   margin: 1rem;
+}
+
+/* RESPONSIVE : medium screen */
+@media screen and (min-width: 480px) {
+  .cell {
+    width: 3rem;
+    height: 3rem;
+    font-size: 2rem;
+  }
+}
+
+/* RESPONSIVE : large screen */
+@media screen and (min-width: 1360px) {
+  .cell {
+    width: 4.5rem;
+    height: 4.5rem;
+    font-size: 3rem;
+  }
 }
