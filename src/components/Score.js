@@ -9,8 +9,9 @@ class Score extends React.Component {
       output[i] = <Cell key={i.toString()} letter={(score[i]) ? score[i] : ' '} />
     }
     return (
-      <div className="selection score">
-        {output}
+      <div className="selection">
+        <span className="selection-info">SCORE</span>
+        <span>{output}</span>
       </div>
     );
   }
