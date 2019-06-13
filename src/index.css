@@ -116,26 +116,6 @@ code {
   border-bottom: .1rem solid #28f;
 }
 
-#submit {
-  float: right;
-  width: 1.5rem;
-  height: 1.5rem;
-  font-size: 1rem;
-  font-weight: 500;
-  border: none;
-  background: none;
-  color: #28f;
-  text-align: center;
-  align-content: center;
-  margin: 0.1rem;
-  padding: 0.2rem;
-}
-
-#submit:hover, #submit:focus {
-  color: #48f;
-  cursor: pointer;
-}
-
 .selection .cell {
   background: initial;
   width: auto;
@@ -160,13 +140,6 @@ code {
     font-size: 1rem;
   }
 
-  #submit {
-    width: 3rem;
-    height: 3rem;
-    font-size: 2rem;
-    padding-top: 0.4rem;
-  }
-
   .selection {
     height: 3rem;
   }
@@ -187,13 +160,6 @@ code {
 
   .sidebar .highlight {
     font-size: 1.4rem;
-  }
-
-  #submit {
-    width: 4.5rem;
-    height: 4.5rem;
-    font-size: 3rem;
-    padding-top: 0.8rem;
   }
 
   .selection {

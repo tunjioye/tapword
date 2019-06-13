@@ -10,7 +10,6 @@ class Selection extends React.Component {
     return (
       <div className="selection">
         {word}
-        <button id="submit">&#8629;</button>
       </div>
     );
   }
