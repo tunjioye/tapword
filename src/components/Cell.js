@@ -19,7 +19,7 @@ class Cell extends React.Component {
 }
 
 Cell.defaultProps = {
-  letter: 'T'
+  letter: ''
 }
 
 export default Cell
