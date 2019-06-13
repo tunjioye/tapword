@@ -12,6 +12,7 @@ class Grid extends React.Component {
       rows: props.rows
     }
     this.randomLetters = this.randomLetters.bind(this)
+    this.handleCellClick = this.handleCellClick.bind(this)
   }
   randomLetters() {
     const chars = [...'ABCDEFGHIJKLMNOPQRSTUVWXYZ']
@@ -20,6 +21,11 @@ class Grid extends React.Component {
       letters[i] = [...Array(parseInt(this.state.size))].map(x => chars[Math.random() * chars.length | 0]).join('')
     }
     return letters
+  }
+  handleCellClick(e) {
+    let cell = e.target
+    console.log(cell.innerHTML)
+    cell.classList.toggle('selected')
   }
   componentDidMount() {
     if (this.props.generate) {
@@ -31,7 +37,11 @@ class Grid extends React.Component {
   render() {
     let rows = []
     for (let i = 0; i < this.state.size; i++) {
-      rows[i] = <Row key={i.toString()} size={this.state.size} letters={this.state.rows[i]} />
+      rows[i] = <Row
+        key={i.toString()}
+        size={this.state.size}
+        letters={this.state.rows[i]}
+        onClick={this.handleCellClick} />
     }
     return (
       <div className="grid">
