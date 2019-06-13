@@ -10,7 +10,7 @@ class Selection extends React.Component {
     return (
       <div className="selection">
         <span className="selection-info">WORD INPUT</span>
-        <span>{output}</span>
+        <span id="word">{output}</span>
       </div>
     );
   }

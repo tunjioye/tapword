@@ -11,7 +11,7 @@ class Score extends React.Component {
     return (
       <div className="selection">
         <span className="selection-info">SCORE</span>
-        <span>{output}</span>
+        <span id="score">{output}</span>
       </div>
     );
   }
