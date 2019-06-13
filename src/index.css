@@ -50,6 +50,7 @@ code {
 .rows {
   display: inline-block;
   margin: 0.2rem;
+  user-select: none;
 }
 
 /* Grid */
