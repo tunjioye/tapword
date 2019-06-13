@@ -17,7 +17,7 @@ class Selection extends React.Component {
 }
 
 Selection.defaultProps = {
-  word: 'TAPWORD'
+  word: ''
 }
 
 export default Selection
