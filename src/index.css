@@ -56,6 +56,7 @@ code {
 .grid {
   display: inline-block;
   margin: 0.4rem;
+  /* border: .1rem solid #38f; */
 }
 
 /* Sidebar */
@@ -107,13 +108,12 @@ code {
   text-transform: none;
 }
 
-/* Selection */
-.selection {
-  min-width: 100%;
+/* Selection & Score */
+.selection, .score {
   padding: 0.2rem;
   height: 1.5rem;
   text-align: right;
-  border-bottom: .1rem solid #28f;
+  /* border-bottom: .1rem solid #38f; */
 }
 
 .selection .cell {
@@ -121,7 +121,6 @@ code {
   width: auto;
   height: auto;
   font-size: 0.8rem;
-  padding-top: 0.1rem;
 }
 
 .selection .cell:hover, .selection .cell:focus {
@@ -141,12 +140,12 @@ code {
   }
 
   .selection {
-    height: 3rem;
+    height: 2.6rem;
   }
 
   .selection .cell {
     font-size: 1.6rem;
-    padding-top: 0.4rem;
+    padding-top: 0.2rem;
   }
 }
 
@@ -163,11 +162,11 @@ code {
   }
 
   .selection {
-    height: 4.5rem;
+    height: 3.8rem;
   }
 
   .selection .cell {
     font-size: 2.4rem;
-    padding-top: 0.8rem;
+    padding-top: 0.4rem;
   }
 }

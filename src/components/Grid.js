@@ -1,5 +1,6 @@
 import React from 'react';
 import Row from './Row';
+import Score from './Score';
 import Selection from './Selection';
 import Sidebar from './Sidebar';
 
@@ -34,6 +35,7 @@ class Grid extends React.Component {
     }
     return (
       <div className="grid">
+        <Score />
         <Selection />
         <div className="rows">
           {rows}
