@@ -12,6 +12,11 @@ code {
     monospace;
 }
 
+/* Override App-header */
+.App-header {
+  flex-direction: row !important;
+}
+
 /* Cell */
 .cell {
   display: inline-block;
@@ -42,22 +47,73 @@ code {
   justify-content: center;
 }
 
+.rows {
+  display: inline-block;
+  margin: 0.2rem;
+}
+
 /* Grid */
 .grid {
-  display: block;
-  align-items: center;
-  justify-content: center;
+  display: inline-block;
   margin: 0.4rem;
-  /* border: 1px solid red; */
+}
+
+/* Sidebar */
+.sidebar {
+  float: right;
+  margin: 0.2rem;
+}
+
+.sidebar .cell {
+  display: block;
+  margin-bottom: 0.2rem;
+  background: initial;
+  width: auto;
+  height: auto;
+}
+
+.sidebar .cell:hover, .sidebar .cell:focus {
+  background: none;
+}
+
+.sidebar .button {
+  display: block;
+  background: initial;
+  border: none;
+  background: none;
+  color: #28f;
+  font-weight: 500;
+  width: 1.5rem;
+  height: 1.5rem;
+  font-size: 1rem;
+}
+
+.sidebar .button:hover, .sidebar .button:focus {
+  color: #48f;
+  cursor: pointer;
+}
+
+.sidebar .clock {
+  display: inline-block;
+  color: #cde;
+  background: #cde;
+  height: 100%;
+}
+
+.sidebar .highlight {
+  font-size: 0.6rem;
+  font-weight: 700;
+  color: #cde;
+  text-transform: none;
 }
 
 /* Selection */
 .selection {
   min-width: 100%;
-  padding: 0.2rem 0 0.4rem 0;
+  padding: 0.2rem;
   height: 1.5rem;
-  text-align: center;
-  border-bottom: .2rem solid #28f;
+  text-align: right;
+  border-bottom: .1rem solid #28f;
 }
 
 #submit {
@@ -94,10 +150,14 @@ code {
 
 /* RESPONSIVE : medium screen */
 @media screen and (min-width: 480px) {
-  .cell {
+  .cell, .sidebar .button {
     width: 3rem;
     height: 3rem;
     font-size: 2rem;
+  }
+
+  .sidebar .highlight {
+    font-size: 1rem;
   }
 
   #submit {
@@ -119,10 +179,14 @@ code {
 
 /* RESPONSIVE : large screen */
 @media screen and (min-width: 1360px) {
-  .cell {
+  .cell, .sidebar .button {
     width: 4.5rem;
     height: 4.5rem;
     font-size: 3rem;
+  }
+
+  .sidebar .highlight {
+    font-size: 1.4rem;
   }
 
   #submit {

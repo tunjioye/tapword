@@ -1,6 +1,7 @@
 import React from 'react';
 import Row from './Row';
 import Selection from './Selection';
+import Sidebar from './Sidebar';
 
 class Grid extends React.Component {
   constructor(props) {
@@ -33,8 +34,11 @@ class Grid extends React.Component {
     }
     return (
       <div className="grid">
-        {rows}
         <Selection />
+        <div className="rows">
+          {rows}
+        </div>
+        <Sidebar />
       </div>
     );
   }
