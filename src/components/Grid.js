@@ -25,7 +25,7 @@ class Grid extends React.Component {
   }
   handleCellClick(e) {
     let cell = e.target
-    console.log(cell.innerHTML)
+    console.log(cell.getAttribute('cell'))
     let word = this.state.word
     this.setState({
       word: word += cell.innerHTML
@@ -44,6 +44,7 @@ class Grid extends React.Component {
     for (let i = 0; i < this.state.size; i++) {
       rows[i] = <Row
         key={i.toString()}
+        rowNumber={i}
         size={this.state.size}
         letters={this.state.rows[i]}
         onClick={this.handleCellClick} />
@@ -71,7 +72,7 @@ Grid.defaultProps = {
     'BY',
     'TUNJI',
   ],
-  word: ''
+  word: []
 }
 
 export default Grid;
