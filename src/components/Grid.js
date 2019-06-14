@@ -9,7 +9,8 @@ class Grid extends React.Component {
     super(props)
     this.state = {
       size: props.size,
-      rows: props.rows
+      rows: props.rows,
+      word: props.word
     }
     this.randomLetters = this.randomLetters.bind(this)
     this.handleCellClick = this.handleCellClick.bind(this)
@@ -25,6 +26,10 @@ class Grid extends React.Component {
   handleCellClick(e) {
     let cell = e.target
     console.log(cell.innerHTML)
+    let word = this.state.word
+    this.setState({
+      word: word += cell.innerHTML
+    })
     cell.classList.toggle('selected')
   }
   componentDidMount() {
@@ -46,7 +51,7 @@ class Grid extends React.Component {
     return (
       <div className="grid">
         <Score />
-        <Selection />
+        <Selection word={this.state.word} />
         <div className="rows">
           {rows}
         </div>
@@ -65,7 +70,8 @@ Grid.defaultProps = {
     'GAME',
     'BY',
     'TUNJI',
-  ]
+  ],
+  word: ''
 }
 
 export default Grid;
