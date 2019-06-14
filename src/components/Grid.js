@@ -22,6 +22,7 @@ class Grid extends React.Component {
     this.handleKeyUp = this.handleKeyUp.bind(this)
     this.submitWord = this.submitWord.bind(this)
     this.addToScore = this.addToScore.bind(this)
+    this.clearSelectionWord = this.clearSelectionWord.bind(this)
   }
   randomLetters() {
     const chars = [...'ABCDEFGHIJKLMNOPQRSTUVWXYZ']
@@ -77,6 +78,11 @@ class Grid extends React.Component {
       })
     }
   }
+  clearSelectionWord() {
+    this.setState({
+      word: []
+    })
+  }
   submitWord() {
     let word = this.state.word.map(x => x.letter).join('').toLowerCase();
     console.log(word)
@@ -85,6 +91,7 @@ class Grid extends React.Component {
       console.log(response.data)
       if (response.data.corrections[word] === undefined) {
         this.addToScore(word.length)
+        this.clearSelectionWord()
       } else {
         alert(word.toUpperCase() + ' REJECTED')
       }
