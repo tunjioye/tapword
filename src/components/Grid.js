@@ -142,7 +142,11 @@ class Grid extends React.Component {
         this.clearSelectionWord()
         this.resetSelectedCells()
       } else {
-        alert(word.toUpperCase() + ' REJECTED')
+        // alert(word.toUpperCase() + ' REJECTED')
+        document.getElementById('selection').classList.add('shake')
+        setTimeout(() => {
+          document.getElementById('selection').classList.remove('shake')
+        }, 5000);
       }
     }.bind(this))
     .catch(function (error) {
