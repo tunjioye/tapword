@@ -26,6 +26,7 @@ class Grid extends React.Component {
     this.addToScore = this.addToScore.bind(this)
     this.clearSelectionWord = this.clearSelectionWord.bind(this)
     this.resetSelectedCells = this.resetSelectedCells.bind(this)
+    this.shuffleCells = this.shuffleCells.bind(this)
   }
   randomLetters() {
     const chars = [...'ABCDEFGHIJKLMNOPQRSTUVWXYZ']
@@ -97,6 +98,17 @@ class Grid extends React.Component {
     let selectedCells = document.querySelectorAll('[class="cell selected"]')
     selectedCells.forEach(x => x.classList.remove('selected'))
   }
+  shuffleCells() {
+    if (this.state.shuffle) {
+      if (this.state.shuffleAll) {
+        this.setState({
+          rows: this.randomLetters()
+        })
+      } else {
+
+      }
+    }
+  }
   submitWord() {
     let word = this.state.word.map(x => x.letter).join('').toLowerCase();
     spellcheck.get('?text=' + word)
@@ -105,6 +117,7 @@ class Grid extends React.Component {
         this.addToScore(word.length)
         this.clearSelectionWord()
         this.resetSelectedCells()
+        this.shuffleCells()
       } else {
         alert(word.toUpperCase() + ' REJECTED')
       }
