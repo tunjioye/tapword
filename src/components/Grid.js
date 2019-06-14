@@ -104,7 +104,7 @@ class Grid extends React.Component {
 
 Grid.defaultProps = {
   generate: true,
-  cellToggle: true,
+  cellToggle: false,
   size: 5,
   rows: [
     'TAP',
