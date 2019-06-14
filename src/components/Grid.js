@@ -11,6 +11,7 @@ class Grid extends React.Component {
     this.state = {
       size: props.size,
       rows: props.rows,
+      multiplier: props.multiplier,
       score: props.score,
       lastWordScore: props.lastWordScore,
       word: props.word,
@@ -24,6 +25,7 @@ class Grid extends React.Component {
     this.popSelectionWord = this.popSelectionWord.bind(this)
     this.handleKeyUp = this.handleKeyUp.bind(this)
     this.submitWord = this.submitWord.bind(this)
+    this.updateMultiplier = this.updateMultiplier.bind(this)
     this.updateScore = this.updateScore.bind(this)
     this.clearSelectionWord = this.clearSelectionWord.bind(this)
     this.resetSelectedCells = this.resetSelectedCells.bind(this)
@@ -88,6 +90,20 @@ class Grid extends React.Component {
       word: []
     })
   }
+  updateMultiplier(newWordScore) {
+    if (this.state.lastWordScore > 1) {
+      let lastWordScore = this.state.lastWordScore
+      let multiplier = this.state.multiplier
+      if (newWordScore > lastWordScore) {
+        multiplier++
+      } else if (newWordScore < lastWordScore && this.state.multiplier > 1) {
+        multiplier--
+      }
+      this.setState({
+        multiplier: multiplier
+      })
+    }
+  }
   updateScore(wordScore) {
     let score = this.state.score
     score += wordScore
@@ -120,6 +136,7 @@ class Grid extends React.Component {
     spellcheck.get('?text=' + word)
     .then(function (response) {
       if (response.data.corrections[word] === undefined) {
+        this.updateMultiplier(word.length)
         this.updateScore(word.length)
         this.clearSelectionWord()
         this.resetSelectedCells()
@@ -175,7 +192,7 @@ class Grid extends React.Component {
         <div className="rows">
           {rows}
         </div>
-        <Sidebar handleUndoButtonClick={this.popSelectionWord} handleSubmitButtonClick={this.submitWord} />
+        <Sidebar multiplier={this.state.multiplier} handleUndoButtonClick={this.popSelectionWord} handleSubmitButtonClick={this.submitWord} />
       </div>
     );
   }
@@ -194,6 +211,7 @@ Grid.defaultProps = {
     'BY',
     'TUNJI',
   ],
+  multiplier: 1,
   score: 0,
   lastWordScore: 0,
   word: [] // { cell: '', letter: ''} cell is short for cellName
