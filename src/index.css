@@ -129,6 +129,17 @@ code {
   background: none;
 }
 
+/* Section */
+.section {
+  padding: 5rem 1rem;
+}
+.section-sm {
+  padding: 3rem 1rem;
+}
+.section-xs {
+  padding: 1.5rem 0.5rem;
+}
+
 /* Tooltip */
 .tooltip {
   position: relative; }
