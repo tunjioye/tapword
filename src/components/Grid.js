@@ -106,7 +106,8 @@ class Grid extends React.Component {
   }
   updateScore(wordScore) {
     let score = this.state.score
-    score += wordScore
+    score += (wordScore * this.state.multiplier)
+    this.updateMultiplier(wordScore)
     this.setState({
       score: score,
       lastWordScore: wordScore
@@ -136,7 +137,6 @@ class Grid extends React.Component {
     spellcheck.get('?text=' + word)
     .then(function (response) {
       if (response.data.corrections[word] === undefined) {
-        this.updateMultiplier(word.length)
         this.updateScore(word.length)
         this.clearSelectionWord()
         this.resetSelectedCells()
