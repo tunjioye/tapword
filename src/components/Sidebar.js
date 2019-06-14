@@ -11,7 +11,7 @@ class Sidebar extends React.Component {
     return (
       <div className="sidebar">
         <div className="cell">
-          <div className="button alt"><span className="highlight">x</span><span id="bonus">{this.props.bonus}</span></div>
+          <div className="button alt"><span className="highlight">x</span><span id="multiplier">{this.props.multiplier}</span></div>
         </div>
         <div className="cell">
           {timer}
@@ -33,7 +33,7 @@ class Sidebar extends React.Component {
 Sidebar.defaultProps = {
   size: 5,
   minutes: 5,
-  bonus: 1,
+  multiplier: 1,
   endless: false
 }
 
