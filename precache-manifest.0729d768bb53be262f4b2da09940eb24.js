@@ -1,19 +1,19 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "dd04af7f333b38ebd2aae2dfb6501c5d",
+    "revision": "5ac67015814f6c96e2a5f99e60963ef6",
     "url": "/tapword/index.html"
   },
   {
-    "revision": "2a55d2149ef9283fc3af",
-    "url": "/tapword/static/css/main.5491a6aa.chunk.css"
+    "revision": "d139d4ca52dc4c616d42",
+    "url": "/tapword/static/css/main.d99e694b.chunk.css"
   },
   {
     "revision": "79cdd2aabfdf07d66458",
     "url": "/tapword/static/js/2.c7cd6bdb.chunk.js"
   },
   {
-    "revision": "2a55d2149ef9283fc3af",
-    "url": "/tapword/static/js/main.ddf9ddd0.chunk.js"
+    "revision": "d139d4ca52dc4c616d42",
+    "url": "/tapword/static/js/main.9d97de81.chunk.js"
   },
   {
     "revision": "7cc087fe62f8accee4dc",
