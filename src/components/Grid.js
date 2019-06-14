@@ -12,6 +12,7 @@ class Grid extends React.Component {
       size: props.size,
       rows: props.rows,
       multiplier: props.multiplier,
+      endless: props.endless,
       score: props.score,
       lastWordScore: props.lastWordScore,
       word: props.word,
@@ -192,7 +193,7 @@ class Grid extends React.Component {
         <div className="rows">
           {rows}
         </div>
-        <Sidebar multiplier={this.state.multiplier} handleUndoButtonClick={this.popSelectionWord} handleSubmitButtonClick={this.submitWord} />
+        <Sidebar multiplier={this.state.multiplier} endless={this.state.endless} handleUndoButtonClick={this.popSelectionWord} handleSubmitButtonClick={this.submitWord} />
       </div>
     );
   }
@@ -212,6 +213,7 @@ Grid.defaultProps = {
     'TUNJI',
   ],
   multiplier: 1,
+  endless: false,
   score: 0,
   lastWordScore: 0,
   word: [] // { cell: '', letter: ''} cell is short for cellName
