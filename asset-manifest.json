@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/tapword/static/css/main.5491a6aa.chunk.css",
+    "main.js": "/tapword/static/js/main.99ea7e11.chunk.js",
+    "main.js.map": "/tapword/static/js/main.99ea7e11.chunk.js.map",
+    "runtime~main.js": "/tapword/static/js/runtime~main.d3b60f95.js",
+    "runtime~main.js.map": "/tapword/static/js/runtime~main.d3b60f95.js.map",
+    "static/js/2.b9c8a2f1.chunk.js": "/tapword/static/js/2.b9c8a2f1.chunk.js",
+    "static/js/2.b9c8a2f1.chunk.js.map": "/tapword/static/js/2.b9c8a2f1.chunk.js.map",
+    "index.html": "/tapword/index.html",
+    "precache-manifest.053bc7390a0a719584eaf0301cbd90af.js": "/tapword/precache-manifest.053bc7390a0a719584eaf0301cbd90af.js",
+    "service-worker.js": "/tapword/service-worker.js",
+    "static/css/main.5491a6aa.chunk.css.map": "/tapword/static/css/main.5491a6aa.chunk.css.map"
+  }
+}
