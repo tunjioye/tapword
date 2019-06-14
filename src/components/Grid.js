@@ -33,11 +33,13 @@ class Grid extends React.Component {
         cell: cellName,
         letter: cell.innerHTML
       }
-      this.setState({
-        word: word
-      })
-      cell.classList.toggle('selected')
+    } else {
+      word = word.filter(x => x.cell !== cellName)
     }
+    this.setState({
+      word: word
+    })
+    cell.classList.toggle('selected')
   }
   popSelectionWord() {
     if (this.state.word.length > 0) {
