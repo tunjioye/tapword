@@ -3,6 +3,7 @@ import Row from './Row';
 import Score from './Score';
 import Selection from './Selection';
 import Sidebar from './Sidebar';
+import spellcheck from './../spellcheck';
 
 class Grid extends React.Component {
   constructor(props) {
@@ -75,7 +76,23 @@ class Grid extends React.Component {
     }
   }
   submitWord() {
-    console.log(this.state.word.map(x => x.letter))
+    let word = this.state.word.map(x => x.letter).join('').toLowerCase();
+    console.log(word)
+    spellcheck.get('?text=' + word)
+    .then(function (response) {
+      console.log(response.data)
+      if (response.data.corrections[word] === undefined) {
+        alert(word.toUpperCase() + ' ACCEPTED')
+      } else {
+        alert(word.toUpperCase() + ' REJECTED')
+      }
+    })
+    .catch(function (error) {
+      console.log(error)
+    })
+    .finally(function () {
+      // always executed
+    });
   }
   handleKeyUp(e) {
     switch (e.keyCode) {
