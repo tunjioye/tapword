@@ -11,6 +11,7 @@ class Grid extends React.Component {
     this.state = {
       size: props.size,
       rows: props.rows,
+      score: props.score,
       word: props.word,
       cellToggle: props.cellToggle
     }
@@ -20,6 +21,7 @@ class Grid extends React.Component {
     this.popSelectionWord = this.popSelectionWord.bind(this)
     this.handleKeyUp = this.handleKeyUp.bind(this)
     this.submitWord = this.submitWord.bind(this)
+    this.addToScore = this.addToScore.bind(this)
   }
   randomLetters() {
     const chars = [...'ABCDEFGHIJKLMNOPQRSTUVWXYZ']
@@ -82,17 +84,24 @@ class Grid extends React.Component {
     .then(function (response) {
       console.log(response.data)
       if (response.data.corrections[word] === undefined) {
-        alert(word.toUpperCase() + ' ACCEPTED')
+        this.addToScore(word.length)
       } else {
         alert(word.toUpperCase() + ' REJECTED')
       }
-    })
+    }.bind(this))
     .catch(function (error) {
       console.log(error)
     })
     .finally(function () {
       // always executed
     });
+  }
+  addToScore(number) {
+    let score = this.state.score
+    score += number
+    this.setState({
+      score: score
+    })
   }
   handleKeyUp(e) {
     switch (e.keyCode) {
@@ -130,7 +139,7 @@ class Grid extends React.Component {
     }
     return (
       <div className="grid">
-        <Score />
+        <Score score={this.state.score} />
         <Selection word={this.state.word.map(x => x.letter)} />
         <div className="rows">
           {rows}
@@ -152,6 +161,7 @@ Grid.defaultProps = {
     'BY',
     'TUNJI',
   ],
+  score: 0,
   word: [] // { cell: '', letter: ''} cell is short for cellName
 }
 
