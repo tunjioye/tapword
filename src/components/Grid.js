@@ -23,7 +23,7 @@ class Grid extends React.Component {
     this.popSelectionWord = this.popSelectionWord.bind(this)
     this.handleKeyUp = this.handleKeyUp.bind(this)
     this.submitWord = this.submitWord.bind(this)
-    this.addToScore = this.addToScore.bind(this)
+    this.updateScore = this.updateScore.bind(this)
     this.clearSelectionWord = this.clearSelectionWord.bind(this)
     this.resetSelectedCells = this.resetSelectedCells.bind(this)
     this.shuffleCells = this.shuffleCells.bind(this)
@@ -87,7 +87,7 @@ class Grid extends React.Component {
       word: []
     })
   }
-  addToScore(number) {
+  updateScore(number) {
     let score = this.state.score
     score += number
     this.setState({
@@ -118,7 +118,7 @@ class Grid extends React.Component {
     spellcheck.get('?text=' + word)
     .then(function (response) {
       if (response.data.corrections[word] === undefined) {
-        this.addToScore(word.length)
+        this.updateScore(word.length)
         this.clearSelectionWord()
         this.resetSelectedCells()
       } else {
