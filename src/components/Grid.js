@@ -17,6 +17,7 @@ class Grid extends React.Component {
     this.handleCellClick = this.handleCellClick.bind(this)
     this.pushSelectionWord = this.pushSelectionWord.bind(this)
     this.popSelectionWord = this.popSelectionWord.bind(this)
+    this.handleKeyUp = this.handleKeyUp.bind(this)
   }
   randomLetters() {
     const chars = [...'ABCDEFGHIJKLMNOPQRSTUVWXYZ']
@@ -72,7 +73,24 @@ class Grid extends React.Component {
       })
     }
   }
+  handleKeyUp(e) {
+    switch (e.keyCode) {
+      // backspace key to undo
+      case 8:
+        e.preventDefault()
+        this.popSelectionWord()
+        break;
+      // return or enter key to submit
+      case 13:
+        e.preventDefault()
+        console.log('Return button was pressed')
+        break;
+      default:
+        break;
+    }
+  }
   componentDidMount() {
+    document.addEventListener("keyup", this.handleKeyUp)
     if (this.props.generate) {
       this.setState({
         rows: this.randomLetters()
