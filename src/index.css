@@ -189,7 +189,7 @@ code {
 
 /* Shake */
 .shake {
-  animation: shake 100ms 10;
+  animation: shake 100ms 20;
   animation-timing-function: linear;
 }
 
