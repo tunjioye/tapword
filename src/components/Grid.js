@@ -25,16 +25,18 @@ class Grid extends React.Component {
   }
   handleCellClick(e) {
     let cell = e.target
+    let cellName = cell.getAttribute('cell')
     let word = this.state.word
-    word[word.length] = {
-      cell: cell.getAttribute('cell'),
-      letter: cell.innerHTML
+    if (word.filter(x => x.cell === cellName).length === 0) {
+      word[word.length] = {
+        cell: cellName,
+        letter: cell.innerHTML
+      }
+      this.setState({
+        word: word
+      })
+      cell.classList.toggle('selected')
     }
-    console.log(word)
-    this.setState({
-      word: word
-    })
-    cell.classList.toggle('selected')
   }
   componentDidMount() {
     if (this.props.generate) {
