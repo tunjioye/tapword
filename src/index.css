@@ -136,6 +136,64 @@ code {
   background: none;
 }
 
+/* Tooltip */
+.tooltip {
+  position: relative; }
+  .tooltip::after {
+    background: #567;
+    border-radius: 0.1rem;
+    bottom: 100%;
+    color: #fff;
+    content: attr(data-tooltip);
+    display: block;
+    font-size: 0.7rem;
+    left: 50%;
+    max-width: 320px;
+    opacity: 0;
+    overflow: hidden;
+    padding: 0.2rem 0.4rem;
+    pointer-events: none;
+    position: absolute;
+    text-overflow: ellipsis;
+    text-transform: uppercase;
+    -webkit-transform: translate(-50%, 0.4rem);
+            transform: translate(-50%, 0.4rem);
+    -webkit-transition: all .2s ease;
+    transition: all .2s ease;
+    white-space: pre;
+    z-index: 300; }
+  .tooltip:focus::after, .tooltip:hover::after {
+    opacity: 1;
+    -webkit-transform: translate(-50%, -0.2rem);
+            transform: translate(-50%, -0.2rem); }
+  .tooltip[disabled], .tooltip.disabled {
+    pointer-events: auto; }
+  .tooltip.tooltip-right::after {
+    bottom: 50%;
+    left: 100%;
+    -webkit-transform: translate(-0.2rem, 50%);
+            transform: translate(-0.2rem, 50%); }
+  .tooltip.tooltip-right:focus::after, .tooltip.tooltip-right:hover::after {
+    -webkit-transform: translate(0.2rem, 50%);
+            transform: translate(0.2rem, 50%); }
+  .tooltip.tooltip-bottom::after {
+    bottom: auto;
+    top: 100%;
+    -webkit-transform: translate(-50%, -0.4rem);
+            transform: translate(-50%, -0.4rem); }
+  .tooltip.tooltip-bottom:focus::after, .tooltip.tooltip-bottom:hover::after {
+    -webkit-transform: translate(-50%, 0.2rem);
+            transform: translate(-50%, 0.2rem); }
+  .tooltip.tooltip-left::after {
+    bottom: 50%;
+    left: auto;
+    right: 100%;
+    -webkit-transform: translate(0.4rem, 50%);
+            transform: translate(0.4rem, 50%); }
+  .tooltip.tooltip-left:focus::after, .tooltip.tooltip-left:hover::after {
+    -webkit-transform: translate(-0.2rem, 50%);
+            transform: translate(-0.2rem, 50%); }
+
 /* RESPONSIVE : medium screen */
 @media screen and (min-width: 480px) {
   .cell, .sidebar .button {
