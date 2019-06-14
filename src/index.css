@@ -95,13 +95,6 @@ code {
   cursor: pointer;
 }
 
-.sidebar .clock {
-  display: inline-block;
-  color: #cde;
-  background: #cde;
-  height: 100%;
-}
-
 .sidebar .highlight {
   font-size: 0.6rem;
   font-weight: 700;
