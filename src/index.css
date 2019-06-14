@@ -187,6 +187,18 @@ code {
     -webkit-transform: translate(-0.2rem, 50%);
             transform: translate(-0.2rem, 50%); }
 
+/* Shake */
+.shake {
+  animation: shake 100ms 10;
+  animation-timing-function: linear;
+}
+
+@keyframes shake {
+  0% { transform: translate(0.1rem, 0); }
+  50% { transform: translate(-0.1rem, 0); }
+  100% { transform: translate(0.1rem, 0); }
+}
+
 /* RESPONSIVE : medium screen */
 @media screen and (min-width: 480px) {
   .cell, .sidebar .button {
