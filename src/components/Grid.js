@@ -25,6 +25,7 @@ class Grid extends React.Component {
     this.submitWord = this.submitWord.bind(this)
     this.addToScore = this.addToScore.bind(this)
     this.clearSelectionWord = this.clearSelectionWord.bind(this)
+    this.resetSelectedCells = this.resetSelectedCells.bind(this)
   }
   randomLetters() {
     const chars = [...'ABCDEFGHIJKLMNOPQRSTUVWXYZ']
@@ -92,6 +93,10 @@ class Grid extends React.Component {
       score: score
     })
   }
+  resetSelectedCells() {
+    let selectedCells = document.querySelectorAll('[class="cell selected"]')
+    selectedCells.forEach(x => x.classList.remove('selected'))
+  }
   submitWord() {
     let word = this.state.word.map(x => x.letter).join('').toLowerCase();
     console.log(word)
@@ -101,6 +106,7 @@ class Grid extends React.Component {
       if (response.data.corrections[word] === undefined) {
         this.addToScore(word.length)
         this.clearSelectionWord()
+        this.resetSelectedCells()
       } else {
         alert(word.toUpperCase() + ' REJECTED')
       }
