@@ -10,7 +10,8 @@ class Grid extends React.Component {
     this.state = {
       size: props.size,
       rows: props.rows,
-      word: props.word
+      word: props.word,
+      cellToggle: props.cellToggle
     }
     this.randomLetters = this.randomLetters.bind(this)
     this.handleCellClick = this.handleCellClick.bind(this)
@@ -28,18 +29,33 @@ class Grid extends React.Component {
     let cell = e.target
     let cellName = cell.getAttribute('cell')
     let word = this.state.word
-    if (word.filter(x => x.cell === cellName).length === 0) {
-      word[word.length] = {
-        cell: cellName,
-        letter: cell.innerHTML
+    if (this.state.cellToggle) {
+      if (word.filter(x => x.cell === cellName).length === 0) {
+        word[word.length] = {
+          cell: cellName,
+          letter: cell.innerHTML
+        }
+      } else {
+        word = word.filter(x => x.cell !== cellName)
       }
+      this.setState({
+        word: word
+      })
+      cell.classList.toggle('selected')
     } else {
-      word = word.filter(x => x.cell !== cellName)
+      if (word.filter(x => x.cell === cellName).length === 0) {
+        word[word.length] = {
+          cell: cellName,
+          letter: cell.innerHTML
+        }
+        this.setState({
+          word: word
+        })
+        cell.classList.add('selected')
+      } else if (word[word.length - 1].cell === cellName) {
+        this.popSelectionWord()
+      }
     }
-    this.setState({
-      word: word
-    })
-    cell.classList.toggle('selected')
   }
   popSelectionWord() {
     if (this.state.word.length > 0) {
@@ -83,6 +99,7 @@ class Grid extends React.Component {
 
 Grid.defaultProps = {
   generate: true,
+  cellToggle: false,
   size: 5,
   rows: [
     'TAP',
