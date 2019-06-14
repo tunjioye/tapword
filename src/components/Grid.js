@@ -162,7 +162,7 @@ class Grid extends React.Component {
       // return or enter key to submit
       case 13:
         e.preventDefault()
-        console.log('Return button was pressed')
+        this.submitWord()
         break;
       default:
         break;
