@@ -18,6 +18,7 @@ class Grid extends React.Component {
     this.pushSelectionWord = this.pushSelectionWord.bind(this)
     this.popSelectionWord = this.popSelectionWord.bind(this)
     this.handleKeyUp = this.handleKeyUp.bind(this)
+    this.submitWord = this.submitWord.bind(this)
   }
   randomLetters() {
     const chars = [...'ABCDEFGHIJKLMNOPQRSTUVWXYZ']
@@ -73,6 +74,9 @@ class Grid extends React.Component {
       })
     }
   }
+  submitWord() {
+    console.log(this.state.word.map(x => x.letter))
+  }
   handleKeyUp(e) {
     switch (e.keyCode) {
       // backspace key to undo
@@ -114,7 +118,7 @@ class Grid extends React.Component {
         <div className="rows">
           {rows}
         </div>
-        <Sidebar handleUndoButtonClick={this.popSelectionWord} />
+        <Sidebar handleUndoButtonClick={this.popSelectionWord} handleSubmitButtonClick={this.submitWord} />
       </div>
     );
   }
@@ -131,7 +135,7 @@ Grid.defaultProps = {
     'BY',
     'TUNJI',
   ],
-  word: []
+  word: [] // { cell: '', letter: ''} cell is short for cellName
 }
 
 export default Grid;

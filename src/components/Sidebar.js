@@ -23,7 +23,7 @@ class Sidebar extends React.Component {
           <button id="undo" className="button" onClick={this.props.handleUndoButtonClick}>&#8630;</button>
         </div>
         <div className="cell">
-          <button id="submi" className="button">&#8629;</button>
+          <button id="submit" className="button" onClick={this.props.handleSubmitButtonClick}>&#8629;</button>
         </div>
       </div>
     );
