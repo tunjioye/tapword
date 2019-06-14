@@ -6,7 +6,7 @@ function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <Grid cellToggle={true} />
+        <Grid cellToggle={true} shuffle={false} shuffleAll={true} />
       </header>
     </div>
   );

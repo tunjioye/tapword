@@ -13,7 +13,9 @@ class Grid extends React.Component {
       rows: props.rows,
       score: props.score,
       word: props.word,
-      cellToggle: props.cellToggle
+      cellToggle: props.cellToggle,
+      shuffle: props.shuffle,
+      shuffleAll: props.shuffleAll
     }
     this.randomLetters = this.randomLetters.bind(this)
     this.handleCellClick = this.handleCellClick.bind(this)
@@ -83,6 +85,13 @@ class Grid extends React.Component {
       word: []
     })
   }
+  addToScore(number) {
+    let score = this.state.score
+    score += number
+    this.setState({
+      score: score
+    })
+  }
   submitWord() {
     let word = this.state.word.map(x => x.letter).join('').toLowerCase();
     console.log(word)
@@ -102,13 +111,6 @@ class Grid extends React.Component {
     .finally(function () {
       // always executed
     });
-  }
-  addToScore(number) {
-    let score = this.state.score
-    score += number
-    this.setState({
-      score: score
-    })
   }
   handleKeyUp(e) {
     switch (e.keyCode) {
@@ -160,6 +162,8 @@ class Grid extends React.Component {
 Grid.defaultProps = {
   generate: true,
   cellToggle: false,
+  shuffle: true,
+  shuffleAll: true,
   size: 5,
   rows: [
     'TAP',
