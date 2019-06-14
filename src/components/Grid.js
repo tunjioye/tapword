@@ -12,6 +12,7 @@ class Grid extends React.Component {
       size: props.size,
       rows: props.rows,
       score: props.score,
+      lastWordScore: props.lastWordScore,
       word: props.word,
       cellToggle: props.cellToggle,
       shuffle: props.shuffle,
@@ -87,11 +88,12 @@ class Grid extends React.Component {
       word: []
     })
   }
-  updateScore(number) {
+  updateScore(wordScore) {
     let score = this.state.score
-    score += number
+    score += wordScore
     this.setState({
-      score: score
+      score: score,
+      lastWordScore: wordScore
     })
   }
   resetSelectedCells() {
@@ -193,6 +195,7 @@ Grid.defaultProps = {
     'TUNJI',
   ],
   score: 0,
+  lastWordScore: 0,
   word: [] // { cell: '', letter: ''} cell is short for cellName
 }
 
