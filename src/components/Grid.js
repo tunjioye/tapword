@@ -32,7 +32,7 @@ class Grid extends React.Component {
     const chars = [...'ABCDEFGHIJKLMNOPQRSTUVWXYZ']
     let letters = []
     for (let i = 0; i < this.state.size; i++) {
-      letters[i] = [...Array(parseInt(this.state.size))].map(x => chars[Math.random() * chars.length | 0]).join('')
+      letters[i] = [...Array(parseInt(this.state.size))].map(x => chars[Math.floor(Math.random() * chars.length) | 0]).join('')
     }
     return letters
   }
@@ -75,7 +75,7 @@ class Grid extends React.Component {
   popSelectionWord() {
     if (this.state.word.length > 0) {
       let word = this.state.word
-      document.querySelectorAll('[cell=' + word[word.length - 1].cell + ']')[0].classList.remove('selected');
+      document.querySelectorAll('[cell=' + word[word.length - 1].cell + ']')[0].classList.remove('selected')
       word.length--;
       this.setState({
         word: word
@@ -97,15 +97,19 @@ class Grid extends React.Component {
   resetSelectedCells() {
     let selectedCells = document.querySelectorAll('[class="cell selected"]')
     selectedCells.forEach(x => x.classList.remove('selected'))
+    this.shuffleCells(selectedCells)
   }
-  shuffleCells() {
+  shuffleCells(selectedCells) {
     if (this.state.shuffle) {
       if (this.state.shuffleAll) {
+        // shuffle all cells
         this.setState({
           rows: this.randomLetters()
         })
       } else {
-
+        // shuffle only selected cells
+        const chars = [...'ABCDEFGHIJKLMNOPQRSTUVWXYZ'];
+        selectedCells.forEach(x => x.innerHTML = chars[Math.floor(Math.random() * chars.length) | 0])
       }
     }
   }
@@ -117,7 +121,6 @@ class Grid extends React.Component {
         this.addToScore(word.length)
         this.clearSelectionWord()
         this.resetSelectedCells()
-        this.shuffleCells()
       } else {
         alert(word.toUpperCase() + ' REJECTED')
       }
