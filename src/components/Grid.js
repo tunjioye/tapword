@@ -99,10 +99,8 @@ class Grid extends React.Component {
   }
   submitWord() {
     let word = this.state.word.map(x => x.letter).join('').toLowerCase();
-    console.log(word)
     spellcheck.get('?text=' + word)
     .then(function (response) {
-      console.log(response.data)
       if (response.data.corrections[word] === undefined) {
         this.addToScore(word.length)
         this.clearSelectionWord()
