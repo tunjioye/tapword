@@ -14,6 +14,7 @@ class Grid extends React.Component {
     }
     this.randomLetters = this.randomLetters.bind(this)
     this.handleCellClick = this.handleCellClick.bind(this)
+    this.popSelectionWord = this.popSelectionWord.bind(this)
   }
   randomLetters() {
     const chars = [...'ABCDEFGHIJKLMNOPQRSTUVWXYZ']
@@ -36,6 +37,16 @@ class Grid extends React.Component {
         word: word
       })
       cell.classList.toggle('selected')
+    }
+  }
+  popSelectionWord() {
+    if (this.state.word.length > 0) {
+      let word = this.state.word
+      document.querySelectorAll('[cell=' + word[word.length - 1].cell + ']')[0].classList.remove('selected');
+      word.length--;
+      this.setState({
+        word: word
+      })
     }
   }
   componentDidMount() {
@@ -62,7 +73,7 @@ class Grid extends React.Component {
         <div className="rows">
           {rows}
         </div>
-        <Sidebar />
+        <Sidebar handleUndoButtonClick={this.popSelectionWord} />
       </div>
     );
   }

@@ -20,7 +20,7 @@ class Sidebar extends React.Component {
           <div className="button alt">&#8862;<sub className="highlight">{this.props.size}</sub></div>
         </div>
         <div className="cell">
-          <button id="undo" className="button">&#8630;</button>
+          <button id="undo" className="button" onClick={this.props.handleUndoButtonClick}>&#8630;</button>
         </div>
         <div className="cell">
           <button id="submi" className="button">&#8629;</button>
