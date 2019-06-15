@@ -134,26 +134,28 @@ class Grid extends React.Component {
     }
   }
   submitWord() {
-    let word = this.state.word.map(x => x.letter).join('').toLowerCase();
-    spellcheck.get('?text=' + word)
-    .then(function (response) {
-      if (response.data.corrections[word] === undefined) {
-        this.updateScore(word.length)
-        this.clearSelectionWord()
-        this.resetSelectedCells()
-      } else {
-        document.getElementById('selection').classList.add('shake')
-        setTimeout(() => {
-          document.getElementById('selection').classList.remove('shake')
-        }, 1000);
-      }
-    }.bind(this))
-    .catch(function (error) {
-      console.log(error)
-    })
-    .finally(function () {
-      // always executed
-    });
+    if (this.state.word.length > 0) {
+      let word = this.state.word.map(x => x.letter).join('').toLowerCase();
+      spellcheck.get('?text=' + word)
+      .then(function (response) {
+        if (response.data.corrections[word] === undefined) {
+          this.updateScore(word.length)
+          this.clearSelectionWord()
+          this.resetSelectedCells()
+        } else {
+          document.getElementById('selection').classList.add('shake')
+          setTimeout(() => {
+            document.getElementById('selection').classList.remove('shake')
+          }, 1000);
+        }
+      }.bind(this))
+      .catch(function (error) {
+        console.log(error)
+      })
+      .finally(function () {
+        // always executed
+      });
+    }
   }
   handleKeyUp(e) {
     switch (e.keyCode) {
