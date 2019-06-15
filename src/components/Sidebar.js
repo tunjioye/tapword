@@ -4,6 +4,9 @@ class Sidebar extends React.Component {
   openSettingsModal() {
     window.location.hash = 'settings';
   }
+  openHelpModal() {
+    window.location.hash = 'help';
+  }
   render() {
     let timer;
     if (this.props.endless) {
@@ -35,7 +38,7 @@ class Sidebar extends React.Component {
             <div className="button alt tooltip" data-tooltip="Settings" onClick={this.openSettingsModal.bind(this)}>&#10033;</div>
           </div>
           <div className="cell">
-            <div className="button alt tooltip" data-tooltip="Help">&#63;</div>
+            <div className="button alt tooltip" data-tooltip="Help" onClick={this.openHelpModal.bind(this)}>&#63;</div>
           </div>
           <div className="cell">
             <button id="quit" className="button tooltip" data-tooltip="Quit">&times;</button>
