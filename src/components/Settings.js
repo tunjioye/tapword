@@ -8,7 +8,7 @@ function Settings() {
         <div className="modal-header">
           <a href="#close" className="btn btn-clear" aria-label="Close"> </a>
           <div className="modal-title">
-            <strong>GAME SETTINGS</strong>
+            <strong style={spacedTypo}>GAME SETTINGS</strong>
           </div>
         </div>
         <div className="modal-body">
@@ -21,6 +21,12 @@ function Settings() {
       </div>
     </div>
   );
+}
+
+const spacedTypo = {
+  letterSpacing: '0.1rem',
+  wordSpacing: '0.2rem',
+  fontWeight: 500
 }
 
 export default Settings;
