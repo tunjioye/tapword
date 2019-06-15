@@ -7,6 +7,9 @@ class Sidebar extends React.Component {
   openHelpModal() {
     window.location.hash = 'help';
   }
+  handleQuit() {
+    alert('QUITING IS NOT A OPTION!');
+  }
   render() {
     let timer;
     if (this.props.endless) {
@@ -41,7 +44,7 @@ class Sidebar extends React.Component {
             <div className="button alt tooltip" data-tooltip="Help" onClick={this.openHelpModal.bind(this)}>&#63;</div>
           </div>
           <div className="cell">
-            <button id="quit" className="button tooltip" data-tooltip="Quit">&times;</button>
+            <button id="quit" className="button tooltip" data-tooltip="Quit" onClick={this.handleQuit.bind(this)}>&times;</button>
           </div>
         </div>
       </div>
