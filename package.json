@@ -1,5 +1,6 @@
 {
   "name": "tapword",
+  "description": "tapword - words are limitless : is a word game that tests your knowledge of English words",
   "version": "0.1.0",
   "private": true,
   "homepage": "https://tunjioye.github.io/tapword",
