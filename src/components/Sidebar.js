@@ -1,6 +1,9 @@
 import React from 'react';
 
 class Sidebar extends React.Component {
+  openSettingsModal() {
+    window.location.hash = 'settings';
+  }
   render() {
     let timer;
     if (this.props.endless) {
@@ -10,20 +13,33 @@ class Sidebar extends React.Component {
     }
     return (
       <div className="sidebar">
-        <div className="cell">
-          <div className="button alt tooltip" data-tooltip="Score Multiplier"><span className="highlight">x</span><span id="multiplier">{this.props.multiplier}</span></div>
+        <div className="sidebar-inner">
+          <div className="cell">
+            <div className="button alt tooltip" data-tooltip="Score Multiplier"><span className="highlight">x</span><span id="multiplier">{this.props.multiplier}</span></div>
+          </div>
+          <div className="cell">
+            {timer}
+          </div>
+          <div className="cell">
+            <div className="button alt tooltip" data-tooltip="Grid Size">&#8862;<sub className="highlight">{this.props.size}</sub></div>
+          </div>
+          <div className="cell">
+            <button id="undo" className="button tooltip" onClick={this.props.handleUndoButtonClick} data-tooltip="Undo Word">&#8630;</button>
+          </div>
+          <div className="cell">
+            <button id="submit" className="button tooltip" onClick={this.props.handleSubmitButtonClick} data-tooltip="Submit Word">&#8629;</button>
+          </div>
         </div>
-        <div className="cell">
-          {timer}
-        </div>
-        <div className="cell">
-          <div className="button alt tooltip" data-tooltip="Grid Size">&#8862;<sub className="highlight">{this.props.size}</sub></div>
-        </div>
-        <div className="cell">
-          <button id="undo" className="button tooltip" onClick={this.props.handleUndoButtonClick} data-tooltip="Undo Word">&#8630;</button>
-        </div>
-        <div className="cell">
-          <button id="submit" className="button tooltip" onClick={this.props.handleSubmitButtonClick} data-tooltip="Submit Word">&#8629;</button>
+        <div className="sidebar-inner">
+          <div className="cell">
+            <div className="button alt tooltip" data-tooltip="Settings" onClick={this.openSettingsModal.bind(this)}>&#10033;</div>
+          </div>
+          <div className="cell">
+            <div className="button alt tooltip" data-tooltip="Help">&#63;</div>
+          </div>
+          <div className="cell">
+            <button id="quit" className="button tooltip" data-tooltip="Quit">&times;</button>
+          </div>
         </div>
       </div>
     );

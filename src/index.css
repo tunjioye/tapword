@@ -66,6 +66,11 @@ code {
   margin: 0.2rem;
 }
 
+.sidebar-inner {
+  display: inline-block;
+  vertical-align: top;
+}
+
 .sidebar .cell {
   display: block;
   margin-bottom: 0.2rem;
