@@ -8,7 +8,7 @@ function Help() {
         <div className="modal-header">
           <a href="#close" className="btn btn-clear" aria-label="Close"> </a>
           <div className="modal-title">
-            <strong style={spacedTypo}>HELP &amp; About</strong>
+            <strong style={spacedTypo}>HELP &amp; ABOUT</strong>
           </div>
         </div>
         <div className="modal-body">
@@ -26,6 +26,7 @@ function Help() {
 const spacedTypo = {
   letterSpacing: '0.1rem',
   wordSpacing: '0.2rem',
+  textTransform: 'uppercase',
   fontWeight: 500
 }
 

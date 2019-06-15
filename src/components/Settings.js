@@ -26,6 +26,7 @@ function Settings() {
 const spacedTypo = {
   letterSpacing: '0.1rem',
   wordSpacing: '0.2rem',
+  textTransform: 'uppercase',
   fontWeight: 500
 }
 
