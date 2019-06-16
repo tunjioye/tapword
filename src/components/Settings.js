@@ -41,11 +41,12 @@ class Settings extends React.Component {
                 <div>SHUFFLE SELECTED CELLS | SHUFFLE ALL CELLS</div>
                 <div><em><small>cell reshuffle after submit</small></em></div>
               </div>
+              <br />
+              <br />
+              <div style={{ ...spacedTypo, ...textCenter }}><button style={saveButton} onClick={this.saveSettings.bind(this)}>Save Settings</button></div>
             </div>
           </div>
-          <div className="modal-footer">
-            <div style={{ ...spacedTypo, ...textCenter }}><button style={saveButton} onClick={this.saveSettings.bind(this)}>Save Settings</button></div>
-          </div>
+          <div className="modal-footer"></div>
         </div>
       </div>
     );

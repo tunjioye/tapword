@@ -43,11 +43,12 @@ function Help() {
               <div>&nbsp;</div>
               <div style={{ ...spacedTypo, ...textCenter }}>+++ THANK YOU +++</div>
             </div>
+            <br />
+            <br />
+            <div style={{ ...spacedTypo, ...textCenter }}>*** <a style={customLink} href="https://github.com/tunjioye/tapword" target="_blank" rel="noopener noreferrer">Git Repo</a> ***</div>
           </div>
         </div>
-        <div className="modal-footer">
-          <div style={{ ...spacedTypo, ...textCenter }}>*** <a style={customLink} href="https://github.com/tunjioye/tapword" target="_blank" rel="noopener noreferrer">Git Repo</a> ***</div>
-        </div>
+        <div className="modal-footer"></div>
       </div>
     </div>
   );
