@@ -156,6 +156,27 @@ code {
   100% { transform: translate(0.1rem, 0); }
 }
 
+/* Color Flash */
+.flash-error {
+  animation: flash-error 500ms 2;
+}
+
+@keyframes flash-error {
+    0% { background-color: none; }
+    50% { background-color: #d34; }
+    100% { background-color: none; }
+}
+
+.flash-success {
+  animation: flash-success 500ms 2;
+}
+
+@keyframes flash-success {
+    0% { background-color: none; }
+    50% { background-color: #3d4; }
+    100% { background-color: none; }
+}
+
 /* RESPONSIVE : small screen */
 @media screen and (min-width: 320px) {
   .cell, .sidebar .button {
