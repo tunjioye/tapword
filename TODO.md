@@ -6,13 +6,17 @@
 [-] Quit Game
 [-] Player Sidebar
 [-] Timer Component
-[-] Gameplay Tutorial using slides
 [-] Minimum Word Length
-[-] Bingo : Multiplier * 2 : when Player uses all cells
 [-] Replace selected cell in word input on mouse click hold
-[+] Error & Success (Incorrect & Correct Word) Animation
 [-] Grid Responsiveness - irrespective of orientation
+
+## Much Later
+[-] Gameplay Tutorial using slides
 [-] Player Word History to help optimize api requests
+[-] Bingo : Multiplier * 2 : when Player uses all cells
+
+## Done
+[+] Error & Success (Incorrect & Correct Word) Animation
 [+] Setting Modal
 [+] Help Modal
 
