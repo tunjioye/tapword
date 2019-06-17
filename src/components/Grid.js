@@ -97,9 +97,9 @@ class Grid extends React.Component {
       let multiplier = this.state.multiplier
       let multiplierEl = document.getElementsByClassName('multiplier')[0]
       if (newWordScore > lastWordScore) {
-        multiplierEl.classList.add('add1')
+        multiplierEl.classList.add('plus1')
         setTimeout(() => {
-          multiplierEl.classList.remove('add1')
+          multiplierEl.classList.remove('plus1')
         }, 1000);
         multiplier++
       } else if (newWordScore < lastWordScore && this.state.multiplier > 1) {

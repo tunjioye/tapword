@@ -106,7 +106,7 @@ code {
   text-transform: none;
 }
 
-.multiplier.add1::before, .multiplier.minus1::before {
+.multiplier.plus1::before, .multiplier.minus1::before {
   color: #cde;
   opacity: 0;
   position: absolute;
@@ -115,7 +115,7 @@ code {
   animation-timing-function: linear;
 }
 
-.multiplier.add1::before {
+.multiplier.plus1::before {
   content: "+1";
   color: #3d4;
 }
