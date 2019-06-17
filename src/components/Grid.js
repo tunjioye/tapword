@@ -138,14 +138,21 @@ class Grid extends React.Component {
       let word = this.state.word.map(x => x.letter).join('').toLowerCase();
       spellcheck.get('?text=' + word)
       .then(function (response) {
+        let selectedCells = document.querySelectorAll('[class="cell selected"]')
         if (response.data.corrections[word] === undefined) {
-          this.updateScore(word.length)
-          this.clearSelectionWord()
-          this.resetSelectedCells()
+          selectedCells.forEach(x => x.classList.add('flash-success'))
+          setTimeout(() => {
+            selectedCells.forEach(x => x.classList.remove('flash-success'))
+            this.updateScore(word.length)
+            this.clearSelectionWord()
+            this.resetSelectedCells()
+          }, 1000);
         } else {
           document.getElementById('selection').classList.add('shake')
+          selectedCells.forEach(x => x.classList.add('flash-error'))
           setTimeout(() => {
             document.getElementById('selection').classList.remove('shake')
+            selectedCells.forEach(x => x.classList.remove('flash-error'))
           }, 1000);
         }
       }.bind(this))
