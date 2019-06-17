@@ -21,7 +21,7 @@ class Sidebar extends React.Component {
       <div className="sidebar">
         <div className="sidebar-inner">
           <div className="cell tooltip" data-tooltip="Score Multiplier">
-            <div className="button alt"><span className="highlight">x</span><span id="multiplier">{this.props.multiplier}</span></div>
+            <div className="button alt multiplier"><span className="highlight">x</span><span id="multiplier">{this.props.multiplier}</span></div>
           </div>
           <div className="cell tooltip" data-tooltip="Timer">
             {timer}

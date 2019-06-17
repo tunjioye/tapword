@@ -106,6 +106,25 @@ code {
   text-transform: none;
 }
 
+.multiplier.add1::before, .multiplier.minus1::before {
+  color: #cde;
+  opacity: 0;
+  position: absolute;
+  font-size: 50%;
+  animation: slide-up 500ms 1;
+  animation-timing-function: linear;
+}
+
+.multiplier.add1::before {
+  content: "+1";
+  /* color: #3d4; */
+}
+
+.multiplier.minus1::before {
+  content: "-1";
+  /* color: #d34; */
+}
+
 /* Selection & Score */
 .selection {
   padding: 0.2rem;
