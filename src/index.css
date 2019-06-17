@@ -117,12 +117,12 @@ code {
 
 .multiplier.add1::before {
   content: "+1";
-  /* color: #3d4; */
+  color: #3d4;
 }
 
 .multiplier.minus1::before {
   content: "-1";
-  /* color: #d34; */
+  color: #d34;
 }
 
 /* Selection & Score */
