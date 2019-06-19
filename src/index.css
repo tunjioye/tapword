@@ -165,7 +165,7 @@ code {
 
 /* Shake */
 .shake {
-  animation: shake 100ms 20;
+  animation: shake 100ms 10;
   animation-timing-function: linear;
 }
 
@@ -177,7 +177,7 @@ code {
 
 /* Color Flash */
 .flash-error {
-  animation: flash-error 500ms 2;
+  animation: flash-error 250ms 2;
 }
 
 @keyframes flash-error {
@@ -187,7 +187,7 @@ code {
 }
 
 .flash-success {
-  animation: flash-success 500ms 2;
+  animation: flash-success 250ms 2;
 }
 
 @keyframes flash-success {

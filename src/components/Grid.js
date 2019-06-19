@@ -100,13 +100,13 @@ class Grid extends React.Component {
         multiplierEl.classList.add('plus1')
         setTimeout(() => {
           multiplierEl.classList.remove('plus1')
-        }, 1000);
+        }, 500);
         multiplier++
       } else if (newWordScore < lastWordScore && this.state.multiplier > 1) {
         multiplierEl.classList.add('minus1')
         setTimeout(() => {
           multiplierEl.classList.remove('minus1')
-        }, 1000);
+        }, 500);
         multiplier--
       }
       this.setState({
@@ -155,14 +155,14 @@ class Grid extends React.Component {
             this.updateScore(word.length)
             this.clearSelectionWord()
             this.resetSelectedCells()
-          }, 1000);
+          }, 500);
         } else {
           document.getElementById('selection').classList.add('shake')
           selectedCells.forEach(x => x.classList.add('flash-error'))
           setTimeout(() => {
             document.getElementById('selection').classList.remove('shake')
             selectedCells.forEach(x => x.classList.remove('flash-error'))
-          }, 1000);
+          }, 500);
         }
       }.bind(this))
       .catch(function (error) {
