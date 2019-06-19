@@ -1,6 +1,6 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "d995c5f9be582a228abfcbdadb7ec003",
+    "revision": "7d81c55eec636497a4bed51e805d701d",
     "url": "/tapword/index.html"
   },
   {
