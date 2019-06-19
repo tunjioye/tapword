@@ -1,15 +1,15 @@
 {
   "files": {
-    "main.css": "/tapword/static/css/main.1e71828c.chunk.css",
-    "main.js": "/tapword/static/js/main.601a111c.chunk.js",
-    "main.js.map": "/tapword/static/js/main.601a111c.chunk.js.map",
+    "main.css": "/tapword/static/css/main.da03806d.chunk.css",
+    "main.js": "/tapword/static/js/main.516f7222.chunk.js",
+    "main.js.map": "/tapword/static/js/main.516f7222.chunk.js.map",
     "runtime~main.js": "/tapword/static/js/runtime~main.d3b60f95.js",
     "runtime~main.js.map": "/tapword/static/js/runtime~main.d3b60f95.js.map",
     "static/js/2.06cdd8c7.chunk.js": "/tapword/static/js/2.06cdd8c7.chunk.js",
     "static/js/2.06cdd8c7.chunk.js.map": "/tapword/static/js/2.06cdd8c7.chunk.js.map",
     "index.html": "/tapword/index.html",
-    "precache-manifest.bef7a9bf35d202ca3037f5a25bac7472.js": "/tapword/precache-manifest.bef7a9bf35d202ca3037f5a25bac7472.js",
+    "precache-manifest.d687042011f6a4849fa11e7ce516e0fd.js": "/tapword/precache-manifest.d687042011f6a4849fa11e7ce516e0fd.js",
     "service-worker.js": "/tapword/service-worker.js",
-    "static/css/main.1e71828c.chunk.css.map": "/tapword/static/css/main.1e71828c.chunk.css.map"
+    "static/css/main.da03806d.chunk.css.map": "/tapword/static/css/main.da03806d.chunk.css.map"
   }
 }
