@@ -183,13 +183,15 @@ class Grid extends React.Component {
   }
   handleKeyUp(e) {
     switch (e.keyCode) {
-      // backspace key to undo
+      // backspace | del key to undo
       case 8:
+      case 46:
         e.preventDefault()
         this.popSelectionWord()
         break;
-      // return or enter key to submit
+      // return or enter | spacebar key to submit
       case 13:
+      case 32:
         e.preventDefault()
         this.submitWord()
         break;
