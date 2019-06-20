@@ -22,6 +22,7 @@ class Grid extends React.Component {
     }
     this.randomLetters = this.randomLetters.bind(this)
     this.handleCellClick = this.handleCellClick.bind(this)
+    this.toggleSelectionWord = this.toggleSelectionWord.bind(this)
     this.pushSelectionWord = this.pushSelectionWord.bind(this)
     this.popSelectionWord = this.popSelectionWord.bind(this)
     this.handleKeyUp = this.handleKeyUp.bind(this)
@@ -49,11 +50,7 @@ class Grid extends React.Component {
       if (word.filter(x => x.cell === cellName).length === 0) {
         this.pushSelectionWord(cell)
       } else {
-        word = word.filter(x => x.cell !== cellName)
-        this.setState({
-          word: word
-        })
-        cell.classList.toggle('selected')
+        this.toggleSelectionWord(e)
       }
     } else {
       // word pop
@@ -63,6 +60,17 @@ class Grid extends React.Component {
         this.popSelectionWord()
       }
     }
+  }
+  toggleSelectionWord(e) {
+    let cell = e.target
+    let cellName = cell.getAttribute('cell')
+    let word = this.state.word
+
+    word = word.filter(x => x.cell !== cellName)
+    this.setState({
+      word: word
+    })
+    cell.classList.toggle('selected')
   }
   pushSelectionWord(cell) {
     let cellName = cell.getAttribute('cell')
@@ -214,7 +222,11 @@ class Grid extends React.Component {
         <div className="rows">
           {rows}
         </div>
-        <Sidebar multiplier={this.state.multiplier} endless={this.state.endless} handleUndoButtonClick={this.popSelectionWord} handleSubmitButtonClick={this.submitWord} />
+        <Sidebar
+          multiplier={this.state.multiplier}
+          endless={this.state.endless}
+          handleUndoButtonClick={this.popSelectionWord}
+          handleSubmitButtonClick={this.submitWord} />
       </div>
     );
   }
