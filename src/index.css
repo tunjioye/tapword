@@ -12,11 +12,6 @@ code {
     monospace;
 }
 
-/* Override App-header */
-.App-header {
-  flex-direction: row !important;
-}
-
 /* Cell */
 .cell {
   display: inline-block;
