@@ -27,9 +27,9 @@ function Help() {
               <h5 style={spacedTypo}>KEYBOARD SHORTCUTS</h5>
               <div>...</div>
               <div>&nbsp;</div>
-              <div><kbd style={kbd}>BKSP</kbd> UNDO</div>
+              <div><kbd style={kbd}>BKSP</kbd> &nbsp;&nbsp;&nbsp; <small>OR</small> &nbsp;&nbsp;&nbsp; <kbd style={kbd}>DEL</kbd> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <small>UNDO</small></div>
               <div>&nbsp;</div>
-              <div><kbd style={kbd}>ENTER</kbd> SUBMIT</div>
+              <div><kbd style={kbd}>ENTER</kbd> &nbsp;&nbsp; <small>OR</small> &nbsp;&nbsp; <kbd style={kbd}>SPACE</kbd> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <small>SUBMIT</small></div>
             </div>
             <br />
             <br />
