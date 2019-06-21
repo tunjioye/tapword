@@ -8,7 +8,7 @@ class Selection extends React.Component {
       output[i] = <Cell key={i.toString()} letter={(this.props.word[i]) ? this.props.word[i] : ' '} />
     }
     return (
-      <div className="selection">
+      <div id="selection-word" className="selection">
         <span className="selection-info">WORD INPUT</span>
         <div className="selection-wrapper">
           <span id="word">{output}</span>

@@ -46,10 +46,10 @@ class App extends React.Component {
     this.setState({
       newGame: true
     })
-    window.location.hash = '';
+    window.location.hash = ''
   }
   quitGame() {
-    alert('QUITING IS NOT A OPTION!');
+    alert('QUITING IS NOT A OPTION!')
     this.setState({
       newGame: false
     })
@@ -188,10 +188,10 @@ class App extends React.Component {
             this.resetSelectedCells()
           }, 500)
         } else {
-          document.getElementById('selection').classList.add('shake')
+          document.getElementById('selection-word').classList.add('shake')
           selectedCells.forEach(x => x.classList.add('flash-error'))
           setTimeout(() => {
-            document.getElementById('selection').classList.remove('shake')
+            document.getElementById('selection-word').classList.remove('shake')
             selectedCells.forEach(x => x.classList.remove('flash-error'))
           }, 500)
         }
