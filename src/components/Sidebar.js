@@ -1,14 +1,14 @@
 import React from 'react';
 
 class Sidebar extends React.Component {
+  openPlayModal() {
+    window.location.hash = 'play';
+  }
   openSettingsModal() {
     window.location.hash = 'settings';
   }
   openHelpModal() {
     window.location.hash = 'help';
-  }
-  handleQuit() {
-    alert('QUITING IS NOT A OPTION!');
   }
   render() {
     let timer;
@@ -16,6 +16,15 @@ class Sidebar extends React.Component {
       timer = <div className="button alt">&infin;</div>;
     } else {
       timer = <div className="button alt">{this.props.minutes}<span className="highlight">m</span></div>;
+    }
+    let playOrQuit;
+    let playOrQuitText;
+    if (this.props.newGame) {
+      playOrQuitText = "Quit"
+      playOrQuit = <div className="button alt" onClick={this.props.quitGame}>&times;</div>;
+    } else {
+      playOrQuitText = "New Game"
+      playOrQuit = <div className="button alt" onClick={this.openPlayModal.bind(this)}>&#8227;</div>;
     }
     return (
       <div className="sidebar">
@@ -43,8 +52,8 @@ class Sidebar extends React.Component {
           <div className="cell tooltip" data-tooltip="Help">
             <div className="button alt" onClick={this.openHelpModal.bind(this)}>&#63;</div>
           </div>
-          <div className="cell tooltip" data-tooltip="Quit">
-            <button id="quit" className="button" onClick={this.handleQuit.bind(this)}>&times;</button>
+          <div className="cell tooltip" data-tooltip={playOrQuitText}>
+            {playOrQuit}
           </div>
         </div>
       </div>
@@ -56,7 +65,8 @@ Sidebar.defaultProps = {
   size: 5,
   minutes: 5,
   multiplier: 1,
-  endless: false
+  endless: false,
+  newGame: false
 }
 
 export default Sidebar;

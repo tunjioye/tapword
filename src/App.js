@@ -6,6 +6,7 @@ import Grid from './components/Grid';
 import Score from './components/Score';
 import Selection from './components/Selection';
 import Sidebar from './components/Sidebar';
+import Play from './components/Play';
 import Settings from './components/Settings';
 import Help from './components/Help';
 
@@ -13,6 +14,7 @@ class App extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
+      newGame: props.newGame,
       size: props.size,
       rows: props.rows,
       multiplier: props.multiplier,
@@ -24,6 +26,8 @@ class App extends React.Component {
       shuffle: props.shuffle,
       shuffleAll: props.shuffleAll
     }
+    this.startNewGame = this.startNewGame.bind(this)
+    this.quitGame = this.quitGame.bind(this)
     this.randomLetters = this.randomLetters.bind(this)
     this.handleCellClick = this.handleCellClick.bind(this)
     this.toggleSelectionWord = this.toggleSelectionWord.bind(this)
@@ -36,6 +40,20 @@ class App extends React.Component {
     this.clearSelectionWord = this.clearSelectionWord.bind(this)
     this.resetSelectedCells = this.resetSelectedCells.bind(this)
     this.shuffleCells = this.shuffleCells.bind(this)
+  }
+  startNewGame() {
+    console.log('new game started ...')
+    this.setState({
+      newGame: true
+    })
+    window.location.hash = '';
+  }
+  quitGame() {
+    alert('QUITING IS NOT A OPTION!');
+    this.setState({
+      newGame: false
+    })
+    // window.location.hash = 'play';
   }
   randomLetters() {
     const chars = [...'ABCDEFGHIJKLMNOPQRSTUVWXYZ']
@@ -211,6 +229,11 @@ class App extends React.Component {
         rows: this.randomLetters()
       })
     }
+    if (window.localStorage.getItem('new_game')) {
+      // game on
+    } else {
+      window.location.hash = 'play'
+    }
   }
   render() {
     return (
@@ -237,11 +260,14 @@ class App extends React.Component {
               <Sidebar
                 multiplier={this.state.multiplier}
                 endless={this.state.endless}
+                newGame={this.state.newGame}
+                quitGame={this.quitGame}
                 handleUndoButtonClick={this.popSelectionWord}
                 handleSubmitButtonClick={this.submitWord} />
             </div>
           </div>
         </header>
+        <Play newGame={this.state.newGame} startNewGame={this.startNewGame} />
         <Settings />
         <Help />
       </div>
@@ -250,6 +276,7 @@ class App extends React.Component {
 }
 
 App.defaultProps = {
+  newGame: false,
   generate: true,
   cellToggle: true,
   shuffle: true,
