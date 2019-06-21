@@ -139,17 +139,26 @@ code {
   white-space: nowrap;
   -webkit-overflow-scrolling: touch;
 }
-.selection-wrapper::-webkit-scrollbar {
+.selection-wrapper::-webkit-scrollbar,
+.modal-body::-webkit-scrollbar {
+  width: 4px;
   height: 4px;
 }
-.selection-wrapper::-webkit-scrollbar-track {
+.selection-wrapper::-webkit-scrollbar-track,
+.modal-body::-webkit-scrollbar-track {
   background: transparent;
 }
-.selection-wrapper::-webkit-scrollbar-thumb {
+.selection-wrapper::-webkit-scrollbar-thumb,
+.modal-body::-webkit-scrollbar-thumb {
   background: #888;
 }
-.selection-wrapper::-webkit-scrollbar-thumb:hover {
+.selection-wrapper::-webkit-scrollbar-thumb:hover,
+.modal-body::-webkit-scrollbar-thumb:hover {
   background: #555;
+}
+.selection-wrapper::-webkit-scrollbar-corner,
+.modal-body::-webkit-scrollbar-corner {
+  display: none;
 }
 
 .selection-info {
