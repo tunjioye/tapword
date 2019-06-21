@@ -79,6 +79,7 @@ class Grid extends React.Component {
       cell: cellName,
       letter: cell.innerHTML
     }
+
     cell.classList.add('selected')
     this.setState({
       word: word
@@ -218,9 +219,15 @@ class Grid extends React.Component {
         onClick={this.handleCellClick} />
     }
     return (
-      <div className="grid">
-        <Score score={this.state.score} />
-        <Selection word={this.state.word.map(x => x.letter)} />
+      <div id="grid" className="grid">
+        <div>
+          <div>
+            <Score score={this.state.score} />
+          </div>
+          <div>
+            <Selection word={this.state.word.map(x => x.letter)} />
+          </div>
+        </div>
         <div className="rows">
           {rows}
         </div>

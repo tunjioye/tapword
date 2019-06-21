@@ -126,14 +126,37 @@ code {
   height: 1.5rem;
   text-align: right;
   /* border-bottom: .1rem solid #38f; */
+  max-width: 100vmin;
+  margin-bottom: 1.2rem;
+  margin-left: .2rem;
+}
+
+.selection-wrapper {
+  text-align: right;
+  overflow: auto;
+  overflow-x: auto;
+  overflow-y: hidden;
+  white-space: nowrap;
+  -webkit-overflow-scrolling: touch;
+}
+.selection-wrapper::-webkit-scrollbar {
+  height: 4px;
+}
+.selection-wrapper::-webkit-scrollbar-track {
+  background: transparent;
+}
+.selection-wrapper::-webkit-scrollbar-thumb {
+  background: #888;
+}
+.selection-wrapper::-webkit-scrollbar-thumb:hover {
+  background: #555;
 }
 
 .selection-info {
   font-size: 50%;
-  float: left;
-  text-align: left;
-  left: 0;
-  margin-top: -0.2rem;
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: flex-start;
 }
 
 .selection .cell {
