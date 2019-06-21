@@ -2,6 +2,14 @@ import React from 'react';
 
 class Play extends React.Component {
   render() {
+    const gridSizes = [];
+    [3,4,5,6,7].forEach((x,i) => {
+      gridSizes[i] = (x === this.props.size) ? <div key={i.toString()} className="grid-box selected">{x}</div> : <div key={i.toString()} className="grid-box">{x}</div>
+    });
+    const timerMinutes = [];
+    [0,1,2,3,4,5,6,7,8,9,10].forEach((x,i) => {
+      timerMinutes[i] = (x === this.props.minutes) ? <div key={i.toString()} className="grid-box selected">{x}</div> : <div key={i.toString()} className="grid-box">{x}</div>
+    });
     return (
       <div className="modal" id="play">
         <span className="modal-overlay" style={{ background: 'rgb(25, 28, 34)' }}></span>
@@ -18,7 +26,9 @@ class Play extends React.Component {
                 <h5 style={spacedTypo}>GRID SIZE</h5>
                 <div>...</div>
                 <div>&nbsp;</div>
-                <div>{[3,4,5,6,7].toString().replace(/,/g, ' ')}</div>
+                <div className="grid-box-container" data-size={this.props.size}>
+                  {gridSizes}
+                </div>
               </div>
               <br />
               <br />
@@ -26,8 +36,10 @@ class Play extends React.Component {
                 <h5 style={spacedTypo}>TIMER</h5>
                 <div>...</div>
                 <div>&nbsp;</div>
-                <div>{[0,1,2,3,4,5,6,7,8,9,10].toString().replace(/,/g, ' ')}</div>
-                <div><em><small>select 0 for endless mode</small></em></div>
+                <div className="grid-box-container" data-size={this.props.size}>
+                  {timerMinutes}
+                </div>
+                <div style={{ marginTop: '.4rem' }}><em><small>select 0 for endless mode</small></em></div>
               </div>
             </div>
           </div>
@@ -63,7 +75,9 @@ const saveButton = {
 }
 
 Play.defaultProps = {
-  newGame: false
+  newGame: false,
+  size: 5,
+  minutes: 5
 }
 
 export default Play;
