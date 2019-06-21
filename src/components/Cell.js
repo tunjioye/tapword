@@ -6,7 +6,7 @@ class Cell extends React.Component {
       <div
         className={(this.props.className) ? "cell " + this.props.className : "cell"}
         cell={this.props.cellName}
-        onClick={this.props.onClick}
+        onClick={this.props.handleCellClick}
       >
         {this.props.letter.charAt(0)}
       </div>
@@ -15,7 +15,7 @@ class Cell extends React.Component {
 }
 
 Cell.defaultProps = {
-  letter: ''
+  letter: 'T'
 }
 
 export default Cell

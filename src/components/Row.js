@@ -9,12 +9,11 @@ class Row extends React.Component {
         key={i.toString()}
         cellName={'c' + ((this.props.rowNumber * this.props.size) + i)}
         letter={(this.props.letters[i]) ? this.props.letters[i] : ' '}
-        onClick={this.props.onClick} />
+        handleCellClick={this.props.handleCellClick} />
     }
     return (
       <div className={(this.props.className) ? "row " + this.props.className : "row"}>
         {rowLetters}
-        {/* <br /> */}
       </div>
     );
   }
