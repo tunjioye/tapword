@@ -18,23 +18,6 @@ class Settings extends React.Component {
           <div className="modal-body">
             <div className="content">
               <div>
-                <h5 style={spacedTypo}>GRID SIZE</h5>
-                <div>...</div>
-                <div>&nbsp;</div>
-                <div>{[3,4,5,6,7].toString().replace(/,/g, ' ')}</div>
-              </div>
-              <br />
-              <br />
-              <div>
-                <h5 style={spacedTypo}>TIMER</h5>
-                <div>...</div>
-                <div>&nbsp;</div>
-                <div>{[0,1,2,3,4,5,6,7,8,9,10].toString().replace(/,/g, ' ')}</div>
-                <div><em><small>select 0 for endless mode</small></em></div>
-              </div>
-              <br />
-              <br />
-              <div>
                 <h5 style={spacedTypo}>CELL SHUFFLE TYPE</h5>
                 <div>...</div>
                 <div>&nbsp;</div>
