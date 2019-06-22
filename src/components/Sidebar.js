@@ -12,7 +12,7 @@ class Sidebar extends React.Component {
   }
   render() {
     let timer;
-    if (this.props.endless) {
+    if (this.props.minutes === 0) {
       timer = <div className="button alt">&infin;</div>;
     } else {
       timer = <div className="button alt">{this.props.minutes}<span className="highlight">m</span></div>;
@@ -65,7 +65,6 @@ Sidebar.defaultProps = {
   size: 5,
   minutes: 5,
   multiplier: 1,
-  endless: false,
   newGame: false
 }
 

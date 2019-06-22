@@ -23,7 +23,6 @@ class Grid extends React.Component {
 }
 
 Grid.defaultProps = {
-  generate: true,
   size: 5,
   rows: [
     'TAP',

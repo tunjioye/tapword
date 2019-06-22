@@ -19,7 +19,6 @@ class App extends React.Component {
       minutes: props.minutes,
       rows: props.rows,
       multiplier: props.multiplier,
-      endless: props.endless,
       score: props.score,
       lastWordScore: props.lastWordScore,
       word: props.word,
@@ -211,6 +210,11 @@ class App extends React.Component {
     this.setState({
       size: parseInt(e.target.innerText)
     })
+    setTimeout(() => {
+      this.setState({
+        rows: this.randomLetters()
+      })
+    }, 10)
   }
   handleMinuteClick(e) {
     this.setState({
@@ -266,13 +270,12 @@ class App extends React.Component {
             </div>
             <div>
               <Grid
-                generate={this.props.generate}
                 size={this.state.size}
                 rows={this.state.rows}
                 handleCellClick={this.handleCellClick} />
               <Sidebar
                 multiplier={this.state.multiplier}
-                endless={this.state.endless}
+                minutes={this.state.minutes}
                 newGame={this.state.newGame}
                 quitGame={this.quitGame}
                 handleUndoButtonClick={this.popSelectionWord}
@@ -304,7 +307,6 @@ App.defaultProps = {
   minutes: 5,
   rows: [],
   multiplier: 1,
-  endless: true,
   score: 0,
   lastWordScore: 0,
   word: [] // { cell: '', letter: ''} cell is short for cellName
