@@ -28,6 +28,7 @@ class App extends React.Component {
     }
     this.startNewGame = this.startNewGame.bind(this)
     this.quitGame = this.quitGame.bind(this)
+    this.hasStartedNewGame = this.hasStartedNewGame.bind(this)
     this.randomLetters = this.randomLetters.bind(this)
     this.handleCellClick = this.handleCellClick.bind(this)
     this.toggleSelectionWord = this.toggleSelectionWord.bind(this)
@@ -58,6 +59,12 @@ class App extends React.Component {
       newGame: false
     })
   }
+  hasStartedNewGame() {
+    if (!this.state.newGame) {
+      if (window.confirm('Would You like to Start a New Game?')) window.location.hash = 'play'
+      return;
+    }
+  }
   randomLetters() {
     const chars = [...'ABCDEFGHIJKLMNOPQRSTUVWXYZ']
     let letters = []
@@ -67,6 +74,7 @@ class App extends React.Component {
     return letters
   }
   handleCellClick(e) {
+    this.hasStartedNewGame()
     let cell = e.target
     let cellName = cell.getAttribute('cell')
     let word = this.state.word
@@ -177,6 +185,7 @@ class App extends React.Component {
     }
   }
   submitWord() {
+    this.hasStartedNewGame()
     if (this.state.word.length > 0) {
       let word = this.state.word.map(x => x.letter).join('').toLowerCase()
       spellcheck.get('?text=' + word)
