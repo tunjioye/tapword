@@ -58,6 +58,7 @@ class App extends React.Component {
     this.setState({
       newGame: false
     })
+    window.localStorage.removeItem('game')
   }
   hasStartedNewGame() {
     if (!this.state.newGame) {
