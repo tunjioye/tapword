@@ -4,8 +4,8 @@ class Sidebar extends React.Component {
   openPlayModal() {
     window.location.hash = 'play';
   }
-  openSettingsModal() {
-    window.location.hash = 'settings';
+  openPlayerModal() {
+    window.location.hash = 'player';
   }
   openHelpModal() {
     window.location.hash = 'help';
@@ -40,8 +40,8 @@ class Sidebar extends React.Component {
           </div>
         </div>
         <div className="sidebar-inner">
-          <div className="cell tooltip" data-tooltip="Settings">
-            <div className="button alt" onClick={this.openSettingsModal.bind(this)}>&#10033;</div>
+          <div className="cell tooltip" data-tooltip="Player">
+            <div className="button alt" onClick={this.openPlayerModal.bind(this)}>&#10033;</div>
           </div>
           <div className="cell tooltip" data-tooltip="Help">
             <div className="button alt" onClick={this.openHelpModal.bind(this)}>&#63;</div>

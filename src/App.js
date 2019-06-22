@@ -7,7 +7,7 @@ import Score from './components/Score';
 import Selection from './components/Selection';
 import Sidebar from './components/Sidebar';
 import Play from './components/Play';
-import Settings from './components/Settings';
+import Player from './components/Player';
 import Help from './components/Help';
 
 class App extends React.Component {
@@ -300,7 +300,7 @@ class App extends React.Component {
           minutes={this.state.minutes}
           handleGridSizeClick={this.handleGridSizeClick}
           handleMinuteClick={this.handleMinuteClick} />
-        <Settings />
+        <Player />
         <Help />
       </div>
     );
