@@ -44,7 +44,6 @@ class App extends React.Component {
     this.handleMinuteClick = this.handleMinuteClick.bind(this)
   }
   startNewGame() {
-    console.log('new game started ...')
     this.setState({
       newGame: true,
       score: 0,
@@ -54,8 +53,7 @@ class App extends React.Component {
     window.location.hash = ''
   }
   quitGame() {
-    alert('Your Final Score is : ' + this.state.score)
-    console.log('quiting is not an option!')
+    window.alert('Your Score is : ' + this.state.score)
     this.setState({
       newGame: false
     })
