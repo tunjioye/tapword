@@ -212,8 +212,12 @@ class App extends React.Component {
         console.log(error)
       })
       .finally(function () {
-        // always executed
-      });
+        // save game progress
+        setTimeout(() => {
+          window.localStorage.setItem('game', JSON.stringify(this.state))
+          console.log('game updated ...')
+        }, 500);
+      }.bind(this));
     }
   }
   handleGridSizeClick(e) {
@@ -256,9 +260,12 @@ class App extends React.Component {
         rows: this.randomLetters()
       })
     }
-    if (window.localStorage.getItem('new_game')) {
-      // game on
+    if (window.localStorage.getItem('game') && window.confirm('Continue Last Game?')) {
+      // continue last game
+      const lastGame = window.localStorage.getItem('game')
+      this.setState(JSON.parse(lastGame))
     } else {
+      window.localStorage.removeItem('game')
       window.location.hash = 'play'
     }
   }
