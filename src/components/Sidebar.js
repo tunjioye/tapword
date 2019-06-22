@@ -30,19 +30,13 @@ class Sidebar extends React.Component {
       <div className="sidebar">
         <div className="sidebar-inner">
           <div className="cell tooltip" data-tooltip="Score Multiplier">
-            <div className="button alt multiplier"><span className="highlight">x</span><span id="multiplier">{this.props.multiplier}</span></div>
+            <div className="button alt multiplier"><span className="highlight">x</span><span>{this.props.multiplier}</span></div>
           </div>
           <div className="cell tooltip" data-tooltip="Timer">
             {timer}
           </div>
           <div className="cell tooltip" data-tooltip="Grid Size">
             <div className="button alt">&#8862;<sub className="highlight">{this.props.size}</sub></div>
-          </div>
-          <div className="cell tooltip" data-tooltip="Undo Word">
-            <button id="undo" className="button" onClick={this.props.handleUndoButtonClick}>&#8630;</button>
-          </div>
-          <div className="cell tooltip" data-tooltip="Submit Word">
-            <button id="submit" className="button" onClick={this.props.handleSubmitButtonClick}>&#8629;</button>
           </div>
         </div>
         <div className="sidebar-inner">
@@ -54,6 +48,12 @@ class Sidebar extends React.Component {
           </div>
           <div className="cell tooltip" data-tooltip={playOrQuitText}>
             {playOrQuit}
+          </div>
+          <div className="cell tooltip" data-tooltip="Undo Word">
+            <div className="button alt" onClick={this.props.handleUndoButtonClick}>&#8630;</div>
+          </div>
+          <div className="cell tooltip" data-tooltip="Submit Word">
+            <div className="button alt" onClick={this.props.handleSubmitButtonClick}>&#8629;</div>
           </div>
         </div>
       </div>
