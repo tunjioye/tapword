@@ -46,16 +46,19 @@ class App extends React.Component {
   startNewGame() {
     console.log('new game started ...')
     this.setState({
-      newGame: true
+      newGame: true,
+      score: 0,
+      lastWordScore: 0,
+      word: []
     })
     window.location.hash = ''
   }
   quitGame() {
-    alert('QUITING IS NOT A OPTION!')
+    alert('Your Final Score is : ' + this.state.score)
+    console.log('quiting is not an option!')
     this.setState({
       newGame: false
     })
-    // window.location.hash = 'play';
   }
   randomLetters() {
     const chars = [...'ABCDEFGHIJKLMNOPQRSTUVWXYZ']

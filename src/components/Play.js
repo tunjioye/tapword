@@ -28,8 +28,7 @@ class Play extends React.Component {
     });
     return (
       <div className="modal" id="play">
-        <span className="modal-overlay"></span>
-        {/* <span className="modal-overlay" style={{ background: 'rgb(25, 28, 34)' }}></span> */}
+        <span className="modal-overlay" style={{ background: 'rgb(25, 28, 34)' }}></span>
         <div className="modal-container">
           <div className="modal-header">
             {/* <a href="#close" className="btn btn-clear" aria-label="Close"> </a> */}
