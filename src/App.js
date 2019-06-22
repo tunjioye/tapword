@@ -58,7 +58,7 @@ class App extends React.Component {
     this.setState({
       newGame: false
     })
-    window.localStorage.removeItem('game')
+    if (window.localStorage.getItem('game')) window.localStorage.removeItem('game')
   }
   hasStartedNewGame() {
     if (!this.state.newGame) {
@@ -266,7 +266,7 @@ class App extends React.Component {
       const lastGame = window.localStorage.getItem('game')
       this.setState(JSON.parse(lastGame))
     } else {
-      window.localStorage.removeItem('game')
+      if (window.localStorage.getItem('game')) window.localStorage.removeItem('game')
       window.location.hash = 'play'
     }
   }
