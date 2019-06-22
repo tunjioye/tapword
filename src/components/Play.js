@@ -1,14 +1,30 @@
 import React from 'react';
 
 class Play extends React.Component {
+  constructor(props) {
+    super(props)
+    this.state = {
+      newGame: props.newGame,
+      size: props.size,
+      minutes: props.minutes
+    }
+  }
   render() {
     const gridSizes = [];
     [3,4,5,6,7].forEach((x,i) => {
-      gridSizes[i] = (x === this.props.size) ? <div key={i.toString()} className="grid-box selected">{x}</div> : <div key={i.toString()} className="grid-box">{x}</div>
+      if (x === this.props.size) {
+        gridSizes[i] = <div key={i.toString()} className="grid-box grid-size selected" onClick={this.props.handleGridSizeClick}>{x}</div>
+      } else {
+        gridSizes[i] = <div key={i.toString()} className="grid-box grid-size" onClick={this.props.handleGridSizeClick}>{x}</div>
+      }
     });
     const timerMinutes = [];
     [0,1,2,3,4,5,6,7,8,9,10].forEach((x,i) => {
-      timerMinutes[i] = (x === this.props.minutes) ? <div key={i.toString()} className="grid-box selected">{x}</div> : <div key={i.toString()} className="grid-box">{x}</div>
+      if (x === this.props.minutes) {
+        timerMinutes[i] = <div key={i.toString()} className="grid-box grid-minute selected" onClick={this.props.handleMinuteClick}>{x}</div>
+      } else {
+        timerMinutes[i] = <div key={i.toString()} className="grid-box grid-minute" onClick={this.props.handleMinuteClick}>{x}</div>
+      }
     });
     return (
       <div className="modal" id="play">

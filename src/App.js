@@ -16,6 +16,7 @@ class App extends React.Component {
     this.state = {
       newGame: props.newGame,
       size: props.size,
+      minutes: props.minutes,
       rows: props.rows,
       multiplier: props.multiplier,
       endless: props.endless,
@@ -40,6 +41,8 @@ class App extends React.Component {
     this.clearSelectionWord = this.clearSelectionWord.bind(this)
     this.resetSelectedCells = this.resetSelectedCells.bind(this)
     this.shuffleCells = this.shuffleCells.bind(this)
+    this.handleGridSizeClick = this.handleGridSizeClick.bind(this)
+    this.handleMinuteClick = this.handleMinuteClick.bind(this)
   }
   startNewGame() {
     console.log('new game started ...')
@@ -204,6 +207,16 @@ class App extends React.Component {
       });
     }
   }
+  handleGridSizeClick(e) {
+    this.setState({
+      size: parseInt(e.target.innerText)
+    })
+  }
+  handleMinuteClick(e) {
+    this.setState({
+      minutes: parseInt(e.target.innerText)
+    })
+  }
   handleKeyUp(e) {
     switch (e.keyCode) {
       // backspace | del key to undo
@@ -267,7 +280,13 @@ class App extends React.Component {
             </div>
           </div>
         </header>
-        <Play newGame={this.state.newGame} startNewGame={this.startNewGame} />
+        <Play
+          newGame={this.state.newGame}
+          startNewGame={this.startNewGame}
+          size={this.state.size}
+          minutes={this.state.minutes}
+          handleGridSizeClick={this.handleGridSizeClick}
+          handleMinuteClick={this.handleMinuteClick} />
         <Settings />
         <Help />
       </div>
@@ -282,6 +301,7 @@ App.defaultProps = {
   shuffle: true,
   shuffleAll: true,
   size: 5,
+  minutes: 5,
   rows: [],
   multiplier: 1,
   endless: true,
