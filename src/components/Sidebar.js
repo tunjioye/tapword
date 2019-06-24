@@ -50,7 +50,7 @@ class Sidebar extends React.Component {
             {playOrQuit}
           </div>
           <div className="cell tooltip" data-tooltip="Undo Word">
-            <div className="button alt" onClick={this.props.handleUndoButtonClick}>&#8630;</div>
+            <div className="button alt" onClick={this.props.handleUndoButtonClick}>&#8592;</div>
           </div>
           <div className="cell tooltip" data-tooltip="Submit Word">
             <div className="button alt" onClick={this.props.handleSubmitButtonClick}>&#8629;</div>

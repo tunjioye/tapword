@@ -20,7 +20,7 @@ code {
   vertical-align: middle;
   margin: 0.1rem;
   padding: 0.2rem;
-  font-weight: 500;
+  font-weight: 600;
   text-transform: uppercase;
   width: 1.5rem;
   height: 1.5rem;
@@ -83,7 +83,7 @@ code {
   border: none;
   background: none;
   color: #28f;
-  font-weight: 500;
+  font-weight: 600;
   width: 1.5rem;
   height: 1.5rem;
   font-size: 1rem;
@@ -139,10 +139,16 @@ code {
   white-space: nowrap;
   -webkit-overflow-scrolling: touch;
 }
+.selection-wrapper,
+.modal-body {
+  scrollbar-color: #888 transparent;
+  scrollbar-width: thin;
+  scroll-behavior: smooth;
+}
 .selection-wrapper::-webkit-scrollbar,
 .modal-body::-webkit-scrollbar {
-  width: 4px;
-  height: 4px;
+  width: 5px;
+  height: 5px;
 }
 .selection-wrapper::-webkit-scrollbar-track,
 .modal-body::-webkit-scrollbar-track {
@@ -183,7 +189,7 @@ code {
 .grid-box-container {
   display: grid;
   grid-template-columns: repeat(auto-fit, 2.9rem);
-  grid-template-rows: 1fr;
+  grid-template-rows: repeat(auto-fit, 2.9rem);
   grid-column-gap: 8px;
   grid-row-gap: 4px;
 }
@@ -191,7 +197,7 @@ code {
 .grid-box {
   padding: .4rem;
   font-size: 1.4rem;
-  font-weight: 500;
+  font-weight: 600;
   text-align: center;
   border: 0.1rem solid transparent;
   border: 0.1rem solid #cde;

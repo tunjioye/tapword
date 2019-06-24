@@ -73,7 +73,7 @@ const spacedTypo = {
   wordSpacing: '0.2rem',
   textTransform: 'uppercase',
   margin: 0,
-  fontWeight: 500
+  fontWeight: 600
 }
 
 const textCenter = {
@@ -87,7 +87,7 @@ const saveButton = {
   border: '1px solid #28F',
   padding: '6px 8px 6px 12px',
   cursor: 'pointer',
-  fontWeight: 500
+  fontWeight: 600
 }
 
 Play.defaultProps = {

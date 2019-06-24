@@ -59,7 +59,7 @@ const spacedTypo = {
   wordSpacing: '0.2rem',
   textTransform: 'uppercase',
   margin: 0,
-  fontWeight: 500
+  fontWeight: 600
 }
 
 const kbd = {
