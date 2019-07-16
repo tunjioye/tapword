@@ -63,6 +63,19 @@
   background: #567;
   cursor: pointer;
 }
+.cell {
+
+  .selection & {
+    background: initial;
+    width: auto;
+    height: auto;
+  }
+  .selection &,
+  .selection &:hover,
+  .selection &:focus {
+    background: transparent;
+  }
+}
 
 // Grid Length
 $grid-length: 5;
@@ -104,6 +117,9 @@ $bp-xxl: 1900px;
     grid-template-columns: 1fr;
     grid-template-rows: 1fr 1fr 1fr 1fr 1fr;
   }
+  .cell {
+    font-size: 50px;
+  }
 }
 @media (max-width: $bp-xl) {
   .grid-container {
@@ -115,6 +131,9 @@ $bp-xxl: 1900px;
   .grid-sidebar {
     width: ((420 / $grid-length) * 2) + 0px;
     height: 420px;
+    font-size: 42px;
+  }
+  .cell {
     font-size: 42px;
   }
 }
@@ -130,6 +149,9 @@ $bp-xxl: 1900px;
     height: 350px;
     font-size: 35px;
   }
+  .cell {
+    font-size: 35px;
+  }
 }
 @media (max-width: $bp-md) {
   .grid-container {
@@ -141,6 +163,9 @@ $bp-xxl: 1900px;
   .grid-sidebar {
     width: ((280 / $grid-length) * 2) + 0px;
     height: 280px;
+    font-size: 28px;
+  }
+  .cell {
     font-size: 28px;
   }
 }
@@ -172,6 +197,9 @@ $bp-xxl: 1900px;
     grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
     grid-template-rows: 1fr;
   }
+  .cell {
+    font-size: 35px;
+  }
 }
 @media (max-width: $bp-xs) {
   .grid-container {
@@ -185,6 +213,9 @@ $bp-xxl: 1900px;
     height: ((300 / $grid-length) * 2) + 0px;
     font-size: 30px;
   }
+  .cell {
+    font-size: 30px;
+  }
 }
 @media (max-width: $bp-xxs) {
   .grid-container {
@@ -196,6 +227,9 @@ $bp-xxl: 1900px;
   .grid-sidebar {
     width: 210px;
     height: ((210 / $grid-length) * 2) + 0px;
+    font-size: 22px;
+  }
+  .cell {
     font-size: 22px;
   }
 }

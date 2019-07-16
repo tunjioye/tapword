@@ -22,7 +22,7 @@ const App = () => (
             </div>
           </div>
 
-          <div style={{ height: '8px' }}></div>
+          <div style={{ minHeight: '8px', maxHeight: '8px' }}>&nbsp;</div>
 
           <div className="flex-centered">
             <div className="grid-container">
