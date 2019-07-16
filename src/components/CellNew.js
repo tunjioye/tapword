@@ -1,11 +1,10 @@
 import React from 'react';
 
-class Cell extends React.Component {
+class CellNew extends React.Component {
   render() {
     return (
       <div
-        className={(this.props.className) ? "cell " + this.props.className : "cell"}
-        style={(this.props.style) ? this.props.style : {}}
+        className={(this.props.className) ? "cell-new " + this.props.className : "cell-new"}
         cell={this.props.cellName}
         onClick={this.props.handleCellClick}
       >
@@ -15,8 +14,8 @@ class Cell extends React.Component {
   }
 }
 
-Cell.defaultProps = {
+CellNew.defaultProps = {
   letter: 'T'
 }
 
-export default Cell
+export default CellNew

@@ -27,32 +27,34 @@ class Sidebar extends React.Component {
       playOrQuit = <div className="button alt" onClick={this.openPlayModal.bind(this)}>&#8227;</div>;
     }
     return (
-      <div className="sidebar">
-        <div className="sidebar-inner sidebar-inner-status">
-          <div className="cell tooltip" data-tooltip="Score Multiplier">
+      <div className="grid-sidebar">
+        <div className="grid-gameplay">
+          <div className="cell-new tooltip" data-tooltip="Score Multiplier">
             <div className="button alt multiplier"><span className="highlight">x</span><span>{this.props.multiplier}</span></div>
           </div>
-          <div className="cell tooltip" data-tooltip="Timer">
+          <div className="cell-new tooltip" data-tooltip="Timer">
             {timer}
           </div>
-          <div className="cell tooltip" data-tooltip="Grid Size">
+          <div className="cell-new tooltip" data-tooltip="Grid Size">
             <div className="button alt">&#8862;<sub className="highlight">{this.props.size}</sub></div>
           </div>
+          <div className="cell-new"></div>
+          <div className="cell-new"></div>
         </div>
-        <div className="sidebar-inner sidebar-inner-actions">
-          <div className="cell tooltip" data-tooltip="Player">
+        <div className="grid-actions">
+          <div className="cell-new tooltip" data-tooltip="Player">
             <div className="button alt" onClick={this.openPlayerModal.bind(this)}>&#10033;</div>
           </div>
-          <div className="cell tooltip" data-tooltip="Help">
+          <div className="cell-new tooltip" data-tooltip="Help">
             <div className="button alt" onClick={this.openHelpModal.bind(this)}>&#63;</div>
           </div>
-          <div className="cell tooltip" data-tooltip={playOrQuitText}>
+          <div className="cell-new tooltip" data-tooltip={playOrQuitText}>
             {playOrQuit}
           </div>
-          <div className="cell tooltip" data-tooltip="Undo Word">
+          <div className="cell-new tooltip" data-tooltip="Undo Word">
             <div className="button alt" onClick={this.props.handleUndoButtonClick}>&#8592;</div>
           </div>
-          <div className="cell tooltip" data-tooltip="Submit Word">
+          <div className="cell-new tooltip" data-tooltip="Submit Word">
             <div className="button alt" onClick={this.props.handleSubmitButtonClick}>&#8629;</div>
           </div>
         </div>

@@ -11,7 +11,11 @@ class Selection extends React.Component {
       <div id="selection-word" className="selection">
         <span className="selection-info">WORD INPUT</span>
         <div className="selection-wrapper">
-          <span id="word">{output}</span>
+          <span id="word">
+            {/* important spacing fix via style */}
+            <Cell letter='  ' style={{ height: '50px' }} />
+            {output}
+          </span>
         </div>
       </div>
     );

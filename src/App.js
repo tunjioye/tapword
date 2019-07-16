@@ -2,7 +2,8 @@ import React from 'react';
 import './App.css';
 import spellcheck from './spellcheck';
 // import Topbar from './components/Topbar';
-import Grid from './components/Grid';
+import GridNew from './components/GridNew';
+// import Grid from './components/Grid';
 import Score from './components/Score';
 import Selection from './components/Selection';
 import Sidebar from './components/Sidebar';
@@ -297,11 +298,16 @@ class App extends React.Component {
                 <Selection word={this.state.word.map(x => x.letter)} />
               </div>
             </div>
-            <div>
-              <Grid
-                size={this.state.size}
-                rows={this.state.rows}
-                handleCellClick={this.handleCellClick} />
+
+            <div style={{ minHeight: '8px', maxHeight: '8px' }}>&nbsp;</div>
+
+            <div className="flex-centered">
+              <div className="grid-container">
+                <GridNew
+                  size={this.state.size}
+                  rows={this.state.rows}
+                  handleCellClick={this.handleCellClick} />
+              </div>
               <Sidebar
                 multiplier={this.state.multiplier}
                 minutes={this.state.minutes}

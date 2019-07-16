@@ -52,16 +52,20 @@
   background: #345;
   color: #fff;
 
+  &:hover,
+  &:focus {
+    background: #567;
+    cursor: pointer;
+  }
+  &.selected {
+    background: #18f;
+  }
+
   .grid-sidebar &,
   .grid-sidebar &:hover,
   .grid-sidebar &:focus {
     background: transparent;
   }
-}
-.cell-new:hover,
-.cell-new:focus {
-  background: #567;
-  cursor: pointer;
 }
 .cell {
 
