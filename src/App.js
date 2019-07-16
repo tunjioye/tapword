@@ -200,7 +200,7 @@ class App extends React.Component {
       let word = this.state.word.map(x => x.letter).join('').toLowerCase()
       spellcheck.get('?text=' + word)
       .then(function (response) {
-        let selectedCells = document.querySelectorAll('[class="cell selected"]')
+        let selectedCells = document.querySelectorAll('[class="cell-new selected"]')
         if (response.data.corrections[word] === undefined) {
           selectedCells.forEach(x => x.classList.add('flash-success'))
           setTimeout(() => {
