@@ -176,7 +176,7 @@ class App extends React.Component {
     })
   }
   resetSelectedCells() {
-    let selectedCells = document.querySelectorAll('[class="cell selected"]')
+    let selectedCells = document.querySelectorAll('[class="cell-new selected"]')
     selectedCells.forEach(x => x.classList.remove('selected'))
     this.shuffleCells(selectedCells)
   }
