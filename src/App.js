@@ -1,5 +1,8 @@
 import React from 'react';
 import './App.css';
+import './index.css';
+import './index.scss';
+import './grid5.scss';
 import spellcheck from './spellcheck';
 // import Topbar from './components/Topbar';
 import GridNew from './components/GridNew';
@@ -169,8 +172,8 @@ class App extends React.Component {
       lastWordScore: wordScore
     })
   }
-  setSelectedCells(word) {
-    word.forEach(x => {
+  setSelectedCells() {
+    this.state.word.forEach(x => {
       let cell = document.querySelector(`[cell="${x.cell}"]`)
       cell.classList.add('selected')
     })
@@ -231,13 +234,16 @@ class App extends React.Component {
     }
   }
   handleGridSizeClick(e) {
+    const gridSize = parseInt(e.target.innerText);
     this.setState({
-      size: parseInt(e.target.innerText)
+      size: gridSize
     })
     setTimeout(() => {
       this.setState({
         rows: this.randomLetters()
       })
+      // dynamically require grid size style
+      require(`./grid${gridSize}.scss`);
     }, 10)
   }
   handleMinuteClick(e) {
@@ -275,7 +281,13 @@ class App extends React.Component {
       const lastGame = window.localStorage.getItem('game')
       let parsedLastGame = JSON.parse(lastGame)
       this.setState(parsedLastGame)
-      this.setSelectedCells(parsedLastGame.word)
+
+      // dynamically require grid size style
+      require(`./grid${parsedLastGame.size}.scss`);
+
+      setTimeout(() => {
+        this.setSelectedCells()
+      }, 10);
     } else {
       // clear last game and initialize new game
       if (window.localStorage.getItem('game')) window.localStorage.removeItem('game')

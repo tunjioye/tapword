@@ -28,7 +28,7 @@ class Sidebar extends React.Component {
     }
     return (
       <div className="grid-sidebar">
-        <div className="grid-gameplay">
+        <div className="grid-gameplay sidebar-inner sidebar-inner-gameplay">
           <div className="cell-new tooltip" data-tooltip="Score Multiplier">
             <div className="button alt multiplier"><span className="highlight">x</span><span>{this.props.multiplier}</span></div>
           </div>
@@ -41,7 +41,7 @@ class Sidebar extends React.Component {
           <div className="cell-new"></div>
           <div className="cell-new"></div>
         </div>
-        <div className="grid-actions">
+        <div className="grid-actions sidebar-inner sidebar-inner-actions">
           <div className="cell-new tooltip" data-tooltip="Player">
             <div className="button alt" onClick={this.openPlayerModal.bind(this)}>&#10033;</div>
           </div>

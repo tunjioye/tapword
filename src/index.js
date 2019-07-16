@@ -1,9 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
-import './test.scss';
 // import Score from './components/Score';
 // import Selection from './components/Selection';
 

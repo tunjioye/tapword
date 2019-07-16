@@ -13,7 +13,7 @@ class Selection extends React.Component {
         <div className="selection-wrapper">
           <span id="word">
             {/* important spacing fix via style */}
-            <Cell letter='  ' style={{ height: '50px' }} />
+            <Cell letter='  ' style={{ height: '64px' }} />
             {output}
           </span>
         </div>
