@@ -159,4 +159,9 @@
 		box-shadow: 0 0 0 0.1rem rgba(34, 136, 255, 0.2); }
 	.btn.btn-clear::before {
 		color: #28f;
-		content: "\2715"; }
+    content: "\2715"; }
+
+@media (max-width: 600px) {
+  .modal-container:hover {
+		border: 0; }
+}
