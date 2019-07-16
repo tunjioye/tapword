@@ -39,6 +39,7 @@ class App extends React.Component {
     this.updateMultiplier = this.updateMultiplier.bind(this)
     this.updateScore = this.updateScore.bind(this)
     this.clearSelectionWord = this.clearSelectionWord.bind(this)
+    this.setSelectedCells = this.setSelectedCells.bind(this)
     this.resetSelectedCells = this.resetSelectedCells.bind(this)
     this.shuffleCells = this.shuffleCells.bind(this)
     this.handleGridSizeClick = this.handleGridSizeClick.bind(this)
@@ -51,6 +52,7 @@ class App extends React.Component {
       lastWordScore: 0,
       word: []
     })
+    this.resetSelectedCells()
     window.location.hash = ''
   }
   quitGame() {
@@ -166,6 +168,12 @@ class App extends React.Component {
       lastWordScore: wordScore
     })
   }
+  setSelectedCells(word) {
+    word.forEach(x => {
+      let cell = document.querySelector(`[cell="${x.cell}"]`)
+      cell.classList.add('selected')
+    })
+  }
   resetSelectedCells() {
     let selectedCells = document.querySelectorAll('[class="cell selected"]')
     selectedCells.forEach(x => x.classList.remove('selected'))
@@ -261,11 +269,14 @@ class App extends React.Component {
         rows: this.randomLetters()
       })
     }
-    if (window.localStorage.getItem('game') && window.confirm('Continue Last Game?')) {
-      // continue last game
+    if (window.localStorage.getItem('game') && window.confirm('Resume Last Game?')) {
+      // resume last game
       const lastGame = window.localStorage.getItem('game')
-      this.setState(JSON.parse(lastGame))
+      let parsedLastGame = JSON.parse(lastGame)
+      this.setState(parsedLastGame)
+      this.setSelectedCells(parsedLastGame.word)
     } else {
+      // clear last game and initialize new game
       if (window.localStorage.getItem('game')) window.localStorage.removeItem('game')
       window.location.hash = 'play'
     }
