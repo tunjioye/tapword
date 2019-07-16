@@ -2,7 +2,7 @@ import React from 'react';
 import './App.css';
 import './index.css';
 import './index.scss';
-import './grid5.scss';
+// import './grid5.scss';
 import spellcheck from './spellcheck';
 // import Topbar from './components/Topbar';
 import GridNew from './components/GridNew';
@@ -292,6 +292,9 @@ class App extends React.Component {
       // clear last game and initialize new game
       if (window.localStorage.getItem('game')) window.localStorage.removeItem('game')
       window.location.hash = 'play'
+
+      // dynamically require default grid size style
+      require(`./grid5.scss`);
     }
   }
   render() {
