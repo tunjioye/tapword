@@ -20,7 +20,7 @@ code {
   vertical-align: middle;
   margin: 0.1rem;
   padding: 0.2rem;
-  font-weight: 600;
+  font-weight: 500;
   text-transform: uppercase;
   width: 1.5rem;
   height: 1.5rem;
@@ -55,14 +55,9 @@ code {
   /* border: .1rem solid #38f; */
 }
 
-/* Sidebar */
+/* Sidebar & Sidebar Inner */
 .sidebar {
   margin: 0.2rem;
-}
-
-.sidebar-inner {
-  vertical-align: top;
-  text-align: left;
 }
 
 .sidebar .cell {
@@ -77,24 +72,32 @@ code {
   background: none;
 }
 
-.sidebar .button {
+.sidebar-inner {
+  vertical-align: top;
+  text-align: left;
+}
+
+.sidebar-inner .button {
   display: block;
   background: initial;
   border: none;
   background: none;
   color: #28f;
-  font-weight: 600;
+  font-weight: 500;
   width: 1.5rem;
   height: 1.5rem;
   font-size: 1rem;
 }
 
-.sidebar .button:hover, .sidebar .button:focus {
-  color: #48f;
-  cursor: pointer;
+.sidebar-inner-status .button {
+  color: #4df;
 }
 
-.sidebar .highlight {
+.sidebar-inner-actions .button:hover, .sidebar-inner-actions .button:focus {
+  color: #2bf;
+}
+
+.sidebar-inner .highlight {
   font-size: 0.6rem;
   font-weight: 700;
   color: #cde;

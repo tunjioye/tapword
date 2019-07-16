@@ -28,7 +28,7 @@ class Sidebar extends React.Component {
     }
     return (
       <div className="sidebar">
-        <div className="sidebar-inner">
+        <div className="sidebar-inner sidebar-inner-status">
           <div className="cell tooltip" data-tooltip="Score Multiplier">
             <div className="button alt multiplier"><span className="highlight">x</span><span>{this.props.multiplier}</span></div>
           </div>
@@ -39,7 +39,7 @@ class Sidebar extends React.Component {
             <div className="button alt">&#8862;<sub className="highlight">{this.props.size}</sub></div>
           </div>
         </div>
-        <div className="sidebar-inner">
+        <div className="sidebar-inner sidebar-inner-actions">
           <div className="cell tooltip" data-tooltip="Player">
             <div className="button alt" onClick={this.openPlayerModal.bind(this)}>&#10033;</div>
           </div>
