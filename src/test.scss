@@ -1,0 +1,201 @@
+* {
+  box-sizing: border-box;
+}
+
+/* Grid & Cell New */
+.flex-centered {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.grid-container {
+  min-width: 210px;
+  min-height: 210px;
+  width: 350px;
+  height: 350px;
+  max-width: 630px;
+  max-height: 630px;
+  margin: 4px auto;
+  font-size: 36px;
+}
+
+.grid-sidebar {
+  display: grid;
+  grid-gap: 2px;
+}
+
+.grid-gameplay,
+.grid-actions {
+  display: grid;
+  width: 100%;
+  height: 100%;
+  grid-gap: 2px;
+}
+
+.grid-new {
+  display: grid;
+  width: 100%;
+  height: 100%;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+  grid-gap: 2px;
+}
+.cell-new {
+  width: 100%;
+  height: 100%;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-transform: uppercase;
+  background: #345;
+  color: #fff;
+
+  .grid-sidebar &,
+  .grid-sidebar &:hover,
+  .grid-sidebar &:focus {
+    background: transparent;
+  }
+}
+.cell-new:hover,
+.cell-new:focus {
+  background: #567;
+  cursor: pointer;
+}
+
+// Grid Length
+$grid-length: 5;
+
+// Media Query Breakpoints
+$bp-xxs: 320px;
+$bp-xs: 420px;
+$bp-sm: 600px;
+$bp-md: 840px;
+$bp-lg: 1280px;
+$bp-xl: 1600px;
+$bp-xxl: 1900px;
+
+@media (max-width: $bp-xxl) {
+  .grid-container {
+    width: 490px;
+    height: 490px;
+    font-size: 50px;
+  }
+
+  .flex-centered {
+    flex-direction: row;
+  }
+  .grid-container {
+    margin: auto 4px;
+  }
+
+  .grid-sidebar {
+    margin: auto 4px;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr;
+    width: ((490 / $grid-length) * 2) + 0px;
+    height: 490px;
+    font-size: 50px;
+  }
+  .grid-gameplay,
+  .grid-actions {
+    grid-auto-flow: row;
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr 1fr 1fr 1fr 1fr;
+  }
+}
+@media (max-width: $bp-xl) {
+  .grid-container {
+    width: 420px;
+    height: 420px;
+    font-size: 42px;
+  }
+
+  .grid-sidebar {
+    width: ((420 / $grid-length) * 2) + 0px;
+    height: 420px;
+    font-size: 42px;
+  }
+}
+@media (max-width: $bp-lg) {
+  .grid-container {
+    width: 350px;
+    height: 350px;
+    font-size: 35px;
+  }
+
+  .grid-sidebar {
+    width: ((350 / $grid-length) * 2) + 0px;
+    height: 350px;
+    font-size: 35px;
+  }
+}
+@media (max-width: $bp-md) {
+  .grid-container {
+    width: 280px;
+    height: 280px;
+    font-size: 28px;
+  }
+
+  .grid-sidebar {
+    width: ((280 / $grid-length) * 2) + 0px;
+    height: 280px;
+    font-size: 28px;
+  }
+}
+@media (max-width: $bp-sm) {
+  .grid-container {
+    width: 350px;
+    height: 350px;
+    font-size: 35px;
+  }
+
+  .flex-centered {
+    flex-direction: column;
+  }
+  .grid-container {
+    margin: 4px auto;
+  }
+
+  .grid-sidebar {
+    margin: 4px auto;
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr 1fr;
+    width: 350px;
+    height: ((350 / $grid-length) * 2) + 0px;
+    font-size: 35px;
+  }
+  .grid-gameplay,
+  .grid-actions {
+    grid-auto-flow: column;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+    grid-template-rows: 1fr;
+  }
+}
+@media (max-width: $bp-xs) {
+  .grid-container {
+    width: 300px;
+    height: 300px;
+    font-size: 30px;
+  }
+
+  .grid-sidebar {
+    width: 300px;
+    height: ((300 / $grid-length) * 2) + 0px;
+    font-size: 30px;
+  }
+}
+@media (max-width: $bp-xxs) {
+  .grid-container {
+    width: 210px;
+    height: 210px;
+    font-size: 22px;
+  }
+
+  .grid-sidebar {
+    width: 210px;
+    height: ((210 / $grid-length) * 2) + 0px;
+    font-size: 22px;
+  }
+}
