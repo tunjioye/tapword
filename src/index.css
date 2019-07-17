@@ -156,20 +156,22 @@ code {
 /* SETTINGS - Grid Sizes */
 .grid-box-container {
   display: grid;
-  grid-template-columns: repeat(auto-fit, 45px);
+  grid-template-columns: repeat(auto-fit, 44px);
   grid-column-gap: 8px;
   grid-row-gap: 4px;
 }
 
 .grid-box {
-  width: 45px;
-  height: 45px;
+  width: 44px;
+  height: 44px;
   padding: 4px;
   font-size: 22px;
   font-weight: 600;
   text-align: center;
-  border: 0.1rem solid transparent;
-  border: 0.1rem solid #cde;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: .1rem solid #cde;
   border-radius: 50%;
 }
 
