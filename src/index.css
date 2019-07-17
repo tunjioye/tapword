@@ -156,15 +156,15 @@ code {
 /* SETTINGS - Grid Sizes */
 .grid-box-container {
   display: grid;
-  grid-template-columns: repeat(auto-fit, 2.9rem);
-  grid-template-rows: repeat(auto-fit, 2.9rem);
+  grid-template-columns: repeat(auto-fit, 45px);
+  grid-template-rows: repeat(auto-fit, 45px);
   grid-column-gap: 8px;
   grid-row-gap: 4px;
 }
 
 .grid-box {
-  padding: .4rem;
-  font-size: 1.4rem;
+  padding: 4px;
+  font-size: 22px;
   font-weight: 600;
   text-align: center;
   border: 0.1rem solid transparent;
