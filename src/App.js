@@ -52,6 +52,8 @@ class App extends React.Component {
   startNewGame() {
     this.setState({
       newGame: true,
+      minutes: 5,
+      multiplier: 1,
       score: 0,
       lastWordScore: 0,
       word: []
