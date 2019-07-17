@@ -2,7 +2,7 @@ import React from 'react';
 import './App.css';
 import './index.css';
 import './index.scss';
-// import './grid5.scss';
+import './grids.scss';
 import spellcheck from './spellcheck';
 // import Topbar from './components/Topbar';
 import GridNew from './components/GridNew';
@@ -242,8 +242,15 @@ class App extends React.Component {
       this.setState({
         rows: this.randomLetters()
       })
-      // dynamically require grid size style
-      require(`./grid${gridSize}.scss`);
+
+      // dynamically set grid size style
+      const gridNews = document.getElementsByClassName('grid-new')
+      const gridContainers = document.getElementsByClassName('grid-container')
+      const gridSidebars = document.getElementsByClassName('grid-sidebar')
+
+      gridNews[0].setAttribute('size', gridSize)
+      gridContainers[0].setAttribute('size', gridSize)
+      gridSidebars[0].setAttribute('size', gridSize)
     }, 10)
   }
   handleMinuteClick(e) {
@@ -282,8 +289,14 @@ class App extends React.Component {
       let parsedLastGame = JSON.parse(lastGame)
       this.setState(parsedLastGame)
 
-      // dynamically require grid size style
-      require(`./grid${parsedLastGame.size}.scss`);
+      // dynamically set grid size style
+      const gridNews = document.getElementsByClassName('grid-new')
+      const gridContainers = document.getElementsByClassName('grid-container')
+      const gridSidebars = document.getElementsByClassName('grid-sidebar')
+
+      gridNews[0].setAttribute('size', parsedLastGame.size)
+      gridContainers[0].setAttribute('size', parsedLastGame.size)
+      gridSidebars[0].setAttribute('size', parsedLastGame.size)
 
       setTimeout(() => {
         this.setSelectedCells()
@@ -292,9 +305,6 @@ class App extends React.Component {
       // clear last game and initialize new game
       if (window.localStorage.getItem('game')) window.localStorage.removeItem('game')
       window.location.hash = 'play'
-
-      // dynamically require default grid size style
-      require(`./grid5.scss`);
     }
   }
   render() {
