@@ -201,6 +201,10 @@ class App extends React.Component {
     }
   }
   submitWord() {
+    // saving game progress
+    const savingProgress = document.getElementById('saving-progress')
+    savingProgress.classList.remove('d-hide')
+
     this.hasStartedNewGame()
     if (this.state.word.length > 0) {
       let word = this.state.word.map(x => x.letter).join('').toLowerCase()
@@ -231,7 +235,7 @@ class App extends React.Component {
         // save game progress
         setTimeout(() => {
           window.localStorage.setItem('game', JSON.stringify(this.state))
-          console.log('game updated ...')
+          savingProgress.classList.add('d-hide')
         }, 500);
       }.bind(this));
     }
@@ -317,7 +321,7 @@ class App extends React.Component {
           {/* <div style={{ display: 'block' }}>
             <Topbar />
           </div> */}
-          <div style={{ position: 'fixed', top: '5px', right: '25px' }}>
+          <div id="saving-progress" className="saving-progress d-hide">
             <Loading />
           </div>
           <div>

@@ -185,6 +185,18 @@ code {
   color: #fff;
 }
 
+/* Utilities */
+.d-hide {
+  display: none;
+}
+
+/* Saving Progress */
+.saving-progress {
+  position: fixed;
+  top: 5px;
+  right: 25px;
+}
+
 /* Section */
 .section {
   padding: 5rem 1rem;
