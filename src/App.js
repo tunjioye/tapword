@@ -47,6 +47,7 @@ class App extends React.Component {
     this.setSelectedCells = this.setSelectedCells.bind(this)
     this.resetSelectedCells = this.resetSelectedCells.bind(this)
     this.shuffleCells = this.shuffleCells.bind(this)
+    this.saveGameProgress = this.saveGameProgress.bind(this)
     this.handleGridSizeClick = this.handleGridSizeClick.bind(this)
     this.handleMinuteClick = this.handleMinuteClick.bind(this)
   }
@@ -87,6 +88,8 @@ class App extends React.Component {
   }
   handleCellClick(e) {
     if (this.hasStartedNewGame()) {
+      this.saveGameProgress('loading')
+
       let cell = e.target
       let cellName = cell.getAttribute('cell')
       let word = this.state.word
@@ -105,18 +108,26 @@ class App extends React.Component {
           this.popSelectionWord()
         }
       }
+
+      this.saveGameProgress('save')
     }
   }
   toggleSelectionWord(e) {
-    let cell = e.target
-    let cellName = cell.getAttribute('cell')
-    let word = this.state.word
+    if (this.hasStartedNewGame()) {
+      this.saveGameProgress('loading')
 
-    word = word.filter(x => x.cell !== cellName)
-    this.setState({
-      word: word
-    })
-    cell.classList.toggle('selected')
+      let cell = e.target
+      let cellName = cell.getAttribute('cell')
+      let word = this.state.word
+
+      word = word.filter(x => x.cell !== cellName)
+      this.setState({
+        word: word
+      })
+      cell.classList.toggle('selected')
+
+      this.saveGameProgress('save')
+    }
   }
   pushSelectionWord(cell) {
     let cellName = cell.getAttribute('cell')
@@ -132,13 +143,19 @@ class App extends React.Component {
     })
   }
   popSelectionWord() {
-    if (this.state.word.length > 0) {
-      let word = this.state.word
-      document.querySelectorAll('[cell=' + word[word.length - 1].cell + ']')[0].classList.remove('selected')
-      word.length--
-      this.setState({
-        word: word
-      })
+    if (this.hasStartedNewGame()) {
+      this.saveGameProgress('loading')
+
+      if (this.state.word.length > 0) {
+        let word = this.state.word
+        document.querySelectorAll('[cell=' + word[word.length - 1].cell + ']')[0].classList.remove('selected')
+        word.length--
+        this.setState({
+          word: word
+        })
+      }
+
+      this.saveGameProgress('save')
     }
   }
   clearSelectionWord() {
@@ -205,9 +222,7 @@ class App extends React.Component {
   }
   submitWord() {
     if (this.hasStartedNewGame()) {
-      // saving game progress
-      const savingProgress = document.getElementById('saving-progress')
-      savingProgress.classList.remove('d-hide')
+      this.saveGameProgress('loading')
 
       if (this.state.word.length > 0) {
         let word = this.state.word.map(x => x.letter).join('').toLowerCase()
@@ -235,13 +250,26 @@ class App extends React.Component {
           console.log(error)
         })
         .finally(function () {
-          // save game progress
-          setTimeout(() => {
-            window.localStorage.setItem('game', JSON.stringify(this.state))
-            savingProgress.classList.add('d-hide')
-          }, 500);
+          this.saveGameProgress('save')
         }.bind(this));
       }
+    }
+  }
+  saveGameProgress(state) {
+    const savingProgress = document.getElementById('saving-progress')
+    switch (state) {
+      case 'save':
+        // save game progress & hide saving progress indicator
+        setTimeout(() => {
+          window.localStorage.setItem('game', JSON.stringify(this.state))
+          savingProgress.classList.add('d-hide')
+        }, 500);
+        break;
+      case 'loading':
+      default:
+        // show saving progress indicator
+        savingProgress.classList.remove('d-hide')
+        break;
     }
   }
   handleGridSizeClick(e) {
@@ -294,7 +322,8 @@ class App extends React.Component {
         rows: this.randomLetters()
       })
     }
-    if (window.localStorage.getItem('game') && window.confirm('Resume Last Game?')) {
+    // if (window.localStorage.getItem('game') && window.confirm('Resume Last Game?')) {
+    if (window.localStorage.getItem('game')) {
       // resume last game
       const lastGame = window.localStorage.getItem('game')
       let parsedLastGame = JSON.parse(lastGame)
