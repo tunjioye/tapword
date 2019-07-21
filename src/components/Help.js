@@ -19,8 +19,9 @@ function Help() {
               <div>...</div>
               <div>&nbsp;</div>
               <div>&bull; Select some letters to make a word</div>
-              <div>&bull; Click Submit Button to evaluate you Score</div>
+              <div>&bull; Click Submit Button to evaluate your Score</div>
               <div>&bull; QUITING IS NOT AN OPTION!</div>
+              <div>&bull; <em>How to Play Tutorial coming soon ...</em></div>
             </div>
             <br />
             <br />
