@@ -64,7 +64,7 @@ code {
   font-weight: 500;
 }
 
-.sidebar-inner-gameplay .button {
+.sidebar-inner-gameplay .button.alt {
   color: #4df;
   cursor: auto;
 }

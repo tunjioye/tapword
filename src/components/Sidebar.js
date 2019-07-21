@@ -11,51 +11,50 @@ class Sidebar extends React.Component {
     window.location.hash = 'help';
   }
   render() {
-    let timer;
+    let timer = <div className="timer">{this.props.minutes}<span className="highlight">m</span></div>;
     if (this.props.minutes === 0) {
-      timer = <div className="button alt">&infin;</div>;
-    } else {
-      timer = <div className="button alt">{this.props.minutes}<span className="highlight">m</span></div>;
+      timer = <div className="timer">&infin;</div>;
     }
-    let playOrQuit;
-    let playOrQuitText;
+
+    let playOrQuitText = "New Game"
+    let playOrQuitAction = this.openPlayModal.bind(this)
+    let playOrQuit = <div>&#8227;</div>;
     if (this.props.newGame) {
       playOrQuitText = "Quit"
-      playOrQuit = <div className="button alt" onClick={this.props.quitGame}>&times;</div>;
-    } else {
-      playOrQuitText = "New Game"
-      playOrQuit = <div className="button alt" onClick={this.openPlayModal.bind(this)}>&#8227;</div>;
+      playOrQuitAction = this.props.quitGame
+      playOrQuit = <div>&times;</div>;
     }
+
     return (
       <div className="grid-sidebar">
         <div className="grid-gameplay sidebar-inner sidebar-inner-gameplay">
-          <div className="cell-new tooltip" data-tooltip="Score Multiplier">
-            <div className="button alt multiplier"><span className="highlight">x</span><span>{this.props.multiplier}</span></div>
+          <div className="cell-new tooltip button alt" data-tooltip="Score Multiplier">
+            <div className="multiplier"><span className="highlight">x</span><span>{this.props.multiplier}</span></div>
           </div>
-          <div className="cell-new tooltip" data-tooltip="Timer">
+          <div className="cell-new tooltip button alt" data-tooltip="Timer">
             {timer}
           </div>
-          <div className="cell-new tooltip" data-tooltip="Grid Size">
-            <div className="button alt">&#8862;<sub className="highlight">{this.props.size}</sub></div>
+          <div className="cell-new tooltip button alt" data-tooltip="Grid Size">
+            <div className="grid-size">&#8862;<sub className="highlight">{this.props.size}</sub></div>
           </div>
           <div className="cell-new"></div>
           <div className="cell-new"></div>
         </div>
         <div className="grid-actions sidebar-inner sidebar-inner-actions">
-          <div className="cell-new tooltip" data-tooltip="Player">
-            <div className="button alt" onClick={this.openPlayerModal.bind(this)}>&#10033;</div>
+          <div className="cell-new tooltip button alt" data-tooltip="Player" onClick={this.openPlayerModal.bind(this)}>
+            <div>&#10033;</div>
           </div>
-          <div className="cell-new tooltip" data-tooltip="Help">
-            <div className="button alt" onClick={this.openHelpModal.bind(this)}>&#63;</div>
+          <div className="cell-new tooltip button alt" data-tooltip="Help" onClick={this.openHelpModal.bind(this)}>
+            <div>&#63;</div>
           </div>
-          <div className="cell-new tooltip" data-tooltip={playOrQuitText}>
+          <div className="cell-new tooltip button alt" data-tooltip={playOrQuitText} onClick={playOrQuitAction}>
             {playOrQuit}
           </div>
-          <div className="cell-new tooltip" data-tooltip="Undo Word">
-            <div className="button alt" onClick={this.props.handleUndoButtonClick}>&#8592;</div>
+          <div className="cell-new tooltip button alt" data-tooltip="Undo Word" onClick={this.props.handleUndoButtonClick}>
+            <div>&#8592;</div>
           </div>
-          <div className="cell-new tooltip" data-tooltip="Submit Word">
-            <div className="button alt" onClick={this.props.handleSubmitButtonClick}>&#8629;</div>
+          <div className="cell-new tooltip button alt" data-tooltip="Submit Word" onClick={this.props.handleSubmitButtonClick}>
+            <div>&#8629;</div>
           </div>
         </div>
       </div>
