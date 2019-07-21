@@ -111,7 +111,8 @@
 
 .modal-container {
 	/* background: #191C22; */
-	/* border: .1rem solid rgba(34, 136, 255, 0.8); */
+  /* border: .1rem solid rgba(34, 136, 255, 0.8); */
+  box-sizing: content-box;
   border-radius: 0.1rem;
   display: flex;
 	flex-direction: column;

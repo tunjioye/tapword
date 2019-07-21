@@ -70,9 +70,11 @@ class App extends React.Component {
     if (window.localStorage.getItem('game')) window.localStorage.removeItem('game')
   }
   hasStartedNewGame() {
-    if (!this.state.newGame) {
+    if (this.state.newGame) {
+      return true;
+    } else {
       if (window.confirm('Would You like to Start a New Game?')) window.location.hash = 'play'
-      return;
+      return false;
     }
   }
   randomLetters() {
@@ -84,23 +86,24 @@ class App extends React.Component {
     return letters
   }
   handleCellClick(e) {
-    this.hasStartedNewGame()
-    let cell = e.target
-    let cellName = cell.getAttribute('cell')
-    let word = this.state.word
-    if (this.state.cellToggle) {
-      // cell toggle
-      if (word.filter(x => x.cell === cellName).length === 0) {
-        this.pushSelectionWord(cell)
+    if (this.hasStartedNewGame()) {
+      let cell = e.target
+      let cellName = cell.getAttribute('cell')
+      let word = this.state.word
+      if (this.state.cellToggle) {
+        // cell toggle
+        if (word.filter(x => x.cell === cellName).length === 0) {
+          this.pushSelectionWord(cell)
+        } else {
+          this.toggleSelectionWord(e)
+        }
       } else {
-        this.toggleSelectionWord(e)
-      }
-    } else {
-      // word pop
-      if (word.filter(x => x.cell === cellName).length === 0) {
-        this.pushSelectionWord(cell)
-      } else if (word[word.length - 1].cell === cellName) {
-        this.popSelectionWord()
+        // word pop
+        if (word.filter(x => x.cell === cellName).length === 0) {
+          this.pushSelectionWord(cell)
+        } else if (word[word.length - 1].cell === cellName) {
+          this.popSelectionWord()
+        }
       }
     }
   }
@@ -201,43 +204,44 @@ class App extends React.Component {
     }
   }
   submitWord() {
-    // saving game progress
-    const savingProgress = document.getElementById('saving-progress')
-    savingProgress.classList.remove('d-hide')
+    if (this.hasStartedNewGame()) {
+      // saving game progress
+      const savingProgress = document.getElementById('saving-progress')
+      savingProgress.classList.remove('d-hide')
 
-    this.hasStartedNewGame()
-    if (this.state.word.length > 0) {
-      let word = this.state.word.map(x => x.letter).join('').toLowerCase()
-      spellcheck.get('?text=' + word)
-      .then(function (response) {
-        let selectedCells = document.querySelectorAll('[class="cell-new selected"]')
-        if (response.data.corrections[word] === undefined) {
-          selectedCells.forEach(x => x.classList.add('flash-success'))
+      if (this.state.word.length > 0) {
+        let word = this.state.word.map(x => x.letter).join('').toLowerCase()
+        spellcheck.get('?text=' + word)
+        .then(function (response) {
+          let selectedCells = document.querySelectorAll('[class="cell-new selected"]')
+          if (response.data.corrections[word] === undefined) {
+            selectedCells.forEach(x => x.classList.add('flash-success'))
+            setTimeout(() => {
+              selectedCells.forEach(x => x.classList.remove('flash-success'))
+              this.updateScore(word.length)
+              this.clearSelectionWord()
+              this.resetSelectedCells()
+            }, 500)
+          } else {
+            document.getElementById('selection-word').classList.add('shake')
+            selectedCells.forEach(x => x.classList.add('flash-error'))
+            setTimeout(() => {
+              document.getElementById('selection-word').classList.remove('shake')
+              selectedCells.forEach(x => x.classList.remove('flash-error'))
+            }, 500)
+          }
+        }.bind(this))
+        .catch(function (error) {
+          console.log(error)
+        })
+        .finally(function () {
+          // save game progress
           setTimeout(() => {
-            selectedCells.forEach(x => x.classList.remove('flash-success'))
-            this.updateScore(word.length)
-            this.clearSelectionWord()
-            this.resetSelectedCells()
-          }, 500)
-        } else {
-          document.getElementById('selection-word').classList.add('shake')
-          selectedCells.forEach(x => x.classList.add('flash-error'))
-          setTimeout(() => {
-            document.getElementById('selection-word').classList.remove('shake')
-            selectedCells.forEach(x => x.classList.remove('flash-error'))
-          }, 500)
-        }
-      }.bind(this))
-      .catch(function (error) {
-        console.log(error)
-      })
-      .finally(function () {
-        // save game progress
-        setTimeout(() => {
-          window.localStorage.setItem('game', JSON.stringify(this.state))
-          savingProgress.classList.add('d-hide')
-        }, 500);
-      }.bind(this));
+            window.localStorage.setItem('game', JSON.stringify(this.state))
+            savingProgress.classList.add('d-hide')
+          }, 500);
+        }.bind(this));
+      }
     }
   }
   handleGridSizeClick(e) {
