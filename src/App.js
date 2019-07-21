@@ -4,6 +4,7 @@ import './index.css';
 import './index.scss';
 import './grids.scss';
 import spellcheck from './spellcheck';
+import Loading from './components/Loading';
 // import Topbar from './components/Topbar';
 import GridNew from './components/GridNew';
 // import Grid from './components/Grid';
@@ -316,6 +317,9 @@ class App extends React.Component {
           {/* <div style={{ display: 'block' }}>
             <Topbar />
           </div> */}
+          <div style={{ position: 'fixed', top: '5px', right: '25px' }}>
+            <Loading />
+          </div>
           <div>
             <div>
               <div>
