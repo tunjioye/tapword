@@ -1,4 +1,5 @@
 import React from 'react';
+import GitHubButton from 'react-github-btn';
 
 function Help() {
   return (
@@ -46,6 +47,19 @@ function Help() {
             <br />
             <br />
             <div style={{ ...spacedTypo, ...textCenter }}>*** <a style={customLink} href="https://github.com/tunjioye/tapword" target="_blank" rel="noopener noreferrer">Git Repo</a> ***</div>
+            <br />
+            <div style={{ ...textCenter }}>
+              <GitHubButton
+                href="https://github.com/tunjioye/tapword"
+                data-icon="octicon-star"
+                aria-label="Star tunjioye/tapword on GitHub">Star</GitHubButton>
+              <span style={{ padding: '0 5px' }}></span>
+              <GitHubButton
+                href="https://github.com/tunjioye/tapword/fork"
+                data-icon="octicon-repo-forked"
+                aria-label="Fork tunjioye/tapword on GitHub">Fork</GitHubButton>
+            </div>
+            <br />
           </div>
         </div>
         <div className="modal-footer"></div>

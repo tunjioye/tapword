@@ -312,10 +312,10 @@ class App extends React.Component {
       setTimeout(() => {
         this.setSelectedCells()
       }, 10);
-    } else {
-      // clear last game and initialize new game
-      if (window.localStorage.getItem('game')) window.localStorage.removeItem('game')
-      window.location.hash = 'play'
+    // } else {
+    //   // clear last game and initialize new game
+    //   if (window.localStorage.getItem('game')) window.localStorage.removeItem('game')
+    //   window.location.hash = 'play'
     }
   }
   render() {
