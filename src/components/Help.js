@@ -28,9 +28,22 @@ function Help() {
               <h5 style={spacedTypo}>KEYBOARD SHORTCUTS</h5>
               <div>...</div>
               <div>&nbsp;</div>
-              <div><kbd style={kbd}>BKSP</kbd> &nbsp;&nbsp;&nbsp; <small>OR</small> &nbsp;&nbsp;&nbsp; <kbd style={kbd}>DEL</kbd> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <small>UNDO</small></div>
-              <div>&nbsp;</div>
-              <div><kbd style={kbd}>ENTER</kbd> &nbsp;&nbsp; <small>OR</small> &nbsp;&nbsp; <kbd style={kbd}>SPACE</kbd> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <small>SUBMIT</small></div>
+              <dl style={{ ...dl }}>
+                <dt style={{ ...dl.dt }}>
+                  <small>UNDO</small>
+                </dt>
+                <dd style={{ ...dl.dd }}>
+                  <kbd style={kbd}>BKSP</kbd> &nbsp;&nbsp;&nbsp; <small>OR</small> &nbsp;&nbsp;&nbsp; <kbd style={kbd}>DEL</kbd>
+                  <br />
+                </dd>
+                <dt style={{ ...dl.dt }}>
+                <small>SUBMIT</small>
+                </dt>
+                <dd style={{ ...dl.dd }}>
+                  <kbd style={kbd}>ENTER</kbd> &nbsp;&nbsp; <small>OR</small> &nbsp;&nbsp; <kbd style={kbd}>SPACE</kbd>
+                  <br />
+                </dd>
+              </dl>
             </div>
             <br />
             <br />
@@ -88,6 +101,19 @@ const textCenter = {
 const customLink = {
   color: '#FFF',
   textDecoration: 'none'
+}
+
+const dl = {
+  margin: '0 auto',
+  dt: {
+    width: '80px',
+    display: 'inline-block',
+    textAlign: 'right',
+    margin: '5px auto'
+  },
+  dd: {
+    display: 'inline'
+  }
 }
 
 export default Help;
