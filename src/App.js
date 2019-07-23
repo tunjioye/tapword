@@ -1,8 +1,8 @@
 import React from 'react';
 import './App.css';
-import './index.css';
-import './index.scss';
-import './grids.scss';
+import './styles/index.css';
+import './styles/index.scss';
+import './styles/grids.scss';
 import spellcheck from './spellcheck';
 import Loading from './components/Loading';
 // import Topbar from './components/Topbar';

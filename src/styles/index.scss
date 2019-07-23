@@ -60,16 +60,3 @@
     background: transparent;
   }
 }
-.cell {
-
-  .selection & {
-    background: initial;
-    width: auto;
-    height: auto;
-  }
-  .selection &,
-  .selection &:hover,
-  .selection &:focus {
-    background: transparent;
-  }
-}

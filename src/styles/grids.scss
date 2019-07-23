@@ -52,7 +52,7 @@ $bp-xxl: 1900px;
     grid-template-columns: 1fr;
     grid-template-rows: repeat($grid-sidebar-length, 1fr);
   }
-  .grid-container, .grid-sidebar, .cell, .selection-cell {
+  .grid-container, .grid-sidebar, .selection-cell {
     font-size: (490 / ($grid-length-default * 2)) + 1px;
   }
   @each $grid-length in $grid-lengths {
@@ -75,7 +75,7 @@ $bp-xxl: 1900px;
     width: ((420 / $grid-sidebar-length) * 2) + 0px;
     height: 420px;
   }
-  .grid-container, .grid-sidebar, .cell, .selection-cell {
+  .grid-container, .grid-sidebar, .selection-cell {
     font-size: (420 / ($grid-length-default * 2)) + 0px;
   }
   @each $grid-length in $grid-lengths {
@@ -100,7 +100,7 @@ $bp-xxl: 1900px;
     height: 350px;
     font-size: 35px;
   }
-  .grid-container, .grid-sidebar, .cell, .selection-cell {
+  .grid-container, .grid-sidebar, .selection-cell {
     font-size: (350 / ($grid-length-default * 2)) + 1px;
   }
   @each $grid-length in $grid-lengths {
@@ -123,7 +123,7 @@ $bp-xxl: 1900px;
     width: ((280 / $grid-sidebar-length) * 2) + 0px;
     height: 280px;
   }
-  .grid-container, .grid-sidebar, .cell, .selection-cell {
+  .grid-container, .grid-sidebar, .selection-cell {
     font-size: (280 / ($grid-length-default * 2)) + 0px;
   }
   @each $grid-length in $grid-lengths {
@@ -162,7 +162,7 @@ $bp-xxl: 1900px;
     grid-template-columns: repeat($grid-sidebar-length, 1fr);
     grid-template-rows: 1fr;
   }
-  .grid-container, .grid-sidebar, .cell, .selection-cell {
+  .grid-container, .grid-sidebar, .selection-cell {
     font-size: (350 / ($grid-length-default * 2)) + 1px;
   }
   @each $grid-length in $grid-lengths {
@@ -185,7 +185,7 @@ $bp-xxl: 1900px;
     width: 300px;
     height: ((300 / $grid-sidebar-length) * 2) + 0px;
   }
-  .grid-container, .grid-sidebar, .cell, .selection-cell {
+  .grid-container, .grid-sidebar, .selection-cell {
     font-size: (300 / ($grid-length-default * 2)) + 0px;
   }
   @each $grid-length in $grid-lengths {
@@ -208,7 +208,7 @@ $bp-xxl: 1900px;
     width: 210px;
     height: ((210 / $grid-sidebar-length) * 2) + 0px;
   }
-  .grid-container, .grid-sidebar, .cell, .selection-cell {
+  .grid-container, .grid-sidebar, .selection-cell {
     font-size: (210 / ($grid-length-default * 2)) + 1px;
   }
   @each $grid-length in $grid-lengths {
