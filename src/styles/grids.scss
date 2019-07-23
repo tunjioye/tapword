@@ -3,6 +3,24 @@ $grid-lengths: 3 4 5 6 7;
 $grid-length-default: 5;
 $grid-sidebar-length: 5;
 
+.grid-flex {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.grid-container {
+  min-width: 210px;
+  min-height: 210px;
+  width: 350px;
+  height: 350px;
+  max-width: 630px;
+  max-height: 630px;
+  margin: 4px auto;
+  font-size: 36px;
+}
+
 .grid-new {
   display: grid;
   width: 100%;
@@ -32,7 +50,7 @@ $bp-xxl: 1900px;
     height: 490px;
   }
 
-  .flex-centered {
+  .grid-flex {
     flex-direction: row;
   }
   .grid-container {
@@ -142,7 +160,7 @@ $bp-xxl: 1900px;
     height: 350px;
   }
 
-  .flex-centered {
+  .grid-flex {
     flex-direction: column;
   }
   .grid-container {

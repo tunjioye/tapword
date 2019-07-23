@@ -18,8 +18,10 @@ const GridNew = (props) => {
   }
 
   return (
-    <div className="grid-new">
-      {rows}
+    <div className="grid-container">
+      <div className="grid-new">
+        {rows}
+      </div>
     </div>
   )
 }

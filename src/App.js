@@ -1,7 +1,6 @@
 import React from 'react';
 import './App.css';
 import './styles/index.css';
-import './styles/index.scss';
 import './styles/grids.scss';
 import spellcheck from './spellcheck';
 import Loading from './components/Loading';
@@ -354,7 +353,7 @@ class App extends React.Component {
           {/* <div style={{ display: 'block' }}>
             <Topbar />
           </div> */}
-          <div id="saving-progress" className="saving-progress d-hide">
+          <div id="saving-progress" className="d-hide">
             <Loading />
           </div>
           <div>
@@ -369,13 +368,11 @@ class App extends React.Component {
 
             <div style={{ minHeight: '8px', maxHeight: '8px' }}>&nbsp;</div>
 
-            <div className="flex-centered">
-              <div className="grid-container">
-                <GridNew
-                  size={this.state.size}
-                  rows={this.state.rows}
-                  handleCellClick={this.handleCellClick} />
-              </div>
+            <div className="grid-flex">
+              <GridNew
+                size={this.state.size}
+                rows={this.state.rows}
+                handleCellClick={this.handleCellClick} />
               <Sidebar
                 multiplier={this.state.multiplier}
                 minutes={this.state.minutes}
