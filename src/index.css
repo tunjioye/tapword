@@ -11,30 +11,6 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New", monospace;
 }
 
-/* Cell */
-.cell {
-  display: inline-block;
-  background: #345;
-  text-align: center;
-  vertical-align: middle;
-  margin: 0.1rem;
-  padding: 0.2rem;
-  font-weight: 500;
-  text-transform: uppercase;
-  width: 1.5rem;
-  height: 1.5rem;
-  font-size: 1rem;
-}
-
-.cell:hover, .cell:focus {
-  background: #567;
-  cursor: pointer;
-}
-
-.cell.selected {
-  background: #18f;
-}
-
 /* Sidebar Inner */
 .sidebar-inner {
   user-select: none;
