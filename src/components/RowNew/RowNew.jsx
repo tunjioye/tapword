@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import './RowNew.scss'
-import CellNew from './../CellNew'
+import CellNew from '../GridCell'
 
 const RowNew = (props) => {
   let rowLetters = []

@@ -202,7 +202,7 @@ class App extends React.Component {
     })
   }
   resetSelectedCells() {
-    let selectedCells = document.querySelectorAll('[class="cell-new selected"]')
+    let selectedCells = document.querySelectorAll('[class="grid-cell selected"]')
     selectedCells.forEach(x => x.classList.remove('selected'))
     this.shuffleCells(selectedCells)
   }
@@ -228,7 +228,7 @@ class App extends React.Component {
         let word = this.state.word.map(x => x.letter).join('').toLowerCase()
         spellcheck.get('?text=' + word)
         .then(function (response) {
-          let selectedCells = document.querySelectorAll('[class="cell-new selected"]')
+          let selectedCells = document.querySelectorAll('[class="grid-cell selected"]')
           if (response.data.corrections[word] === undefined) {
             selectedCells.forEach(x => x.classList.add('flash-success'))
             setTimeout(() => {

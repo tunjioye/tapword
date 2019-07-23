@@ -1,10 +1,10 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import './CellNew.scss'
+import './GridCell.scss'
 
-const CellNew = (props) => (
+const GridCell = (props) => (
   <div
-    className={(props.className) ? "cell-new " + props.className : "cell-new"}
+    className={(props.className) ? "grid-cell " + props.className : "grid-cell"}
     row={props.rowName}
     cell={`c${props.cellNumber}`}
     onClick={props.handleCellClick}
@@ -13,17 +13,17 @@ const CellNew = (props) => (
   </div>
 )
 
-CellNew.propTypes = {
+GridCell.propTypes = {
   letter: PropTypes.string,
   rowName: PropTypes.string,
   cellNumber: PropTypes.number,
   handleCellClick: PropTypes.func
 }
 
-CellNew.defaultProps = {
+GridCell.defaultProps = {
   letter: 'T',
   rowName: 'r0',
   cellNumber: 0
 }
 
-export default CellNew
+export default GridCell
