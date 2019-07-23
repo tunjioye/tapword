@@ -1,28 +1,33 @@
-import React from 'react';
+import React from 'react'
+import PropTypes from 'prop-types'
+import './Sidebar.scss'
 
 class Sidebar extends React.Component {
   openPlayModal() {
-    window.location.hash = 'play';
+    window.location.hash = 'play'
   }
+
   openPlayerModal() {
-    window.location.hash = 'player';
+    window.location.hash = 'player'
   }
+
   openHelpModal() {
-    window.location.hash = 'help';
+    window.location.hash = 'help'
   }
+
   render() {
-    let timer = <div className="timer">{this.props.minutes}<span className="highlight">m</span></div>;
+    let timer = (<div className="timer">{this.props.minutes}<span className="highlight">m</span></div>)
     if (this.props.minutes === 0) {
-      timer = <div className="timer">&infin;</div>;
+      timer = (<div className="timer">&infin;</div>)
     }
 
     let playOrQuitText = "New Game"
     let playOrQuitAction = this.openPlayModal.bind(this)
-    let playOrQuit = <div>&#8227;</div>;
+    let playOrQuit = (<div>&#8227;</div>)
     if (this.props.newGame) {
       playOrQuitText = "Quit"
       playOrQuitAction = this.props.quitGame
-      playOrQuit = <div>&times;</div>;
+      playOrQuit = (<div>&times;</div>)
     }
 
     return (
@@ -58,8 +63,18 @@ class Sidebar extends React.Component {
           </div>
         </div>
       </div>
-    );
+    )
   }
+}
+
+Sidebar.propTypes = {
+  size: PropTypes.number,
+  minutes: PropTypes.number,
+  multiplier: PropTypes.number,
+  newGame: PropTypes.bool,
+  quitGame: PropTypes.func,
+  handleUndoButtonClick: PropTypes.func,
+  handleSubmitButtonClick: PropTypes.func
 }
 
 Sidebar.defaultProps = {
@@ -69,4 +84,4 @@ Sidebar.defaultProps = {
   newGame: false
 }
 
-export default Sidebar;
+export default Sidebar
