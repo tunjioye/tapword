@@ -11,51 +11,6 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New", monospace;
 }
 
-/* Sidebar Inner */
-.sidebar-inner {
-  user-select: none;
-}
-
-.sidebar-inner .button {
-  color: #28f;
-  font-weight: 500;
-}
-
-.sidebar-inner-gameplay .button.alt {
-  color: #4df;
-  cursor: auto;
-}
-
-.sidebar-inner-actions .button:hover, .sidebar-inner-actions .button:focus {
-  color: #2bf;
-}
-
-.sidebar-inner .highlight {
-  font-size: 50%;
-  font-weight: 700;
-  color: #cde;
-  text-transform: none;
-}
-
-.multiplier.plus1::before, .multiplier.minus1::before {
-  color: #cde;
-  opacity: 0;
-  position: absolute;
-  font-size: 50%;
-  animation: slide-up 500ms 1;
-  animation-timing-function: linear;
-}
-
-.multiplier.plus1::before {
-  content: "+1";
-  color: #3d4;
-}
-
-.multiplier.minus1::before {
-  content: "-1";
-  color: #d34;
-}
-
 /* selection-wrapper for Selection & Score Components */
 .selection-wrapper,
 .modal-body {
@@ -85,7 +40,7 @@ code {
   display: none;
 }
 
-/* SETTINGS - Grid Sizes */
+/* NEW GAME SETTINGS - Grid Sizes */
 .grid-box-container {
   display: grid;
   grid-template-columns: repeat(auto-fit, 44px);
@@ -118,16 +73,16 @@ code {
   color: #fff;
 }
 
-/* Utilities */
-.d-hide {
-  display: none;
-}
-
 /* Saving Progress */
 .saving-progress {
   position: fixed;
   top: 5px;
   right: 25px;
+}
+
+/* Utilities */
+.d-hide {
+  display: none;
 }
 
 /* Section */
@@ -172,14 +127,4 @@ code {
     0% { background-color: none; }
     50% { background-color: #3d4; }
     100% { background-color: none; }
-}
-
-/* Slide Up */
-@keyframes slide-up {
-  0% {
-    transform: translateY(0);
-    opacity: 1; }
-  100% {
-    transform: translateY(-1.1rem);
-    opacity: 0; }
 }

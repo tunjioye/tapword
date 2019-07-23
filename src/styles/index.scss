@@ -2,7 +2,7 @@
   box-sizing: border-box;
 }
 
-/* Grid & Cell New */
+/* Grid New */
 .flex-centered {
   align-items: center;
   display: flex;
@@ -19,44 +19,4 @@
   max-height: 630px;
   margin: 4px auto;
   font-size: 36px;
-}
-
-.grid-sidebar {
-  display: grid;
-  grid-gap: 2px;
-}
-
-.grid-gameplay,
-.grid-actions {
-  display: grid;
-  width: 100%;
-  height: 100%;
-  grid-gap: 2px;
-}
-
-.grid-cell {
-  width: 100%;
-  height: 100%;
-  font-weight: 500;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  text-transform: uppercase;
-  background: #345;
-  color: #fff;
-
-  &:hover,
-  &:focus {
-    background: #567;
-    cursor: pointer;
-  }
-  &.selected {
-    background: #18f;
-  }
-
-  .grid-sidebar &,
-  .grid-sidebar &:hover,
-  .grid-sidebar &:focus {
-    background: transparent;
-  }
 }

@@ -1,0 +1,67 @@
+.grid-sidebar {
+  display: grid;
+  grid-gap: 2px;
+
+  & .grid-gameplay,
+  & .grid-actions {
+    display: grid;
+    width: 100%;
+    height: 100%;
+    grid-gap: 2px;
+  }
+}
+
+.sidebar-inner {
+  user-select: none;
+}
+
+.sidebar-inner .button {
+  color: #28f;
+  font-weight: 500;
+}
+
+.sidebar-inner-gameplay .button.alt {
+  color: #4df;
+  cursor: auto;
+}
+
+.sidebar-inner-actions .button:hover, .sidebar-inner-actions .button:focus {
+  color: #2bf;
+}
+
+.sidebar-inner .highlight {
+  font-size: 50%;
+  font-weight: 700;
+  color: #cde;
+  text-transform: none;
+}
+
+.multiplier.plus1::before, .multiplier.minus1::before {
+  color: #cde;
+  opacity: 0;
+  position: absolute;
+  font-size: 50%;
+  animation: slide-up 500ms 1;
+  animation-timing-function: linear;
+  -webkit-animation: slide-up 500ms 1;
+}
+
+.multiplier.plus1::before {
+  content: "+1";
+  color: #3d4;
+}
+
+.multiplier.minus1::before {
+  content: "-1";
+  color: #d34;
+}
+
+/* Slide Up */
+@keyframes slide-up {
+  0% {
+    transform: translateY(0);
+    opacity: 1; }
+  100% {
+    transform: translateY(-1.1rem);
+    opacity: 0; }
+}
