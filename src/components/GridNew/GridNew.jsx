@@ -1,13 +1,13 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import './GridNew.scss'
-import RowNew from './../RowNew'
+import GridRow from '../GridRow'
 
 const GridNew = (props) => {
   let rows = []
   for (let i = 0; i < props.size; i++) {
     rows[i] = (
-      <RowNew
+      <GridRow
         key={i.toString()}
         rowNumber={i}
         size={props.size}
