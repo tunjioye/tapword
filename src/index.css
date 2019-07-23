@@ -47,13 +47,6 @@ code {
   user-select: none;
 }
 
-/* Grid */
-.grid {
-  display: inline-block;
-  margin: 0.4rem;
-  /* border: .1rem solid #38f; */
-}
-
 /* Sidebar Inner */
 .sidebar-inner {
   user-select: none;
