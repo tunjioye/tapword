@@ -9,7 +9,8 @@ const RowNew = (props) => {
     rowLetters[i] = (
       <CellNew
         key={i.toString()}
-        cellName={'c' + ((props.rowNumber * props.size) + i)}
+        rowName={`r${props.rowNumber}`}
+        cellNumber={((props.rowNumber * props.size) + i)}
         letter={(props.letters[i]) ? props.letters[i] : ' '}
         handleCellClick={props.handleCellClick}
       />
