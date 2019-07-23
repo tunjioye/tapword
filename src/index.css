@@ -80,24 +80,7 @@ code {
   color: #d34;
 }
 
-/* Selection & Score */
-.selection {
-  padding: 0.2rem;
-  text-align: right;
-  height: 100%;
-  min-height: 100%;
-  max-width: 100vmin;
-  /* border-bottom: .1rem solid #38f; */
-}
-
-.selection-wrapper {
-  text-align: right;
-  overflow: auto;
-  overflow-x: auto;
-  overflow-y: hidden;
-  white-space: nowrap;
-  -webkit-overflow-scrolling: touch;
-}
+/* selection-wrapper for Selection & Score Components */
 .selection-wrapper,
 .modal-body {
   scrollbar-color: #888 transparent;
@@ -124,13 +107,6 @@ code {
 .selection-wrapper::-webkit-scrollbar-corner,
 .modal-body::-webkit-scrollbar-corner {
   display: none;
-}
-
-.selection-info {
-  font-size: 50%;
-  display: flex;
-  flex-wrap: nowrap;
-  justify-content: flex-start;
 }
 
 /* SETTINGS - Grid Sizes */
