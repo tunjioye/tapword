@@ -35,18 +35,6 @@ code {
   background: #18f;
 }
 
-/* Row */
-.row {
-  display: flex;
-  justify-content: center;
-}
-
-.rows {
-  display: inline-block;
-  margin: 0.2rem;
-  user-select: none;
-}
-
 /* Sidebar Inner */
 .sidebar-inner {
   user-select: none;
