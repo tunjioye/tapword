@@ -239,7 +239,12 @@ class App extends React.Component {
           }
         }.bind(this))
         .catch(function (error) {
-          console.log(error)
+          let errorMessage = "Network Error"
+          if (error.response !== undefined) {
+            errorMessage = error.response.data.message
+          }
+          console.error(errorMessage)
+          alert(errorMessage)
         })
         .finally(function () {
           this.saveGameProgress('save')
