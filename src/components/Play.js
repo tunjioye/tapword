@@ -56,7 +56,6 @@ class Play extends React.Component {
                   {timerMinutes}
                 </div>
                 <div style={{ marginTop: '.4rem' }}><em><small>select 0 for endless mode</small></em></div>
-                <div style={{ marginTop: '.4rem' }}><em><small>TIMER MODE coming soon ...</small></em></div>
               </div>
             </div>
           </div>
