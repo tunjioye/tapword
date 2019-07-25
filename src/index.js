@@ -6,7 +6,7 @@ import Countdown from './components/Countdown';
 
 const App = () => (
   <Countdown
-    minutes={5}
+    minutes={1.1}
   />
 )
 

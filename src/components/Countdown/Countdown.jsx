@@ -67,14 +67,9 @@ class Countdown extends React.Component {
         <h1>Countdown</h1>
         <div className='countdown-wrapper'>
           <div className='countdown-item'>
-            <CountdownCircle radius={minutesRadius} />
-            {m}
-            <span>minutes</span>
-          </div>
-          <div className='countdown-item'>
-            <CountdownCircle radius={secondsRadius} />
-            {s}
-            <span>seconds</span>
+            <CountdownCircle radius={(m === 0) ? secondsRadius : minutesRadius} />
+            {(m === 0) ? s : m}
+            <span>{(m === 0) ? 'seconds' : 'minutes'}</span>
           </div>
         </div>
       </div>
