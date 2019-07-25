@@ -73,6 +73,7 @@ class Countdown extends React.Component {
   componentDidMount() {
     this.calculateTimeLeft()
     if (this.props.newGame) this.startTimer()
+    if (!this.props.newGame) this.stopTimer()
   }
 
   componentWillReceiveProps(nextProps) {
@@ -81,7 +82,7 @@ class Countdown extends React.Component {
         this.setState({ seconds: nextProps.minutes * 60 })
         this.calculateTimeLeft()
         if (nextProps.newGame) this.startTimer()
-        // console.log(this.props, nextProps, this.state)
+        if (!nextProps.newGame) this.stopTimer()
       }, 10)
     }
   }
