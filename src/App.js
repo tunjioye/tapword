@@ -62,8 +62,8 @@ class App extends React.Component {
     this.resetSelectedCells()
     window.location.hash = ''
   }
-  quitGame(quitMessage = '') {
-    if (quitMessage !== '') {
+  quitGame(quitMessage = ' ') {
+    if (typeof(quitMessage) === 'string' && quitMessage !== '') {
       window.alert(`${quitMessage} \r\nYour Score is : ${this.state.score}`)
     } else {
       window.alert(`Your Score is : ${this.state.score}`)
@@ -239,12 +239,14 @@ class App extends React.Component {
           }
         }.bind(this))
         .catch(function (error) {
-          let errorMessage = "Network Error"
-          if (error.response !== undefined) {
-            errorMessage = error.response.data.message
+          if (error) {
+            let errorMessage = "Network Error"
+            if (error.response !== undefined) {
+              errorMessage = error.response.data.message
+            }
+            console.error(errorMessage)
+            alert(errorMessage)
           }
-          console.error(errorMessage)
-          alert(errorMessage)
         })
         .finally(function () {
           this.saveGameProgress('save')
