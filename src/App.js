@@ -64,9 +64,9 @@ class App extends React.Component {
   }
   quitGame(quitMessage = '') {
     if (quitMessage !== '') {
-      window.alert(quitMessage + ' \r\n' + 'Your Score is : ' + this.state.score)
+      window.alert(`${quitMessage} \r\nYour Score is : ${this.state.score}`)
     } else {
-      window.alert('Your Score is : ' + this.state.score)
+      window.alert(`Your Score is : ${this.state.score}`)
     }
     this.setState({ newGame: false })
     if (window.localStorage.getItem('game')) window.localStorage.removeItem('game')
