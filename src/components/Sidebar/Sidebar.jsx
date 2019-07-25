@@ -21,7 +21,12 @@ class Sidebar extends React.Component {
     // let timer = (<div className="timer">{this.props.minutes}<span className="highlight">m</span></div>)
     let timer = (
       <div className="timer">
-        <Countdown minutes={this.props.minutes} />
+        <Countdown
+          minutes={parseFloat(this.props.minutes)}
+          newGame={this.props.newGame}
+          setMinutes={this.props.setMinutes}
+          saveGameProgress={this.props.saveGameProgress}
+          quitGame={this.props.quitGame} />
         {/* <span className="highlight">m</span> */}
       </div>
     )
@@ -81,6 +86,8 @@ Sidebar.propTypes = {
   minutes: PropTypes.number,
   multiplier: PropTypes.number,
   newGame: PropTypes.bool,
+  setMinutes: PropTypes.func,
+  saveGameProgress: PropTypes.func,
   quitGame: PropTypes.func,
   handleUndoButtonClick: PropTypes.func,
   handleSubmitButtonClick: PropTypes.func

@@ -33,6 +33,7 @@ class App extends React.Component {
     this.startNewGame = this.startNewGame.bind(this)
     this.quitGame = this.quitGame.bind(this)
     this.hasStartedNewGame = this.hasStartedNewGame.bind(this)
+    this.setMinutes = this.setMinutes.bind(this)
     this.randomLetters = this.randomLetters.bind(this)
     this.handleCellClick = this.handleCellClick.bind(this)
     this.toggleSelectionWord = this.toggleSelectionWord.bind(this)
@@ -61,11 +62,13 @@ class App extends React.Component {
     this.resetSelectedCells()
     window.location.hash = ''
   }
-  quitGame() {
-    window.alert('Your Score is : ' + this.state.score)
-    this.setState({
-      newGame: false
-    })
+  quitGame(quitMessage = '') {
+    if (quitMessage !== '') {
+      window.alert(quitMessage + ' \r\n' + 'Your Score is : ' + this.state.score)
+    } else {
+      window.alert('Your Score is : ' + this.state.score)
+    }
+    this.setState({ newGame: false })
     if (window.localStorage.getItem('game')) window.localStorage.removeItem('game')
   }
   hasStartedNewGame() {
@@ -75,6 +78,9 @@ class App extends React.Component {
       if (window.confirm('Would You like to Start a New Game?')) window.location.hash = 'play'
       return false;
     }
+  }
+  setMinutes(minutes) {
+    this.setState({ minutes })
   }
   randomLetters() {
     const chars = [...'ABCDEFGHIJKLMNOPQRSTUVWXYZ']
@@ -119,9 +125,7 @@ class App extends React.Component {
       let word = this.state.word
 
       word = word.filter(x => x.cell !== cellName)
-      this.setState({
-        word: word
-      })
+      this.setState({ word })
       cell.classList.toggle('selected')
 
       this.saveGameProgress('save')
@@ -136,9 +140,7 @@ class App extends React.Component {
     }
 
     cell.classList.add('selected')
-    this.setState({
-      word: word
-    })
+    this.setState({ word })
   }
   popSelectionWord() {
     if (this.hasStartedNewGame()) {
@@ -148,18 +150,14 @@ class App extends React.Component {
         let word = this.state.word
         document.querySelectorAll('[cell=' + word[word.length - 1].cell + ']')[0].classList.remove('selected')
         word.length--
-        this.setState({
-          word: word
-        })
+        this.setState({ word })
       }
 
       this.saveGameProgress('save')
     }
   }
   clearSelectionWord() {
-    this.setState({
-      word: []
-    })
+    this.setState({ word: [] })
   }
   updateMultiplier(newWordLength) {
     if (this.state.lastWordLength > 1) {
@@ -179,9 +177,7 @@ class App extends React.Component {
         }, 500)
         multiplier--
       }
-      this.setState({
-        multiplier: multiplier
-      })
+      this.setState({ multiplier })
     }
   }
   updateScore(wordLength) {
@@ -208,9 +204,7 @@ class App extends React.Component {
     if (this.state.shuffle) {
       if (this.state.shuffleAll) {
         // shuffle all cells
-        this.setState({
-          rows: this.randomLetters()
-        })
+        this.setState({ rows: this.randomLetters() })
       } else {
         // shuffle only selected cells
         const chars = [...'ABCDEFGHIJKLMNOPQRSTUVWXYZ']
@@ -261,7 +255,7 @@ class App extends React.Component {
         setTimeout(() => {
           window.localStorage.setItem('game', JSON.stringify(this.state))
           savingProgress.classList.add('d-hide')
-        }, 500);
+        }, 500)
         break;
       case 'loading':
       default:
@@ -272,13 +266,9 @@ class App extends React.Component {
   }
   handleGridSizeClick(e) {
     const gridSize = parseInt(e.target.innerText)
-    this.setState({
-      size: gridSize
-    })
+    this.setState({ size: gridSize })
     setTimeout(() => {
-      this.setState({
-        rows: this.randomLetters()
-      })
+      this.setState({ rows: this.randomLetters() })
 
       // dynamically set grid size style
       const gridNews = document.getElementsByClassName('grid-new')
@@ -291,9 +281,7 @@ class App extends React.Component {
     }, 10)
   }
   handleMinuteClick(e) {
-    this.setState({
-      minutes: parseInt(e.target.innerText)
-    })
+    this.setState({ minutes: parseInt(e.target.innerText) })
   }
   handleKeyUp(e) {
     switch (e.keyCode) {
@@ -315,11 +303,8 @@ class App extends React.Component {
   }
   componentDidMount() {
     document.addEventListener("keyup", this.handleKeyUp)
-    if (this.props.generate) {
-      this.setState({
-        rows: this.randomLetters()
-      })
-    }
+    if (this.props.generate) this.setState({ rows: this.randomLetters() })
+
     // if (window.localStorage.getItem('game') && window.confirm('Resume Last Game?')) {
     if (window.localStorage.getItem('game')) {
       // resume last game
@@ -374,8 +359,10 @@ class App extends React.Component {
                 handleCellClick={this.handleCellClick} />
               <Sidebar
                 multiplier={this.state.multiplier}
-                minutes={this.state.minutes}
+                minutes={parseFloat(this.state.minutes)}
                 newGame={this.state.newGame}
+                setMinutes={this.setMinutes}
+                saveGameProgress={this.saveGameProgress}
                 quitGame={this.quitGame}
                 handleUndoButtonClick={this.popSelectionWord}
                 handleSubmitButtonClick={this.submitWord} />
