@@ -24,7 +24,7 @@ class App extends React.Component {
       rows: props.rows,
       multiplier: props.multiplier,
       score: props.score,
-      lastWordScore: props.lastWordScore,
+      lastWordLength: props.lastWordLength,
       word: props.word,
       cellToggle: props.cellToggle,
       shuffle: props.shuffle,
@@ -55,7 +55,7 @@ class App extends React.Component {
       newGame: true,
       multiplier: 1,
       score: 0,
-      lastWordScore: 0,
+      lastWordLength: 0,
       word: []
     })
     this.resetSelectedCells()
@@ -161,18 +161,18 @@ class App extends React.Component {
       word: []
     })
   }
-  updateMultiplier(newWordScore) {
-    if (this.state.lastWordScore > 1) {
-      let lastWordScore = this.state.lastWordScore
+  updateMultiplier(newWordLength) {
+    if (this.state.lastWordLength > 1) {
+      let lastWordLength = this.state.lastWordLength
       let multiplier = this.state.multiplier
       let multiplierEl = document.getElementsByClassName('multiplier')[0]
-      if (newWordScore > lastWordScore) {
+      if (newWordLength > lastWordLength) {
         multiplierEl.classList.add('plus1')
         setTimeout(() => {
           multiplierEl.classList.remove('plus1')
         }, 500)
         multiplier++
-      } else if (newWordScore < lastWordScore && this.state.multiplier > 1) {
+      } else if (newWordLength < lastWordLength && this.state.multiplier > 1) {
         multiplierEl.classList.add('minus1')
         setTimeout(() => {
           multiplierEl.classList.remove('minus1')
@@ -184,13 +184,13 @@ class App extends React.Component {
       })
     }
   }
-  updateScore(wordScore) {
+  updateScore(wordLength) {
     let score = this.state.score
-    score += (wordScore * this.state.multiplier)
-    this.updateMultiplier(wordScore)
+    score += (wordLength * this.state.multiplier)
+    this.updateMultiplier(wordLength)
     this.setState({
       score: score,
-      lastWordScore: wordScore
+      lastWordLength: wordLength
     })
   }
   setSelectedCells() {
@@ -407,7 +407,7 @@ App.defaultProps = {
   rows: [],
   multiplier: 1,
   score: 0,
-  lastWordScore: 0,
+  lastWordLength: 0,
   word: [] // { cell: '', letter: ''} cell is short for cellName
 }
 
