@@ -25,11 +25,11 @@ const Selection = (props) => {
 }
 
 Selection.propTypes = {
-  word: PropTypes.string
+  word: PropTypes.array
 }
 
 Selection.defaultProps = {
-  word: ''
+  word: []
 }
 
 export default Selection

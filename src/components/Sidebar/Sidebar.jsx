@@ -1,6 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import './Sidebar.scss'
+import Countdown from './../Countdown'
 
 class Sidebar extends React.Component {
   openPlayModal() {
@@ -16,8 +17,16 @@ class Sidebar extends React.Component {
   }
 
   render() {
-    let timer = (<div className="timer">{this.props.minutes}<span className="highlight">m</span></div>)
+    let timerText = "Timer"
+    // let timer = (<div className="timer">{this.props.minutes}<span className="highlight">m</span></div>)
+    let timer = (
+      <div className="timer">
+        <Countdown minutes={this.props.minutes} />
+        {/* <span className="highlight">m</span> */}
+      </div>
+    )
     if (this.props.minutes === 0) {
+      timerText = "Endless"
       timer = (<div className="timer">&infin;</div>)
     }
 
@@ -36,7 +45,7 @@ class Sidebar extends React.Component {
           <div className="grid-cell tooltip button alt" data-tooltip="Score Multiplier">
             <div className="multiplier"><span className="highlight">x</span><span>{this.props.multiplier}</span></div>
           </div>
-          <div className="grid-cell tooltip button alt" data-tooltip="Timer">
+          <div className="grid-cell tooltip button alt" data-tooltip={timerText}>
             {timer}
           </div>
           <div className="grid-cell tooltip button alt" data-tooltip="Grid Size">

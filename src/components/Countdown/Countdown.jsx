@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import './Countdown.scss'
-import CountdownCircle from './../CountdownCircle/CountdownCircle'
+// import CountdownCircle from './../CountdownCircle/CountdownCircle'
 
 class Countdown extends React.Component {
   constructor(props) {
@@ -13,7 +13,10 @@ class Countdown extends React.Component {
     }
 
     this.timer = 0
+    this.secondsToTime = this.secondsToTime.bind(this)
+    this.calculateTimeLeft = this.calculateTimeLeft.bind(this)
     this.startTimer = this.startTimer.bind(this)
+    this.stopTimer = this.stopTimer.bind(this)
     this.countDown = this.countDown.bind(this)
   }
 
@@ -32,16 +35,19 @@ class Countdown extends React.Component {
     return obj
   }
 
-  componentDidMount() {
+  calculateTimeLeft() {
     let timeLeftVar = this.secondsToTime(this.state.seconds)
     this.setState({ time: timeLeftVar })
-    this.startTimer()
   }
 
   startTimer() {
     if (this.timer === 0 && this.state.seconds > 0) {
       this.timer = setInterval(this.countDown, 1000)
     }
+  }
+
+  stopTimer() {
+    clearInterval(this.timer)
   }
 
   countDown() {
@@ -53,23 +59,36 @@ class Countdown extends React.Component {
     })
 
     // Check if we're at zero.
-    if (seconds === 0) clearInterval(this.timer)
+    if (seconds === 0) this.stopTimer()
+  }
+
+  componentDidMount() {
+    this.calculateTimeLeft()
+    this.startTimer()
+  }
+
+  componentWillReceiveProps(nextProps) {
+    if (this.props !== nextProps) {
+      this.setState({ seconds: nextProps.minutes * 60 })
+      this.calculateTimeLeft()
+    }
   }
 
   render() {
-    const { minutes } = this.props
+    // const { minutes } = this.props
     const { m, s } = this.state.time
-    const minutesRadius = mapNumber(m, minutes, 0, 0, 359.9)
-    const secondsRadius = mapNumber(s, 60, 0, 0, 359.9)
+    // const minutesRadius = mapNumber(m, minutes, 0, 0, 359.9)
+    // const secondsRadius = mapNumber(s, 60, 0, 0, 359.9)
 
     return (
       <div>
-        <h1>Countdown</h1>
+        {/* <h1>Countdown</h1> */}
         <div className='countdown-wrapper'>
           <div className='countdown-item'>
-            <CountdownCircle radius={(m === 0) ? secondsRadius : minutesRadius} />
+            {/* Disabled for now because it seems hard to make responsive */}
+            {/* <CountdownCircle radius={(m === 0) ? secondsRadius : minutesRadius} /> */}
             {(m === 0) ? s : m}
-            <span>{(m === 0) ? 'seconds' : 'minutes'}</span>
+            <span className="highlight">{(m === 0) ? 's' : 'm'}</span>
           </div>
         </div>
       </div>
@@ -77,10 +96,10 @@ class Countdown extends React.Component {
   }
 }
 
-// Stackoverflow: https://stackoverflow.com/questions/10756313/javascript-jquery-map-a-range-of-numbers-to-another-range-of-numbers
-function mapNumber(number, in_min, in_max, out_min, out_max) {
-  return (out_max - ((number - in_min) * (out_max - out_min) / (in_max - in_min) + out_min)).toFixed(1)
-}
+// // Stackoverflow: https://stackoverflow.com/questions/10756313/javascript-jquery-map-a-range-of-numbers-to-another-range-of-numbers
+// function mapNumber(number, in_min, in_max, out_min, out_max) {
+//   return (out_max - ((number - in_min) * (out_max - out_min) / (in_max - in_min) + out_min)).toFixed(1)
+// }
 
 Countdown.propTypes = {
   minutes: PropTypes.number

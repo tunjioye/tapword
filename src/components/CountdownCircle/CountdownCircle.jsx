@@ -3,8 +3,8 @@ import PropTypes from 'prop-types'
 import './CountdownCircle.scss'
 
 const CountdownCircle = ({ radius }) => (
-  <svg className='countdown-svg'>
-      <path fill="none" stroke="#333" strokeWidth="2" d={describeArc(50, 50, 48, 0, radius)}/>
+  <svg className='countdown-svg' style={{ marginLeft: '-7px', marginTop: '-8px' }}>
+    <path fill="none" stroke="#2bf" strokeWidth="0.1rem" d={describeArc(50, 50, 40, 0, radius)}/>
   </svg>
 )
 
