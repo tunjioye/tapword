@@ -48,6 +48,7 @@ class Countdown extends React.Component {
 
   stopTimer() {
     clearInterval(this.timer)
+    this.timer = 0 // reset to 0 !important
   }
 
   countDown() {
@@ -61,7 +62,9 @@ class Countdown extends React.Component {
     if (seconds > 0) {
       // set Game / App Minutes & save Game Progress
       this.props.setMinutes(parseFloat(seconds / 60).toFixed(3))
-      this.props.saveGameProgress('save')
+      setTimeout(() => {
+        this.props.saveGameProgress('save')
+      }, 1000)
     } else {
       // stop timer
       this.stopTimer()
@@ -80,7 +83,6 @@ class Countdown extends React.Component {
     if (this.props !== nextProps) {
       setTimeout(() => {
         this.setState({ seconds: nextProps.minutes * 60 })
-        this.calculateTimeLeft()
         if (nextProps.newGame) this.startTimer()
         if (!nextProps.newGame) this.stopTimer()
       }, 10)
