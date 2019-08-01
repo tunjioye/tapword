@@ -5,6 +5,7 @@ class Player extends React.Component {
     console.log('saving profile and settings ...')
     window.location.hash = ''
   }
+
   render() {
     return (
       <div className="modal" id="player">

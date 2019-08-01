@@ -61,6 +61,7 @@ class App extends React.Component {
     })
     this.resetSelectedCells()
     window.location.hash = ''
+    this.saveGameProgress('save')
   }
   quitGame(quitMessage = ' ') {
     if (typeof(quitMessage) === 'string' && quitMessage !== '') {
@@ -317,20 +318,25 @@ class App extends React.Component {
       // resume last game
       const lastGame = window.localStorage.getItem('game')
       let parsedLastGame = JSON.parse(lastGame)
-      this.setState(parsedLastGame)
 
-      // dynamically set grid size style
-      const gridNews = document.getElementsByClassName('grid-new')
-      const gridContainers = document.getElementsByClassName('grid-container')
-      const gridSidebars = document.getElementsByClassName('grid-sidebar')
+      if (parsedLastGame.newGame) {
+        this.setState(parsedLastGame)
 
-      gridNews[0].setAttribute('size', parsedLastGame.size)
-      gridContainers[0].setAttribute('size', parsedLastGame.size)
-      gridSidebars[0].setAttribute('size', parsedLastGame.size)
+        // dynamically set grid size style
+        const gridNews = document.getElementsByClassName('grid-new')
+        const gridContainers = document.getElementsByClassName('grid-container')
+        const gridSidebars = document.getElementsByClassName('grid-sidebar')
 
-      setTimeout(() => {
-        this.setSelectedCells()
-      }, 10);
+        gridNews[0].setAttribute('size', parsedLastGame.size)
+        gridContainers[0].setAttribute('size', parsedLastGame.size)
+        gridSidebars[0].setAttribute('size', parsedLastGame.size)
+
+        setTimeout(() => {
+          this.setSelectedCells()
+        }, 10);
+      } else {
+        window.localStorage.removeItem('game')
+      }
     // } else {
     //   // clear last game and initialize new game
     //   if (window.localStorage.getItem('game')) window.localStorage.removeItem('game')

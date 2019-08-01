@@ -3,12 +3,12 @@ import React from 'react';
 class Play extends React.Component {
   constructor(props) {
     super(props)
+
     this.state = {
-      newGame: props.newGame,
-      size: props.size,
-      minutes: props.minutes
+      //
     }
   }
+
   render() {
     const gridSizes = [];
     [3,4,5,6,7].forEach((x,i) => {
@@ -18,6 +18,7 @@ class Play extends React.Component {
         gridSizes[i] = <div key={i.toString()} className="grid-box grid-size" onClick={this.props.handleGridSizeClick}>{x}</div>
       }
     });
+
     const timerMinutes = [];
     [0,1,2,3,4,5,6,7,8,9,10].forEach((x,i) => {
       if (x === this.props.minutes) {
@@ -26,6 +27,7 @@ class Play extends React.Component {
         timerMinutes[i] = <div key={i.toString()} className="grid-box grid-minute" onClick={this.props.handleMinuteClick}>{x}</div>
       }
     });
+
     return (
       <div className="modal" id="play">
         <span className="modal-overlay" style={{ background: 'rgb(25, 28, 34)' }}></span>
