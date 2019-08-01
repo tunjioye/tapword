@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js");
 
 importScripts(
-  "/tapword/precache-manifest.7cfdf479ea3b7dd54a4f9c3cfd200bc1.js"
+  "/tapword/precache-manifest.42d021e727e7f3e943de8ae6d7bb1dcb.js"
 );
 
 self.addEventListener('message', (event) => {
