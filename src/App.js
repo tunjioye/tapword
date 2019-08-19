@@ -229,6 +229,7 @@ class App extends React.Component {
               this.updateScore(word.length)
               this.clearSelectionWord()
               this.resetSelectedCells()
+              this.saveGameProgress('save')
             }, 500)
           } else {
             document.getElementById('selection-word').classList.add('shake')
@@ -236,6 +237,7 @@ class App extends React.Component {
             setTimeout(() => {
               document.getElementById('selection-word').classList.remove('shake')
               selectedCells.forEach(x => x.classList.remove('flash-error'))
+              this.saveGameProgress('save')
             }, 500)
           }
         }.bind(this))
@@ -248,10 +250,8 @@ class App extends React.Component {
             console.error(errorMessage)
             alert(errorMessage)
           }
-        })
-        .finally(function () {
           this.saveGameProgress('save')
-        }.bind(this));
+        }.bind(this))
       }
     }
   }
