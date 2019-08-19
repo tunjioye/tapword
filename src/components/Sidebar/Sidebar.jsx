@@ -6,6 +6,8 @@ import Countdown from './../Countdown'
 class Sidebar extends React.Component {
   openPlayModal() {
     window.location.hash = 'play'
+    // set App Minutes
+    this.props.setMinutes(parseInt(this.props.minutes))
   }
 
   openPlayerModal() {
