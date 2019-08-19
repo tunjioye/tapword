@@ -382,13 +382,15 @@ class App extends React.Component {
             </div>
           </div>
         </header>
-        <Play
-          newGame={this.state.newGame}
-          startNewGame={this.startNewGame}
-          size={this.state.size}
-          minutes={this.state.minutes}
-          handleGridSizeClick={this.handleGridSizeClick}
-          handleMinuteClick={this.handleMinuteClick} />
+        {!this.state.newGame &&
+          <Play
+            newGame={this.state.newGame}
+            startNewGame={this.startNewGame}
+            size={this.state.size}
+            minutes={this.state.minutes}
+            handleGridSizeClick={this.handleGridSizeClick}
+            handleMinuteClick={this.handleMinuteClick} />
+        }
         <Player />
         <Help />
       </div>
