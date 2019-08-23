@@ -2,19 +2,27 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import './Sidebar.scss'
 import Countdown from './../Countdown'
+import Popover from './../Popover'
 
 class Sidebar extends React.Component {
   openPlayModal() {
+    window.location.hash = ''
     window.location.hash = 'play'
     // set App Minutes
     this.props.setMinutes(parseInt(this.props.minutes))
+    // For Tutorial
+    if (this.props.clickThis && this.props.clickThis === "play") {
+      this.props.nextTutorialStep()
+    }
   }
 
   openPlayerModal() {
+    window.location.hash = ''
     window.location.hash = 'player'
   }
 
   openHelpModal() {
+    window.location.hash = ''
     window.location.hash = 'help'
   }
 
@@ -69,13 +77,27 @@ class Sidebar extends React.Component {
             <div>&#63;</div>
           </div>
           <div className="grid-cell tooltip button alt" data-tooltip={playOrQuitText} onClick={playOrQuitAction}>
-            {playOrQuit}
+            {this.props.clickThis === "play" || this.props.clickThis === "quit"
+              ? (
+                <Popover className="click-this">
+                  { playOrQuit }
+                </Popover>
+              )
+              : playOrQuit
+            }
           </div>
           <div className="grid-cell tooltip button alt" data-tooltip="Undo Word" onClick={this.props.handleUndoButtonClick}>
             <div>&#8592;</div>
           </div>
           <div className="grid-cell tooltip button alt" data-tooltip="Submit Word" onClick={this.props.handleSubmitButtonClick}>
-            <div>&#8629;</div>
+            {this.props.clickThis === "submit"
+              ? (
+                <Popover className="click-this">
+                  <div>&#8629;</div>
+                </Popover>
+              )
+              : <div>&#8629;</div>
+            }
           </div>
         </div>
       </div>
@@ -92,7 +114,8 @@ Sidebar.propTypes = {
   saveGameProgress: PropTypes.func,
   quitGame: PropTypes.func,
   handleUndoButtonClick: PropTypes.func,
-  handleSubmitButtonClick: PropTypes.func
+  handleSubmitButtonClick: PropTypes.func,
+  nextTutorialStep: PropTypes.func
 }
 
 Sidebar.defaultProps = {

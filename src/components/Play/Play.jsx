@@ -1,7 +1,8 @@
 import React from 'react'
 import Modal from './../Modal'
+import Popover from './../Popover'
 
-function Play({size, minutes, handleGridSizeClick, handleMinuteClick, startNewGame}) {
+function Play({size, minutes, handleGridSizeClick, handleMinuteClick, startNewGame, clickThis}) {
   const gridSizes = [];
   [3,4,5,6,7].forEach((x,i) => {
     if (x === size) {
@@ -13,11 +14,24 @@ function Play({size, minutes, handleGridSizeClick, handleMinuteClick, startNewGa
 
   const timerMinutes = [];
   [0,1,2,3,4,5,6,7,8,9,10].forEach((x,i) => {
+    // For Tutorial
+    if (x === 0) {
+      if (clickThis && clickThis === "endless") {
+        timerMinutes[i] = (
+          <Popover key={i.toString()} className="click-this">
+            <div className="grid-box grid-minute" onClick={handleMinuteClick}>{x}</div>
+          </Popover>
+        )
+        return
+      }
+    }
+    // Default
     if (x === minutes) {
       timerMinutes[i] = <div key={i.toString()} className="grid-box grid-minute selected" onClick={handleMinuteClick}>{x}</div>
     } else {
       timerMinutes[i] = <div key={i.toString()} className="grid-box grid-minute" onClick={handleMinuteClick}>{x}</div>
     }
+    // EndDefault
   })
 
   return (
@@ -26,7 +40,15 @@ function Play({size, minutes, handleGridSizeClick, handleMinuteClick, startNewGa
       id={`play`}
       footer={
         <div style={{ ...spacedTypo, ...textCenter }}>
-          <button style={saveButton} onClick={startNewGame}>Start New Game</button>
+          {/* For Tutorial */}
+          {clickThis && clickThis === "start"
+            ? (
+              <Popover className="click-this">
+                <button style={saveButton} onClick={startNewGame}>Start New Game</button>
+              </Popover>
+            )
+            : <button style={saveButton} onClick={startNewGame}>Start New Game</button>
+          }
         </div>
       }
       transparent={false}

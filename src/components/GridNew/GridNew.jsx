@@ -12,6 +12,8 @@ const GridNew = (props) => {
         rowNumber={i}
         size={props.size}
         letters={props.rows[i]}
+        clickThis={props.clickThis}
+        wordCells={props.wordCells}
         handleCellClick={props.handleCellClick}
       />
     )
@@ -29,6 +31,7 @@ const GridNew = (props) => {
 GridNew.propTypes = {
   size: PropTypes.number,
   rows: PropTypes.array,
+  wordCells: PropTypes.array,
   handleCellClick: PropTypes.func
 }
 
@@ -40,7 +43,8 @@ GridNew.defaultProps = {
     'GAME',
     'BY',
     'TUNJI',
-  ]
+  ],
+  wordCells: []
 }
 
 export default GridNew

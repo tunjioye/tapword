@@ -14,10 +14,13 @@ import Play from './components/Play';
 import Player from './components/Player';
 import Help from './components/Help';
 
-class App extends React.Component {
+class Tutorial extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
+      // tutorial: props.tutorial,
+      tutorialSteps: props.tutorialSteps,
+      currentStep: props.currentStep,
       newGame: props.newGame,
       size: props.size,
       minutes: props.minutes,
@@ -44,24 +47,35 @@ class App extends React.Component {
     this.updateMultiplier = this.updateMultiplier.bind(this)
     this.updateScore = this.updateScore.bind(this)
     this.clearSelectionWord = this.clearSelectionWord.bind(this)
-    this.setSelectedCells = this.setSelectedCells.bind(this)
     this.resetSelectedCells = this.resetSelectedCells.bind(this)
     this.shuffleCells = this.shuffleCells.bind(this)
     this.saveGameProgress = this.saveGameProgress.bind(this)
     this.handleGridSizeClick = this.handleGridSizeClick.bind(this)
     this.handleMinuteClick = this.handleMinuteClick.bind(this)
+    // For Tutorial : next Tutorial Step Function
+    this.nextTutorialStep = this.nextTutorialStep.bind(this)
   }
   startNewGame() {
-    this.setState({
-      newGame: true,
-      multiplier: 1,
-      score: 0,
-      lastWordLength: 0,
-      word: []
-    })
-    this.resetSelectedCells()
-    window.location.hash = ''
-    this.saveGameProgress('save')
+    // For Tutorial : prevent unexpected game state for new game
+    if (this.state.size === 5 && this.state.minutes === 0) {
+      // Default
+      this.setState({
+        newGame: true,
+        multiplier: 1,
+        score: 0,
+        lastWordLength: 0,
+        word: []
+      })
+      this.resetSelectedCells()
+      window.location.hash = ''
+      this.saveGameProgress('save')
+      // EndDefault
+      this.nextTutorialStep()
+    } else {
+      this.setState({
+        currentStep: 1
+      })
+    }
   }
   quitGame(quitMessage = ' ') {
     if (typeof(quitMessage) === 'string' && quitMessage !== '') {
@@ -71,14 +85,13 @@ class App extends React.Component {
     }
     this.setState({ newGame: false })
     if (window.localStorage.getItem('game')) window.localStorage.removeItem('game')
+    // For Tutorial : end Tutorial
+    window.localStorage.setItem('tw_quicktutorial', "done")
+    window.alert(`Thanks for taking our Quick Tutorial`)
+    this.props.endTutorial()
   }
   hasStartedNewGame() {
-    if (this.state.newGame) {
-      return true;
-    } else {
-      if (window.confirm('Would You like to Start a New Game?')) window.location.hash = 'play'
-      return false;
-    }
+    return (this.state.newGame) ? true : false
   }
   setMinutes(minutes) {
     this.setState({ minutes })
@@ -93,8 +106,17 @@ class App extends React.Component {
   }
   handleCellClick(e) {
     if (this.hasStartedNewGame()) {
+      // For Tutorial : prevent unexpected cell click
+      const { tutorialSteps, currentStep } = this.state
+      switch(`c${tutorialSteps[currentStep]}`) {
+        case e.target.getAttribute('cell'):
+          this.nextTutorialStep()
+          break;
+        default:
+          return
+      }
+      // Default
       this.saveGameProgress('loading')
-
       let cell = e.target
       let cellName = cell.getAttribute('cell')
       let word = this.state.word
@@ -115,6 +137,7 @@ class App extends React.Component {
       }
 
       this.saveGameProgress('save')
+      // EndDefault
     }
   }
   toggleSelectionWord(e) {
@@ -127,7 +150,6 @@ class App extends React.Component {
 
       word = word.filter(x => x.cell !== cellName)
       this.setState({ word })
-      // cell.classList.toggle('selected')
 
       this.saveGameProgress('save')
     }
@@ -140,7 +162,6 @@ class App extends React.Component {
       letter: cell.innerHTML
     }
 
-    // cell.classList.add('selected')
     this.setState({ word })
   }
   popSelectionWord() {
@@ -149,7 +170,6 @@ class App extends React.Component {
 
       if (this.state.word.length > 0) {
         let word = this.state.word
-        // document.querySelectorAll('[cell=' + word[word.length - 1].cell + ']')[0].classList.remove('selected')
         word.length--
         this.setState({ word })
       }
@@ -190,15 +210,8 @@ class App extends React.Component {
       lastWordLength: wordLength
     })
   }
-  setSelectedCells() {
-    this.state.word.forEach(x => {
-      let cell = document.querySelector(`[cell="${x.cell}"]`)
-      cell.classList.add('selected')
-    })
-  }
   resetSelectedCells() {
     let selectedCells = document.querySelectorAll('[class="grid-cell selected"]')
-    // selectedCells.forEach(x => x.classList.remove('selected'))
     this.shuffleCells(selectedCells)
   }
   shuffleCells(selectedCells) {
@@ -230,6 +243,9 @@ class App extends React.Component {
               this.clearSelectionWord()
               this.resetSelectedCells()
               this.saveGameProgress('save')
+
+              // For Tutorial : next Tutotial Step on Submit
+              this.nextTutorialStep()
             }, 500)
           } else {
             document.getElementById('selection-word').classList.add('shake')
@@ -290,6 +306,16 @@ class App extends React.Component {
   }
   handleMinuteClick(e) {
     this.setState({ minutes: parseInt(e.target.innerText) })
+    // For Tutorial : goto next Tutorial Step only for expected minute click
+    const { tutorialSteps, currentStep } = this.state
+    if (tutorialSteps[currentStep] === "endless" && e.target.innerText === "0") this.nextTutorialStep()
+  }
+  // For Tutorial : next tutorial Step Function
+  nextTutorialStep() {
+    const { currentStep } = this.state
+    this.setState({
+      currentStep: currentStep + 1
+    })
   }
   handleKeyUp(e) {
     switch (e.keyCode) {
@@ -312,38 +338,10 @@ class App extends React.Component {
   componentDidMount() {
     document.addEventListener("keyup", this.handleKeyUp)
     if (this.props.generate) this.setState({ rows: this.randomLetters() })
-
-    // if (window.localStorage.getItem('game') && window.confirm('Resume Last Game?')) {
-    if (window.localStorage.getItem('game')) {
-      // resume last game
-      const lastGame = window.localStorage.getItem('game')
-      let parsedLastGame = JSON.parse(lastGame)
-
-      if (parsedLastGame.newGame) {
-        this.setState(parsedLastGame)
-
-        // dynamically set grid size style
-        const gridNews = document.getElementsByClassName('grid-new')
-        const gridContainers = document.getElementsByClassName('grid-container')
-        const gridSidebars = document.getElementsByClassName('grid-sidebar')
-
-        gridNews[0].setAttribute('size', parsedLastGame.size)
-        gridContainers[0].setAttribute('size', parsedLastGame.size)
-        gridSidebars[0].setAttribute('size', parsedLastGame.size)
-
-        setTimeout(() => {
-          this.setSelectedCells()
-        }, 10);
-      } else {
-        window.localStorage.removeItem('game')
-      }
-    // } else {
-    //   // clear last game and initialize new game
-    //   if (window.localStorage.getItem('game')) window.localStorage.removeItem('game')
-    //   window.location.hash = 'play'
-    }
   }
   render() {
+    const wordCells = this.state.word.map(x => x.cell)
+
     return (
       <div className="App">
         <header className="App-header">
@@ -367,10 +365,12 @@ class App extends React.Component {
 
             <div className="grid-flex">
               <GridNew
-                size={this.state.size}
-                rows={this.state.rows}
+                clickThis={this.state.tutorialSteps[this.state.currentStep]}
+                wordCells={wordCells}
                 handleCellClick={this.handleCellClick} />
               <Sidebar
+                clickThis={this.state.tutorialSteps[this.state.currentStep]}
+                nextTutorialStep={this.nextTutorialStep}
                 multiplier={this.state.multiplier}
                 minutes={parseFloat(this.state.minutes)}
                 newGame={this.state.newGame}
@@ -384,6 +384,7 @@ class App extends React.Component {
         </header>
         {!this.state.newGame &&
           <Play
+            clickThis={this.state.tutorialSteps[this.state.currentStep]}
             newGame={this.state.newGame}
             startNewGame={this.startNewGame}
             size={this.state.size}
@@ -398,7 +399,12 @@ class App extends React.Component {
   }
 }
 
-App.defaultProps = {
+Tutorial.defaultProps = {
+  // tutorial: true,
+  tutorialSteps: [
+    "play", "endless", "start", 15, 13, "submit", 16, 11, 7, 8, "submit", "quit"
+  ],
+  currentStep: 0,
   newGame: false,
   generate: true,
   cellToggle: true,
@@ -413,4 +419,4 @@ App.defaultProps = {
   word: [] // { cell: '', letter: ''} cell is short for cellName
 }
 
-export default App;
+export default Tutorial;
