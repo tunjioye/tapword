@@ -8,6 +8,10 @@
   text-transform: uppercase;
   background: #345;
   color: #fff;
+  user-select: none;
+  -ms-user-select: none;
+  -moz-user-select: none;
+  -webkit-user-select: none;
 
   &:hover,
   &:focus {
