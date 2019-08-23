@@ -215,9 +215,9 @@ class App extends React.Component {
   }
   submitWord() {
     if (this.hasStartedNewGame()) {
-      this.saveGameProgress('loading')
-
       if (this.state.word.length > 0) {
+        this.saveGameProgress('loading')
+
         let word = this.state.word.map(x => x.letter).join('').toLowerCase()
         spellcheck.get('?text=' + word)
         .then(function (response) {
