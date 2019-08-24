@@ -344,6 +344,8 @@ class App extends React.Component {
     }
   }
   render() {
+    const wordCells = this.state.word.map(x => x.cell)
+
     return (
       <div className="App">
         <header className="App-header">
@@ -369,6 +371,7 @@ class App extends React.Component {
               <GridNew
                 size={this.state.size}
                 rows={this.state.rows}
+                wordCells={wordCells}
                 handleCellClick={this.handleCellClick} />
               <Sidebar
                 multiplier={this.state.multiplier}
