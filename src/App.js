@@ -395,7 +395,9 @@ class App extends React.Component {
             handleMinuteClick={this.handleMinuteClick} />
         }
         <Player />
-        <Help />
+        <Help
+          newGame={this.state.newGame}
+          quickTutorial={this.props.quickTutorial} />
       </div>
     );
   }
