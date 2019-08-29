@@ -355,7 +355,7 @@ class App extends React.Component {
           <div id="saving-progress" className="d-hide">
             <Loading />
           </div>
-          <div>
+          <div style={{ padding: '1rem' }}>
             <div>
               <div>
                 <Score score={this.state.score} />
