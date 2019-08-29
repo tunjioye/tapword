@@ -41,7 +41,9 @@ class Game extends React.Component {
   }
 
   render() {
-    return (this.state.tutorial) ? <Tutorial endTutorial={this.endTutorial} /> : <App />
+    return (this.state.tutorial)
+      ? <Tutorial endTutorial={this.endTutorial} />
+      : <App quickTutorial={this.quickTutorial} />
   }
 }
 

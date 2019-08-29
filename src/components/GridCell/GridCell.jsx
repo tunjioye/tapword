@@ -8,7 +8,7 @@ const GridCell = (props) => {
 
   const cellInfo = (
     <div
-      className={`grid-cell ${(props.className) ? props.className : ""} ${(props.wordCells.indexOf(cell) !== -1) ? "selected" : ""}`.trim()}
+      className={`grid-cell ${(props.wordCells.indexOf(cell) !== -1) ? "selected" : ""}`}
       row={props.rowName}
       cell={cell}
       onClick={props.handleCellClick}

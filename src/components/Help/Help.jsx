@@ -2,20 +2,21 @@ import React from 'react'
 import Modal from './../Modal'
 import GitHubButton from 'react-github-btn'
 
-function Help() {
+function Help({ quickTutorial, newGame }) {
   return (
     <Modal title={`HELP & ABOUT`} id={`help`}>
-      <div>
-        <h5 style={spacedTypo}>HOW TO PLAY</h5>
-        <div>...</div>
-        <div>&nbsp;</div>
-        <div>&bull; Select some letters to make a word</div>
-        <div>&bull; Click Submit Button to evaluate your Score</div>
-        <div>&bull; QUITING IS NOT AN OPTION!</div>
-        <div>&bull; <em>How to Play Tutorial coming soon ...</em></div>
-      </div>
-      <br />
-      <br />
+      {(quickTutorial && !newGame) &&
+        <>
+          <div>
+            <h5 style={spacedTypo}>HOW TO PLAY</h5>
+            <div>...</div>
+            <div>&nbsp;</div>
+            <button style={saveButton} onClick={quickTutorial}>Play Quick Tutorial</button>
+          </div>
+          <br />
+          <br />
+        </>
+      }
       <div>
         <h5 style={spacedTypo}>KEYBOARD SHORTCUTS</h5>
         <div>...</div>
@@ -48,21 +49,20 @@ function Help() {
         <div style={textCenter}><em>Play and Boast of your Vocabulary among friends</em></div>
         <div>&nbsp;</div>
         <div style={{ ...spacedTypo, ...textCenter }}>+++ THANK YOU +++</div>
-      </div>
-      <br />
-      <br />
-      <div style={{ ...spacedTypo, ...textCenter }}>*** <a style={customLink} href="https://github.com/tunjioye/tapword" target="_blank" rel="noopener noreferrer">Git Repo</a> ***</div>
-      <br />
-      <div style={{ ...textCenter }}>
-        <GitHubButton
-          href="https://github.com/tunjioye/tapword"
-          data-icon="octicon-star"
-          aria-label="Star tunjioye/tapword on GitHub">Star</GitHubButton>
-        <span style={{ padding: '0 5px' }}></span>
-        <GitHubButton
-          href="https://github.com/tunjioye/tapword/fork"
-          data-icon="octicon-repo-forked"
-          aria-label="Fork tunjioye/tapword on GitHub">Fork</GitHubButton>
+        <br />
+        <div style={{ ...spacedTypo, ...textCenter }}>*** <a style={customLink} href="https://github.com/tunjioye/tapword" target="_blank" rel="noopener noreferrer">Git Repo</a> ***</div>
+        <br />
+        <div style={{ ...textCenter }}>
+          <GitHubButton
+            href="https://github.com/tunjioye/tapword"
+            data-icon="octicon-star"
+            aria-label="Star tunjioye/tapword on GitHub">Star</GitHubButton>
+          <span style={{ padding: '0 5px' }}></span>
+          <GitHubButton
+            href="https://github.com/tunjioye/tapword/fork"
+            data-icon="octicon-repo-forked"
+            aria-label="Fork tunjioye/tapword on GitHub">Fork</GitHubButton>
+        </div>
       </div>
     </Modal>
   )
@@ -101,6 +101,16 @@ const dl = {
   dd: {
     display: 'inline'
   }
+}
+
+const saveButton = {
+  background: 'transparent',
+  color: '#FFF',
+  textDecoration: 'none',
+  border: '1px solid #28F',
+  padding: '6px 8px 6px 12px',
+  cursor: 'pointer',
+  fontWeight: 600
 }
 
 export default Help

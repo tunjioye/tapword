@@ -344,6 +344,8 @@ class App extends React.Component {
     }
   }
   render() {
+    const wordCells = this.state.word.map(x => x.cell)
+
     return (
       <div className="App">
         <header className="App-header">
@@ -353,7 +355,7 @@ class App extends React.Component {
           <div id="saving-progress" className="d-hide">
             <Loading />
           </div>
-          <div>
+          <div style={{ padding: '1rem' }}>
             <div>
               <div>
                 <Score score={this.state.score} />
@@ -369,6 +371,7 @@ class App extends React.Component {
               <GridNew
                 size={this.state.size}
                 rows={this.state.rows}
+                wordCells={wordCells}
                 handleCellClick={this.handleCellClick} />
               <Sidebar
                 multiplier={this.state.multiplier}
@@ -392,7 +395,9 @@ class App extends React.Component {
             handleMinuteClick={this.handleMinuteClick} />
         }
         <Player />
-        <Help />
+        <Help
+          newGame={this.state.newGame}
+          quickTutorial={this.props.quickTutorial} />
       </div>
     );
   }
