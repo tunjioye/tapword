@@ -372,6 +372,7 @@ class Tutorial extends React.Component {
                 clickThis={this.state.tutorialSteps[this.state.currentStep]}
                 nextTutorialStep={this.nextTutorialStep}
                 multiplier={this.state.multiplier}
+                size={this.state.size}
                 minutes={parseFloat(this.state.minutes)}
                 newGame={this.state.newGame}
                 setMinutes={this.setMinutes}

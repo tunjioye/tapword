@@ -375,6 +375,7 @@ class App extends React.Component {
                 handleCellClick={this.handleCellClick} />
               <Sidebar
                 multiplier={this.state.multiplier}
+                size={this.state.size}
                 minutes={parseFloat(this.state.minutes)}
                 newGame={this.state.newGame}
                 setMinutes={this.setMinutes}
