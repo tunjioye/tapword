@@ -1,5 +1,5 @@
-import React from 'react';
-import '../topbar.scss';
+import React from 'react'
+import '../topbar.scss'
 
 class Topbar extends React.Component {
   constructor(props) {
@@ -8,8 +8,8 @@ class Topbar extends React.Component {
     this.menuRef = React.createRef()
   }
   toggleMenu() {
-    this.menuIconRef.current.classList.toggle('active');
-    this.menuRef.current.classList.toggle('active');
+    this.menuIconRef.current.classList.toggle('active')
+    this.menuRef.current.classList.toggle('active')
   }
   render() {
     return (
@@ -20,14 +20,20 @@ class Topbar extends React.Component {
         </div>
         <div className="menu" ref={this.menuRef}>
           <ul>
-            <li><span>PLAY</span></li>
-            <li><span>SETTINGS</span></li>
-            <li><span>PLAYER</span></li>
+            <li>
+              <span>PLAY</span>
+            </li>
+            <li>
+              <span>SETTINGS</span>
+            </li>
+            <li>
+              <span>PLAYER</span>
+            </li>
           </ul>
         </div>
       </div>
-    );
+    )
   }
 }
 
-export default Topbar;
+export default Topbar

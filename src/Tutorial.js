@@ -1,18 +1,18 @@
-import React from 'react';
-import './App.css';
-import './styles/index.css';
-import './styles/grids.scss';
-import spellcheck from './spellcheck';
-import Loading from './components/Loading';
+import React from 'react'
+import './App.css'
+import './styles/index.css'
+import './styles/grids.scss'
+import spellcheck from './spellcheck'
+import Loading from './components/Loading'
 // import Topbar from './components/Topbar';
-import GridNew from './components/GridNew';
+import GridNew from './components/GridNew'
 // import Grid from './components/Grid';
-import Score from './components/Score';
-import Selection from './components/Selection';
-import Sidebar from './components/Sidebar';
-import Play from './components/Play';
-import Player from './components/Player';
-import Help from './components/Help';
+import Score from './components/Score'
+import Selection from './components/Selection'
+import Sidebar from './components/Sidebar'
+import Play from './components/Play'
+import Player from './components/Player'
+import Help from './components/Help'
 
 class Tutorial extends React.Component {
   constructor(props) {
@@ -31,7 +31,7 @@ class Tutorial extends React.Component {
       word: props.word,
       cellToggle: props.cellToggle,
       shuffle: props.shuffle,
-      shuffleAll: props.shuffleAll
+      shuffleAll: props.shuffleAll,
     }
     this.startNewGame = this.startNewGame.bind(this)
     this.quitGame = this.quitGame.bind(this)
@@ -64,7 +64,7 @@ class Tutorial extends React.Component {
         multiplier: 1,
         score: 0,
         lastWordLength: 0,
-        word: []
+        word: [],
       })
       this.resetSelectedCells()
       window.location.hash = ''
@@ -73,12 +73,12 @@ class Tutorial extends React.Component {
       this.nextTutorialStep()
     } else {
       this.setState({
-        currentStep: 1
+        currentStep: 1,
       })
     }
   }
   quitGame(quitMessage = ' ') {
-    if (typeof(quitMessage) === 'string' && quitMessage !== '') {
+    if (typeof quitMessage === 'string' && quitMessage !== '') {
       window.alert(`${quitMessage} \r\nYour Score is : ${this.state.score}`)
     } else {
       window.alert(`Your Score is : ${this.state.score}`)
@@ -86,12 +86,12 @@ class Tutorial extends React.Component {
     this.setState({ newGame: false })
     if (window.localStorage.getItem('game')) window.localStorage.removeItem('game')
     // For Tutorial : end Tutorial
-    window.localStorage.setItem('tw_quicktutorial', "done")
+    window.localStorage.setItem('tw_quicktutorial', 'done')
     window.alert(`Thanks for taking our Quick Tutorial`)
     this.props.endTutorial()
   }
   hasStartedNewGame() {
-    return (this.state.newGame) ? true : false
+    return this.state.newGame ? true : false
   }
   setMinutes(minutes) {
     this.setState({ minutes })
@@ -100,7 +100,9 @@ class Tutorial extends React.Component {
     const chars = [...'ABCDEFGHIJKLMNOPQRSTUVWXYZ']
     let letters = []
     for (let i = 0; i < this.state.size; i++) {
-      letters[i] = [...Array(parseInt(this.state.size))].map(x => chars[Math.floor(Math.random() * chars.length) | 0]).join('')
+      letters[i] = [...Array(parseInt(this.state.size))]
+        .map((x) => chars[Math.floor(Math.random() * chars.length) | 0])
+        .join('')
     }
     return letters
   }
@@ -108,10 +110,10 @@ class Tutorial extends React.Component {
     if (this.hasStartedNewGame()) {
       // For Tutorial : prevent unexpected cell click
       const { tutorialSteps, currentStep } = this.state
-      switch(`c${tutorialSteps[currentStep]}`) {
+      switch (`c${tutorialSteps[currentStep]}`) {
         case e.target.getAttribute('cell'):
           this.nextTutorialStep()
-          break;
+          break
         default:
           return
       }
@@ -122,14 +124,14 @@ class Tutorial extends React.Component {
       let word = this.state.word
       if (this.state.cellToggle) {
         // cell toggle
-        if (word.filter(x => x.cell === cellName).length === 0) {
+        if (word.filter((x) => x.cell === cellName).length === 0) {
           this.pushSelectionWord(cell)
         } else {
           this.toggleSelectionWord(e)
         }
       } else {
         // word pop
-        if (word.filter(x => x.cell === cellName).length === 0) {
+        if (word.filter((x) => x.cell === cellName).length === 0) {
           this.pushSelectionWord(cell)
         } else if (word[word.length - 1].cell === cellName) {
           this.popSelectionWord()
@@ -148,7 +150,7 @@ class Tutorial extends React.Component {
       let cellName = cell.getAttribute('cell')
       let word = this.state.word
 
-      word = word.filter(x => x.cell !== cellName)
+      word = word.filter((x) => x.cell !== cellName)
       this.setState({ word })
 
       this.saveGameProgress('save')
@@ -159,7 +161,7 @@ class Tutorial extends React.Component {
     let word = this.state.word
     word[word.length] = {
       cell: cellName,
-      letter: cell.innerHTML
+      letter: cell.innerHTML,
     }
 
     this.setState({ word })
@@ -203,11 +205,11 @@ class Tutorial extends React.Component {
   }
   updateScore(wordLength) {
     let score = this.state.score
-    score += (wordLength * this.state.multiplier)
+    score += wordLength * this.state.multiplier
     this.updateMultiplier(wordLength)
     this.setState({
       score: score,
-      lastWordLength: wordLength
+      lastWordLength: wordLength,
     })
   }
   resetSelectedCells() {
@@ -222,7 +224,7 @@ class Tutorial extends React.Component {
       } else {
         // shuffle only selected cells
         const chars = [...'ABCDEFGHIJKLMNOPQRSTUVWXYZ']
-        selectedCells.forEach(x => x.innerHTML = chars[Math.floor(Math.random() * chars.length) | 0])
+        selectedCells.forEach((x) => (x.innerHTML = chars[Math.floor(Math.random() * chars.length) | 0]))
       }
     }
   }
@@ -231,43 +233,51 @@ class Tutorial extends React.Component {
       if (this.state.word.length > 0) {
         this.saveGameProgress('loading')
 
-        let word = this.state.word.map(x => x.letter).join('').toLowerCase()
-        spellcheck.get('?text=' + word)
-        .then(function (response) {
-          let selectedCells = document.querySelectorAll('[class="grid-cell selected"]')
-          if (response.data.corrections[word] === undefined) {
-            selectedCells.forEach(x => x.classList.add('flash-success'))
-            setTimeout(() => {
-              selectedCells.forEach(x => x.classList.remove('flash-success'))
-              this.updateScore(word.length)
-              this.clearSelectionWord()
-              this.resetSelectedCells()
-              this.saveGameProgress('save')
+        let word = this.state.word
+          .map((x) => x.letter)
+          .join('')
+          .toLowerCase()
+        spellcheck
+          .get('?text=' + word)
+          .then(
+            function (response) {
+              let selectedCells = document.querySelectorAll('[class="grid-cell selected"]')
+              if (response.data.corrections[word] === undefined) {
+                selectedCells.forEach((x) => x.classList.add('flash-success'))
+                setTimeout(() => {
+                  selectedCells.forEach((x) => x.classList.remove('flash-success'))
+                  this.updateScore(word.length)
+                  this.clearSelectionWord()
+                  this.resetSelectedCells()
+                  this.saveGameProgress('save')
 
-              // For Tutorial : next Tutotial Step on Submit
-              this.nextTutorialStep()
-            }, 500)
-          } else {
-            document.getElementById('selection-word').classList.add('shake')
-            selectedCells.forEach(x => x.classList.add('flash-error'))
-            setTimeout(() => {
-              document.getElementById('selection-word').classList.remove('shake')
-              selectedCells.forEach(x => x.classList.remove('flash-error'))
+                  // For Tutorial : next Tutotial Step on Submit
+                  this.nextTutorialStep()
+                }, 500)
+              } else {
+                document.getElementById('selection-word').classList.add('shake')
+                selectedCells.forEach((x) => x.classList.add('flash-error'))
+                setTimeout(() => {
+                  document.getElementById('selection-word').classList.remove('shake')
+                  selectedCells.forEach((x) => x.classList.remove('flash-error'))
+                  this.saveGameProgress('save')
+                }, 500)
+              }
+            }.bind(this)
+          )
+          .catch(
+            function (error) {
+              if (error) {
+                let errorMessage = 'Network Error'
+                if (error.response !== undefined) {
+                  errorMessage = error.response.data.message
+                }
+                console.error(errorMessage)
+                alert(errorMessage)
+              }
               this.saveGameProgress('save')
-            }, 500)
-          }
-        }.bind(this))
-        .catch(function (error) {
-          if (error) {
-            let errorMessage = "Network Error"
-            if (error.response !== undefined) {
-              errorMessage = error.response.data.message
-            }
-            console.error(errorMessage)
-            alert(errorMessage)
-          }
-          this.saveGameProgress('save')
-        }.bind(this))
+            }.bind(this)
+          )
       }
     }
   }
@@ -280,12 +290,12 @@ class Tutorial extends React.Component {
           window.localStorage.setItem('game', JSON.stringify(this.state))
           savingProgress.classList.add('d-hide')
         }, 500)
-        break;
+        break
       case 'loading':
       default:
         // show saving progress indicator
         savingProgress.classList.remove('d-hide')
-        break;
+        break
     }
   }
   handleGridSizeClick(e) {
@@ -308,13 +318,13 @@ class Tutorial extends React.Component {
     this.setState({ minutes: parseInt(e.target.innerText) })
     // For Tutorial : goto next Tutorial Step only for expected minute click
     const { tutorialSteps, currentStep } = this.state
-    if (tutorialSteps[currentStep] === "endless" && e.target.innerText === "0") this.nextTutorialStep()
+    if (tutorialSteps[currentStep] === 'endless' && e.target.innerText === '0') this.nextTutorialStep()
   }
   // For Tutorial : next tutorial Step Function
   nextTutorialStep() {
     const { currentStep } = this.state
     this.setState({
-      currentStep: currentStep + 1
+      currentStep: currentStep + 1,
     })
   }
   handleKeyUp(e) {
@@ -324,23 +334,23 @@ class Tutorial extends React.Component {
       case 46:
         e.preventDefault()
         this.popSelectionWord()
-        break;
+        break
       // return or enter | spacebar key to submit
       case 13:
       case 32:
         e.preventDefault()
         this.submitWord()
-        break;
+        break
       default:
-        break;
+        break
     }
   }
   componentDidMount() {
-    document.addEventListener("keyup", this.handleKeyUp)
+    document.addEventListener('keyup', this.handleKeyUp)
     if (this.props.generate) this.setState({ rows: this.randomLetters() })
   }
   render() {
-    const wordCells = this.state.word.map(x => x.cell)
+    const wordCells = this.state.word.map((x) => x.cell)
 
     return (
       <div className="App">
@@ -357,7 +367,7 @@ class Tutorial extends React.Component {
                 <Score score={this.state.score} />
               </div>
               <div>
-                <Selection word={this.state.word.map(x => x.letter)} />
+                <Selection word={this.state.word.map((x) => x.letter)} />
               </div>
             </div>
 
@@ -367,7 +377,8 @@ class Tutorial extends React.Component {
               <GridNew
                 clickThis={this.state.tutorialSteps[this.state.currentStep]}
                 wordCells={wordCells}
-                handleCellClick={this.handleCellClick} />
+                handleCellClick={this.handleCellClick}
+              />
               <Sidebar
                 clickThis={this.state.tutorialSteps[this.state.currentStep]}
                 nextTutorialStep={this.nextTutorialStep}
@@ -379,11 +390,12 @@ class Tutorial extends React.Component {
                 saveGameProgress={this.saveGameProgress}
                 quitGame={this.quitGame}
                 handleUndoButtonClick={this.popSelectionWord}
-                handleSubmitButtonClick={this.submitWord} />
+                handleSubmitButtonClick={this.submitWord}
+              />
             </div>
           </div>
         </header>
-        {!this.state.newGame &&
+        {!this.state.newGame && (
           <Play
             clickThis={this.state.tutorialSteps[this.state.currentStep]}
             newGame={this.state.newGame}
@@ -391,20 +403,19 @@ class Tutorial extends React.Component {
             size={this.state.size}
             minutes={this.state.minutes}
             handleGridSizeClick={this.handleGridSizeClick}
-            handleMinuteClick={this.handleMinuteClick} />
-        }
+            handleMinuteClick={this.handleMinuteClick}
+          />
+        )}
         <Player />
         <Help />
       </div>
-    );
+    )
   }
 }
 
 Tutorial.defaultProps = {
   // tutorial: true,
-  tutorialSteps: [
-    "play", "endless", "start", 15, 13, "submit", 16, 11, 7, 8, "submit", "quit"
-  ],
+  tutorialSteps: ['play', 'endless', 'start', 15, 13, 'submit', 16, 11, 7, 8, 'submit', 'quit'],
   currentStep: 0,
   newGame: false,
   generate: true,
@@ -417,7 +428,7 @@ Tutorial.defaultProps = {
   multiplier: 1,
   score: 0,
   lastWordLength: 0,
-  word: [] // { cell: '', letter: ''} cell is short for cellName
+  word: [], // { cell: '', letter: ''} cell is short for cellName
 }
 
-export default Tutorial;
+export default Tutorial

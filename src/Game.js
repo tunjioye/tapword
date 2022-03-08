@@ -8,7 +8,7 @@ class Game extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      tutorial: props.tutorial
+      tutorial: props.tutorial,
     }
 
     this.quickTutorial = this.quickTutorial.bind(this)
@@ -18,14 +18,14 @@ class Game extends React.Component {
   quickTutorial() {
     if (window.confirm('Quick Tutorial?')) {
       this.setState({
-        tutorial: true
+        tutorial: true,
       })
     }
   }
 
   endTutorial() {
     this.setState({
-      tutorial: false
+      tutorial: false,
     })
   }
 
@@ -41,18 +41,20 @@ class Game extends React.Component {
   }
 
   render() {
-    return (this.state.tutorial)
-      ? <Tutorial endTutorial={this.endTutorial} />
-      : <App quickTutorial={this.quickTutorial} />
+    return this.state.tutorial ? (
+      <Tutorial endTutorial={this.endTutorial} />
+    ) : (
+      <App quickTutorial={this.quickTutorial} />
+    )
   }
 }
 
 Game.propTypes = {
-  tutorial: PropTypes.bool
+  tutorial: PropTypes.bool,
 }
 
 Game.defaultProps = {
-  tutorial: false
+  tutorial: false,
 }
 
 export default Game
