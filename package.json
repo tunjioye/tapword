@@ -21,7 +21,7 @@
     "react-dom": "^17.0.2",
     "react-github-btn": "^1.2.1",
     "react-scripts": "5.0.0",
-    "spellchecker": "^3.7.1"
+    "spell-checker-js": "^1.2.6"
   },
   "devDependencies": {
     "eslint-config-react-app": "^7.0.0"

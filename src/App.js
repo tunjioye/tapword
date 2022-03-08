@@ -224,10 +224,17 @@ class App extends React.Component {
           .map((x) => x.letter)
           .join('')
           .toLowerCase()
+
+        // const spell = require('spell-checker-js')
+        // spell.load('en')
+        // const check = spell.check(word)
+        // console.log(check)
+
         spellcheck
           .get('?text=' + word)
           .then(
             function (response) {
+              console.log(response)
               let selectedCells = document.querySelectorAll('[class="grid-cell selected"]')
               if (response.data.corrections[word] === undefined) {
                 selectedCells.forEach((x) => x.classList.add('flash-success'))
