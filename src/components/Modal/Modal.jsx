@@ -1,6 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import './Modal.scss'
+// import './Modal.scss'
 
 const Modal = ({ id, transparent, canClose, title, children, footer }) => (
   <div className="modal" id={id}>

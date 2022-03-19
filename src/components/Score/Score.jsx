@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import './../Selection/Selection.scss'
-import './Score.scss'
+// import './../Selection/Selection.scss'
+// import './Score.scss'
 import SelectionCell from './../SelectionCell'
 
 const Score = (props) => {

@@ -1,6 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import './Sidebar.scss'
+// import './Sidebar.scss'
 import Countdown from './../Countdown'
 import Popover from './../Popover'
 
@@ -9,7 +9,7 @@ class Sidebar extends React.Component {
     window.location.hash = ''
     window.location.hash = 'play'
     // set App Minutes
-    this.props.setMinutes(parseInt(this.props.minutes))
+    this.props.setTimeMinutes(parseInt(this.props.minutes))
     // For Tutorial
     if (this.props.clickThis && this.props.clickThis === "play") {
       this.props.nextTutorialStep()
@@ -34,7 +34,7 @@ class Sidebar extends React.Component {
         <Countdown
           minutes={parseFloat(this.props.minutes)}
           newGame={this.props.newGame}
-          setMinutes={this.props.setMinutes}
+          setTimeMinutes={this.props.setTimeMinutes}
           saveGameProgress={this.props.saveGameProgress}
           quitGame={this.props.quitGame} />
         {/* <span className="highlight">m</span> */}
@@ -110,7 +110,7 @@ Sidebar.propTypes = {
   minutes: PropTypes.number,
   multiplier: PropTypes.number,
   newGame: PropTypes.bool,
-  setMinutes: PropTypes.func,
+  setTimeMinutes: PropTypes.func,
   saveGameProgress: PropTypes.func,
   quitGame: PropTypes.func,
   handleUndoButtonClick: PropTypes.func,

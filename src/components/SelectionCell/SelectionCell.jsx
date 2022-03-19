@@ -1,6 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import './SelectionCell.scss'
+// import './SelectionCell.scss'
 
 const SelectionCell = (props) => (
   <div className="selection-cell" style={{ ...props.style }}>

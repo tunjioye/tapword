@@ -8,7 +8,7 @@ const spellcheck = axios.create({
 })
 
 function removeLastWordRequest() {
-  if (window.localStorage.getItem('last_word_request')) {
+  if ( typeof window !== "undefined" && window.localStorage.getItem('last_word_request')) {
     window.localStorage.removeItem('last_word_request')
   }
 }
@@ -18,14 +18,14 @@ removeLastWordRequest()
 spellcheck.interceptors.request.use(
   function (config) {
     // Do something before request is sent
-    if (window.localStorage.getItem('last_word_request')) {
+    if (typeof window !== "undefined" && window.localStorage.getItem('last_word_request')) {
       let lastReqUrl = window.localStorage.getItem('last_word_request')
       if (lastReqUrl === arguments[0]['url']) {
         return Promise.reject(false)
       }
     }
 
-    window.localStorage.setItem('last_word_request', arguments[0]['url'])
+    typeof window !== "undefined" && window.localStorage.setItem('last_word_request', arguments[0]['url'])
 
     // remove last word request after 5 seconds
     setTimeout(() => {

@@ -1,6 +1,5 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import './Countdown.scss'
 // import CountdownCircle from './../CountdownCircle'
 
 class Countdown extends React.Component {
@@ -61,7 +60,7 @@ class Countdown extends React.Component {
 
     if (seconds > 0) {
       // set Game / App Minutes & save Game Progress
-      this.props.setMinutes(parseFloat(seconds / 60).toFixed(3))
+      this.props.setTimeMinutes(parseFloat(seconds / 60).toFixed(3))
       setTimeout(() => {
         this.props.saveGameProgress('save')
       }, 1000)
@@ -79,7 +78,7 @@ class Countdown extends React.Component {
     if (!this.props.newGame) this.stopTimer()
   }
 
-  componentWillReceiveProps(nextProps) {
+  UNSAFE_componentWillReceiveProps(nextProps) {
     if (this.props !== nextProps) {
       setTimeout(() => {
         this.setState({ seconds: nextProps.minutes * 60 })
@@ -119,7 +118,7 @@ class Countdown extends React.Component {
 Countdown.propTypes = {
   minutes: PropTypes.number,
   newGame: PropTypes.bool,
-  setMinutes: PropTypes.func,
+  setTimeMinutes: PropTypes.func,
   saveGameProgress: PropTypes.func,
   quitGame: PropTypes.func
 }

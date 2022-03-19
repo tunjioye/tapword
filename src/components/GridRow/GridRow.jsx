@@ -1,6 +1,5 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import './GridRow.scss'
 import GridCell from '../GridCell'
 
 const GridRow = (props) => {

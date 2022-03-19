@@ -1,6 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import './GridCell.scss'
+// import './GridCell.scss'
 import Popover from './../Popover'
 
 const GridCell = (props) => {

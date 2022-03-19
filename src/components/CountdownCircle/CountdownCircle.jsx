@@ -1,6 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import './CountdownCircle.scss'
+// import './CountdownCircle.scss'
 
 const CountdownCircle = ({ radius }) => (
   <svg className='countdown-svg' style={{ marginLeft: '-7px', marginTop: '-8px' }}>

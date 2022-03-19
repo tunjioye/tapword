@@ -1,6 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import './Popover.scss'
+// import './Popover.scss'
 
 const Popover = ({ children, className }) => (
   <div className={`popover ${className}`}>

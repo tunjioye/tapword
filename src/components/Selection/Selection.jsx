@@ -1,6 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import './Selection.scss'
+// import './Selection.scss'
 import SelectionCell from './../SelectionCell'
 
 const Selection = (props) => {

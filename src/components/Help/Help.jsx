@@ -1,6 +1,6 @@
 import React from 'react'
 import Modal from './../Modal'
-import GitHubButton from 'react-github-btn'
+// import GitHubButton from 'react-github-btn'
 
 function Help({ quickTutorial, newGame }) {
   return (
@@ -52,7 +52,7 @@ function Help({ quickTutorial, newGame }) {
         <br />
         <div style={{ ...spacedTypo, ...textCenter }}>*** <a style={customLink} href="https://github.com/tunjioye/tapword" target="_blank" rel="noopener noreferrer">Git Repo</a> ***</div>
         <br />
-        <div style={{ ...textCenter }}>
+        {/* <div style={{ ...textCenter }}>
           <GitHubButton
             href="https://github.com/tunjioye/tapword"
             data-icon="octicon-star"
@@ -62,7 +62,7 @@ function Help({ quickTutorial, newGame }) {
             href="https://github.com/tunjioye/tapword/fork"
             data-icon="octicon-repo-forked"
             aria-label="Fork tunjioye/tapword on GitHub">Fork</GitHubButton>
-        </div>
+        </div> */}
       </div>
     </Modal>
   )

@@ -1,7 +1,4 @@
 import React from 'react'
-import './App.css'
-import './styles/index.css'
-import './styles/grids.scss'
 import spellcheck from './spellcheck'
 import Loading from './components/Loading'
 // import Topbar from './components/Topbar';
@@ -33,7 +30,7 @@ class App extends React.Component {
     this.startNewGame = this.startNewGame.bind(this)
     this.quitGame = this.quitGame.bind(this)
     this.hasStartedNewGame = this.hasStartedNewGame.bind(this)
-    this.setMinutes = this.setMinutes.bind(this)
+    this.setTimeMinutes = this.setTimeMinutes.bind(this)
     this.randomLetters = this.randomLetters.bind(this)
     this.handleCellClick = this.handleCellClick.bind(this)
     this.toggleSelectionWord = this.toggleSelectionWord.bind(this)
@@ -80,7 +77,7 @@ class App extends React.Component {
       return false
     }
   }
-  setMinutes(minutes) {
+  setTimeMinutes(minutes) {
     this.setState({ minutes })
   }
   randomLetters() {
@@ -396,7 +393,7 @@ class App extends React.Component {
                 size={this.state.size}
                 minutes={parseFloat(this.state.minutes)}
                 newGame={this.state.newGame}
-                setMinutes={this.setMinutes}
+                setTimeMinutes={this.setTimeMinutes}
                 saveGameProgress={this.saveGameProgress}
                 quitGame={this.quitGame}
                 handleUndoButtonClick={this.popSelectionWord}

@@ -1,52 +1,32 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import PropTypes from 'prop-types'
-import './styles/game.css'
 import App from './App'
 import Tutorial from './Tutorial'
+function Game(props) {
+  const [tutorial, setTutorial] = useState(props.tutorial)
 
-class Game extends React.Component {
-  constructor(props) {
-    super(props)
-    this.state = {
-      tutorial: props.tutorial,
-    }
-
-    this.quickTutorial = this.quickTutorial.bind(this)
-    this.endTutorial = this.endTutorial.bind(this)
-  }
-
-  quickTutorial() {
+  const quickTutorial = () => {
     if (window.confirm('Quick Tutorial?')) {
-      this.setState({
-        tutorial: true,
-      })
+      setTutorial(true)
     }
   }
 
-  endTutorial() {
-    this.setState({
-      tutorial: false,
-    })
+  const endTutorial = () => {
+    setTutorial(false)
   }
 
-  componentDidMount() {
+  useEffect(() => {
     setTimeout(() => {
       if (!window.localStorage.getItem('tw_quicktutorial')) {
         // request quick Tutoial Permission
-        this.quickTutorial()
+        quickTutorial()
       } else {
-        this.endTutorial()
+        endTutorial()
       }
     }, 100)
-  }
+  }, [])
 
-  render() {
-    return this.state.tutorial ? (
-      <Tutorial endTutorial={this.endTutorial} />
-    ) : (
-      <App quickTutorial={this.quickTutorial} />
-    )
-  }
+  return <>{tutorial ? <Tutorial endTutorial={endTutorial} /> : <App quickTutorial={quickTutorial} />}</>
 }
 
 Game.propTypes = {

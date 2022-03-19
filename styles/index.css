@@ -132,3 +132,93 @@ code {
     50% { background-color: #3d4; }
     100% { background-color: none; }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+.App {
+    text-align: center;
+}
+
+.App-logo {
+    animation: App-logo-spin infinite 20s linear;
+    height: 40vmin;
+    pointer-events: none;
+}
+
+.App-header {
+    background-color: #252931;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-size: calc(10px + 2vmin);
+    color: white;
+}
+
+.App-link {
+    color: #61dafb;
+}
+
+@keyframes App-logo-spin {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+
+/* Tooltip */
+.tooltip {
+    position: relative;
+}
+.tooltip::after {
+    background: #567;
+    border-radius: 0.1rem;
+    bottom: 100%;
+    color: #fff;
+    content: attr(data-tooltip);
+    display: block;
+    font-size: 0.7rem;
+    left: 50%;
+    max-width: 320px;
+    opacity: 0;
+    overflow: hidden;
+    padding: 0.2rem 0.4rem;
+    pointer-events: none;
+    position: absolute;
+    text-overflow: ellipsis;
+    text-transform: uppercase;
+    transition: all 0.2s ease;
+    white-space: pre;
+    z-index: 300;
+    transform: translate(-50%, 0.4rem);
+    -webkit-transform: translate(-50%, 0.4rem);
+    -moz-transform: translate(-50%, 0.4rem);
+    -ms-transform: translate(-50%, 0.4rem);
+    -o-transform: translate(-50%, 0.4rem);
+}
+.tooltip:hover::after {
+    opacity: 1;
+    transform: translate(-50%, -0.2rem);
+    -webkit-transform: translate(-50%, -0.2rem);
+    -moz-transform: translate(-50%, -0.2rem);
+    -ms-transform: translate(-50%, -0.2rem);
+    -o-transform: translate(-50%, -0.2rem);
+}
+.tooltip[disabled],
+.tooltip.disabled {
+    pointer-events: auto;
+}
