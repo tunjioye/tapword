@@ -5,7 +5,7 @@ export default function Home() {
   return (
     <div>
       <Head>
-        <meta charset="utf-8" />
+        <meta charSet="utf-8" />
         <meta httpEquiv="X-UA-Compatible" content="IE=edge" />
         <link rel="shortcut icon" href="%PUBLIC_URL%/favicon.ico?v=0" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />

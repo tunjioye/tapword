@@ -5,9 +5,12 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
+    "export": "next export",
     "start": "next start",
     "lint": "next lint",
-    "format": "prettier --write '**/*.{js,jsx}'"
+    "format": "prettier --write '**/*.{js,jsx}'",
+    "predeploy": "yarn build && yarn export",
+    "deploy": "gh-pages -d out"
   },
   "dependencies": {
     "an-array-of-english-words": "^2.0.0",
