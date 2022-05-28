@@ -1,38 +1,36 @@
 import React from 'react'
 import Modal from './../Modal'
 
-class Player extends React.Component {
-  saveProfile() {
+function Player() {
+
+  const   saveProfile =() => {
     console.log('saving profile and settings ...')
     window.location.hash = ''
   }
-
-  render() {
-    return (
-      <Modal title={`PLAYER`} id={`player`}>
-        <div>
-          <h5 style={spacedTypo}>PROFILE</h5>
-          <div>...</div>
-          <div>&nbsp;</div>
-          <div>Username : tunjioye</div>
-          <div>&nbsp;</div>
-          <div>Highest Score : 2019</div>
-        </div>
-        <br />
-        <br />
-        <div>
-          <h5 style={spacedTypo}>CELL SHUFFLE TYPE</h5>
-          <div>...</div>
-          <div>&nbsp;</div>
-          <div>SHUFFLE SELECTED CELLS | SHUFFLE ALL CELLS</div>
-          <div><em><small>cell reshuffle after submit</small></em></div>
-        </div>
-        <br />
-        <br />
-        <div style={{ ...spacedTypo, ...textCenter }}><button style={saveButton} onClick={this.saveProfile.bind(this)}>Save Profile</button></div>
-      </Modal>
-    )
-  }
+  return (
+    <Modal title={`PLAYER`} id={`player`}>
+    <div>
+      <h5 style={spacedTypo}>PROFILE</h5>
+      <div>...</div>
+      <div>&nbsp;</div>
+      <div>Username : tunjioye</div>
+      <div>&nbsp;</div>
+      <div>Highest Score : 2019</div>
+    </div>
+    <br />
+    <br />
+    <div>
+      <h5 style={spacedTypo}>CELL SHUFFLE TYPE</h5>
+      <div>...</div>
+      <div>&nbsp;</div>
+      <div>SHUFFLE SELECTED CELLS | SHUFFLE ALL CELLS</div>
+      <div><em><small>cell reshuffle after submit</small></em></div>
+    </div>
+    <br />
+    <br />
+    <div style={{ ...spacedTypo, ...textCenter }}><button style={saveButton} onClick={saveProfile}>Save Profile</button></div>
+  </Modal>
+  )
 }
 
 const spacedTypo = {
@@ -56,5 +54,6 @@ const saveButton = {
   cursor: 'pointer',
   fontWeight: 600
 }
+
 
 export default Player
