@@ -1,5 +1,5 @@
 import React from 'react'
-import spellcheck from './spellcheck'
+import checkwordApi from './checkwordApi'
 import Loading from './components/Loading'
 // import Topbar from './components/Topbar'
 import Grid from './components/Grid'
@@ -221,50 +221,41 @@ class App extends React.Component {
           .join('')
           .toLowerCase()
 
-        // const spell = require('spell-checker-js')
-        // spell.load('en')
-        // const check = spell.check(word)
-        // console.log(check)
-
-        spellcheck
-          .get('?text=' + word)
-          .then(
-            function (response) {
-              console.log(response)
-              let selectedCells = document.querySelectorAll('[class="grid-cell selected"]')
-              if (response.data.corrections[word] === undefined) {
-                selectedCells.forEach((x) => x.classList.add('flash-success'))
-                setTimeout(() => {
-                  selectedCells.forEach((x) => x.classList.remove('flash-success'))
-                  this.updateScore(word.length)
-                  this.clearSelectionWord()
-                  this.resetSelectedCells()
-                  this.saveGameProgress('save')
-                }, 500)
-              } else {
-                document.getElementById('selection-word').classList.add('shake')
-                selectedCells.forEach((x) => x.classList.add('flash-error'))
-                setTimeout(() => {
-                  document.getElementById('selection-word').classList.remove('shake')
-                  selectedCells.forEach((x) => x.classList.remove('flash-error'))
-                  this.saveGameProgress('save')
-                }, 500)
+        checkwordApi
+          .get('?word=' + word)
+          .then(({ data }) => {
+            const { exists: wordExists = false } = data || {}
+            let selectedCells = document.querySelectorAll('[class="grid-cell selected"]')
+            if (wordExists) {
+              selectedCells.forEach((x) => x.classList.add('flash-success'))
+              setTimeout(() => {
+                selectedCells.forEach((x) => x.classList.remove('flash-success'))
+                this.updateScore(word.length)
+                this.clearSelectionWord()
+                this.resetSelectedCells()
+                this.saveGameProgress('save')
+              }, 500)
+            } else {
+              document.getElementById('selection-word').classList.add('shake')
+              selectedCells.forEach((x) => x.classList.add('flash-error'))
+              setTimeout(() => {
+                document.getElementById('selection-word').classList.remove('shake')
+                selectedCells.forEach((x) => x.classList.remove('flash-error'))
+                this.saveGameProgress('save')
+              }, 500)
+            }
+          })
+          .catch((error) => {
+            if (error) {
+              let errorMessage = 'Network Error'
+              if (error.response !== undefined) {
+                errorMessage = error.response.data.message
               }
-            }.bind(this)
-          )
-          .catch(
-            function (error) {
-              if (error) {
-                let errorMessage = 'Network Error'
-                if (error.response !== undefined) {
-                  errorMessage = error.response.data.message
-                }
-                console.error(errorMessage)
-                alert(errorMessage)
-              }
-              this.saveGameProgress('save')
-            }.bind(this)
-          )
+              console.error(errorMessage)
+              alert(errorMessage)
+            }
+            this.saveGameProgress('save')
+          })
       }
     }
   }

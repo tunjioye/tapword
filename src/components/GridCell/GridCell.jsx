@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import clsx from 'clsx'
-import styles from './GridCell.module.scss'
+// import './GridCell.scss'
 import Popover from './../Popover'
 
 const GridCell = (props) => {
@@ -9,7 +9,7 @@ const GridCell = (props) => {
 
   const cellInfo = (
     <div
-      className={clsx(styles['grid-cell'], { [styles['selected']]: props.wordCells.indexOf(cell) !== -1 })}
+      className={clsx('grid-cell', { selected: props.wordCells.indexOf(cell) !== -1 })}
       row={props.rowName}
       cell={cell}
       onClick={props.handleCellClick}

@@ -117,39 +117,6 @@ code {
   }
 }
 
-/* Color Flash */
-.flash-error {
-  animation: flash-error 250ms 2;
-}
-
-@keyframes flash-error {
-  0% {
-    background-color: none;
-  }
-  50% {
-    background-color: #d34;
-  }
-  100% {
-    background-color: none;
-  }
-}
-
-.flash-success {
-  animation: flash-success 250ms 2;
-}
-
-@keyframes flash-success {
-  0% {
-    background-color: none;
-  }
-  50% {
-    background-color: #3d4;
-  }
-  100% {
-    background-color: none;
-  }
-}
-
 .App {
   text-align: center;
 }

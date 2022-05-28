@@ -1,11 +1,6 @@
 import axios from 'axios'
 
-const spellcheck = axios.create({
-  baseURL: 'https://montanaflynn-spellcheck.p.rapidapi.com/check/',
-  headers: {
-    'X-RapidAPI-Key': process.env.REACT_APP_SPELLCHECK_API_KEY,
-  },
-})
+const checkwordApi = axios.create({ baseURL: '/api/check-word' })
 
 function removeLastWordRequest() {
   if (typeof window !== 'undefined' && window.localStorage.getItem('last_word_request')) {
@@ -14,8 +9,8 @@ function removeLastWordRequest() {
 }
 removeLastWordRequest()
 
-// spellcheck request interceptor
-spellcheck.interceptors.request.use(
+// checkwordApi request interceptor
+checkwordApi.interceptors.request.use(
   function (config) {
     // Do something before request is sent
     if (typeof window !== 'undefined' && window.localStorage.getItem('last_word_request')) {
@@ -40,4 +35,4 @@ spellcheck.interceptors.request.use(
   }
 )
 
-export default spellcheck
+export default checkwordApi
