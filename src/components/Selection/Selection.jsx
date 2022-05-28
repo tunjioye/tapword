@@ -1,22 +1,22 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-// import './Selection.scss'
 import SelectionCell from './../SelectionCell'
+import styles from './Selection.module.scss'
 
 const Selection = (props) => {
   let output = []
   for (let i = 0; i < props.word.length; i++) {
-    output[i] = (<SelectionCell key={i.toString()} letter={(props.word[i]) ? props.word[i] : ' '} />)
+    output[i] = <SelectionCell key={i.toString()} letter={props.word[i] ? props.word[i] : ' '} />
   }
 
   return (
     // #selection-word is important for the shake animation
-    <div id="selection-word" className="selection">
-      <span className="selection-info">WORD INPUT</span>
-      <div className="selection-wrapper">
+    <div id="selection-word" className={styles['selection']}>
+      <span className={styles['selection-info']}>WORD INPUT</span>
+      <div className={styles['selection-wrapper']}>
         <span id="word">
           {/* important spacing fix via style */}
-          <SelectionCell letter=' ' style={{ height: '64px' }} />
+          <SelectionCell letter=" " style={{ height: '64px' }} />
           {output}
         </span>
       </div>
@@ -25,11 +25,11 @@ const Selection = (props) => {
 }
 
 Selection.propTypes = {
-  word: PropTypes.array
+  word: PropTypes.array,
 }
 
 Selection.defaultProps = {
-  word: []
+  word: [],
 }
 
 export default Selection

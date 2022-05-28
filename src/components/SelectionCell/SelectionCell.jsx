@@ -1,19 +1,19 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-// import './SelectionCell.scss'
+import styles from './SelectionCell.module.scss'
 
 const SelectionCell = (props) => (
-  <div className="selection-cell" style={{ ...props.style }}>
+  <div className={styles['selection-cell']} style={{ ...props.style }}>
     {props.letter.charAt(0)}
   </div>
 )
 
 SelectionCell.propTypes = {
-  letter: PropTypes.string
+  letter: PropTypes.string,
 }
 
 SelectionCell.defaultProps = {
-  letter: 'T'
+  letter: 'T',
 }
 
 export default SelectionCell

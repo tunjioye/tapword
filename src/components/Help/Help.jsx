@@ -5,18 +5,20 @@ import Modal from './../Modal'
 function Help({ quickTutorial, newGame }) {
   return (
     <Modal title={`HELP & ABOUT`} id={`help`}>
-      {(quickTutorial && !newGame) &&
+      {quickTutorial && !newGame && (
         <>
           <div>
             <h5 style={spacedTypo}>HOW TO PLAY</h5>
             <div>...</div>
             <div>&nbsp;</div>
-            <button style={saveButton} onClick={quickTutorial}>Play Quick Tutorial</button>
+            <button style={saveButton} onClick={quickTutorial}>
+              Play Quick Tutorial
+            </button>
           </div>
           <br />
           <br />
         </>
-      }
+      )}
       <div>
         <h5 style={spacedTypo}>KEYBOARD SHORTCUTS</h5>
         <div>...</div>
@@ -26,11 +28,12 @@ function Help({ quickTutorial, newGame }) {
             <small>UNDO</small>
           </dt>
           <dd style={{ ...dl.dd }}>
-            <kbd style={kbd}>BKSP</kbd> &nbsp;&nbsp;&nbsp; <small>OR</small> &nbsp;&nbsp;&nbsp; <kbd style={kbd}>DEL</kbd>
+            <kbd style={kbd}>BKSP</kbd> &nbsp;&nbsp;&nbsp; <small>OR</small> &nbsp;&nbsp;&nbsp;{' '}
+            <kbd style={kbd}>DEL</kbd>
             <br />
           </dd>
           <dt style={{ ...dl.dt }}>
-          <small>SUBMIT</small>
+            <small>SUBMIT</small>
           </dt>
           <dd style={{ ...dl.dd }}>
             <kbd style={kbd}>ENTER</kbd> &nbsp;&nbsp; <small>OR</small> &nbsp;&nbsp; <kbd style={kbd}>SPACE</kbd>
@@ -44,13 +47,24 @@ function Help({ quickTutorial, newGame }) {
         <h5 style={spacedTypo}>ABOUT</h5>
         <div>...</div>
         <div>&nbsp;</div>
-        <div>Tapword - <em>words are limitless</em> : is a word game that tests your knowledge of English words. Tapword provides a means to combine as many letters as you can to make the longest word you possibly can.</div>
+        <div>
+          Tapword - <em>words are limitless</em> : is a word game that tests your knowledge of English words. Tapword
+          provides a means to combine as many letters as you can to make the longest word you possibly can.
+        </div>
         <div>&nbsp;</div>
-        <div style={textCenter}><em>Play and Boast of your Vocabulary among friends</em></div>
+        <div style={textCenter}>
+          <em>Play and Boast of your Vocabulary among friends</em>
+        </div>
         <div>&nbsp;</div>
         <div style={{ ...spacedTypo, ...textCenter }}>+++ THANK YOU +++</div>
         <br />
-        <div style={{ ...spacedTypo, ...textCenter }}>*** <a style={customLink} href="https://github.com/tunjioye/tapword" target="_blank" rel="noopener noreferrer">Git Repo</a> ***</div>
+        <div style={{ ...spacedTypo, ...textCenter }}>
+          ***{' '}
+          <a style={customLink} href="https://github.com/tunjioye/tapword" target="_blank" rel="noopener noreferrer">
+            Git Repo
+          </a>{' '}
+          ***
+        </div>
         <br />
         {/* <div style={{ ...textCenter }}>
           <GitHubButton
@@ -73,21 +87,21 @@ const spacedTypo = {
   wordSpacing: '0.2rem',
   textTransform: 'uppercase',
   margin: 0,
-  fontWeight: 600
+  fontWeight: 600,
 }
 
 const kbd = {
   border: '1px solid #28F',
-  padding: '3px 4px 3px 6px'
+  padding: '3px 4px 3px 6px',
 }
 
 const textCenter = {
-  textAlign: 'center'
+  textAlign: 'center',
 }
 
 const customLink = {
   color: '#FFF',
-  textDecoration: 'none'
+  textDecoration: 'none',
 }
 
 const dl = {
@@ -96,11 +110,11 @@ const dl = {
     width: '80px',
     display: 'inline-block',
     textAlign: 'right',
-    margin: '5px auto'
+    margin: '5px auto',
   },
   dd: {
-    display: 'inline'
-  }
+    display: 'inline',
+  },
 }
 
 const saveButton = {
@@ -110,7 +124,7 @@ const saveButton = {
   border: '1px solid #28F',
   padding: '6px 8px 6px 12px',
   cursor: 'pointer',
-  fontWeight: 600
+  fontWeight: 600,
 }
 
 export default Help

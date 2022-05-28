@@ -4,15 +4,14 @@
 
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
-    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
-    sans-serif;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans',
+    'Droid Sans', 'Helvetica Neue', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New", monospace;
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
 }
 
 /* Saving Progress */
@@ -85,7 +84,7 @@ code {
   display: flex;
   justify-content: center;
   align-items: center;
-  border: .1rem solid #cde;
+  border: 0.1rem solid #cde;
   border-radius: 50%;
 }
 
@@ -107,9 +106,15 @@ code {
 }
 
 @keyframes shake {
-  0% { transform: translate(0.1rem, 0); }
-  50% { transform: translate(-0.1rem, 0); }
-  100% { transform: translate(0.1rem, 0); }
+  0% {
+    transform: translate(0.1rem, 0);
+  }
+  50% {
+    transform: translate(-0.1rem, 0);
+  }
+  100% {
+    transform: translate(0.1rem, 0);
+  }
 }
 
 /* Color Flash */
@@ -118,9 +123,15 @@ code {
 }
 
 @keyframes flash-error {
-    0% { background-color: none; }
-    50% { background-color: #d34; }
-    100% { background-color: none; }
+  0% {
+    background-color: none;
+  }
+  50% {
+    background-color: #d34;
+  }
+  100% {
+    background-color: none;
+  }
 }
 
 .flash-success {
@@ -128,97 +139,90 @@ code {
 }
 
 @keyframes flash-success {
-    0% { background-color: none; }
-    50% { background-color: #3d4; }
-    100% { background-color: none; }
+  0% {
+    background-color: none;
+  }
+  50% {
+    background-color: #3d4;
+  }
+  100% {
+    background-color: none;
+  }
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
 .App {
-    text-align: center;
+  text-align: center;
 }
 
 .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-    height: 40vmin;
-    pointer-events: none;
+  animation: App-logo-spin infinite 20s linear;
+  height: 40vmin;
+  pointer-events: none;
 }
 
 .App-header {
-    background-color: #252931;
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    font-size: calc(10px + 2vmin);
-    color: white;
+  background-color: #252931;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
 }
 
 .App-link {
-    color: #61dafb;
+  color: #61dafb;
 }
 
 @keyframes App-logo-spin {
-    from {
-        transform: rotate(0deg);
-    }
-    to {
-        transform: rotate(360deg);
-    }
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
 }
-
 
 /* Tooltip */
 .tooltip {
-    position: relative;
+  position: relative;
 }
 .tooltip::after {
-    background: #567;
-    border-radius: 0.1rem;
-    bottom: 100%;
-    color: #fff;
-    content: attr(data-tooltip);
-    display: block;
-    font-size: 0.7rem;
-    left: 50%;
-    max-width: 320px;
-    opacity: 0;
-    overflow: hidden;
-    padding: 0.2rem 0.4rem;
-    pointer-events: none;
-    position: absolute;
-    text-overflow: ellipsis;
-    text-transform: uppercase;
-    transition: all 0.2s ease;
-    white-space: pre;
-    z-index: 300;
-    transform: translate(-50%, 0.4rem);
-    -webkit-transform: translate(-50%, 0.4rem);
-    -moz-transform: translate(-50%, 0.4rem);
-    -ms-transform: translate(-50%, 0.4rem);
-    -o-transform: translate(-50%, 0.4rem);
+  background: #567;
+  border-radius: 0.1rem;
+  bottom: 100%;
+  color: #fff;
+  content: attr(data-tooltip);
+  display: block;
+  font-size: 0.7rem;
+  left: 50%;
+  max-width: 320px;
+  opacity: 0;
+  overflow: hidden;
+  padding: 0.2rem 0.4rem;
+  pointer-events: none;
+  position: absolute;
+  text-overflow: ellipsis;
+  text-transform: uppercase;
+  transition: all 0.2s ease;
+  white-space: pre;
+  z-index: 300;
+  transform: translate(-50%, 0.4rem);
+  -webkit-transform: translate(-50%, 0.4rem);
+  -moz-transform: translate(-50%, 0.4rem);
+  -ms-transform: translate(-50%, 0.4rem);
+  -o-transform: translate(-50%, 0.4rem);
 }
 .tooltip:hover::after {
-    opacity: 1;
-    transform: translate(-50%, -0.2rem);
-    -webkit-transform: translate(-50%, -0.2rem);
-    -moz-transform: translate(-50%, -0.2rem);
-    -ms-transform: translate(-50%, -0.2rem);
-    -o-transform: translate(-50%, -0.2rem);
+  opacity: 1;
+  transform: translate(-50%, -0.2rem);
+  -webkit-transform: translate(-50%, -0.2rem);
+  -moz-transform: translate(-50%, -0.2rem);
+  -ms-transform: translate(-50%, -0.2rem);
+  -o-transform: translate(-50%, -0.2rem);
 }
 .tooltip[disabled],
 .tooltip.disabled {
-    pointer-events: auto;
+  pointer-events: auto;
 }

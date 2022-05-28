@@ -1,9 +1,8 @@
 import React from 'react'
 import spellcheck from './spellcheck'
 import Loading from './components/Loading'
-// import Topbar from './components/Topbar';
-import GridNew from './components/GridNew'
-// import Grid from './components/Grid';
+// import Topbar from './components/Topbar'
+import Grid from './components/Grid'
 import Score from './components/Score'
 import Selection from './components/Selection'
 import Sidebar from './components/Sidebar'
@@ -30,7 +29,7 @@ class App extends React.Component {
     this.startNewGame = this.startNewGame.bind(this)
     this.quitGame = this.quitGame.bind(this)
     this.hasStartedNewGame = this.hasStartedNewGame.bind(this)
-    this.setTimeMinutes = this.setTimeMinutes.bind(this)
+    this.setMinutes = this.setMinutes.bind(this)
     this.randomLetters = this.randomLetters.bind(this)
     this.handleCellClick = this.handleCellClick.bind(this)
     this.toggleSelectionWord = this.toggleSelectionWord.bind(this)
@@ -77,7 +76,7 @@ class App extends React.Component {
       return false
     }
   }
-  setTimeMinutes(minutes) {
+  setMinutes(minutes) {
     this.setState({ minutes })
   }
   randomLetters() {
@@ -382,7 +381,7 @@ class App extends React.Component {
             <div style={{ minHeight: '8px', maxHeight: '8px' }}>&nbsp;</div>
 
             <div className="grid-flex">
-              <GridNew
+              <Grid
                 size={this.state.size}
                 rows={this.state.rows}
                 wordCells={wordCells}
@@ -393,7 +392,7 @@ class App extends React.Component {
                 size={this.state.size}
                 minutes={parseFloat(this.state.minutes)}
                 newGame={this.state.newGame}
-                setTimeMinutes={this.setTimeMinutes}
+                setMinutes={this.setMinutes}
                 saveGameProgress={this.saveGameProgress}
                 quitGame={this.quitGame}
                 handleUndoButtonClick={this.popSelectionWord}

@@ -89,8 +89,8 @@
   text-align: right;
 }
 
-/* Modal Button Clear */
-.btn.btn-clear {
+/* Modal Close Button */
+.modal-close-btn {
   float: right;
   font-size: 1.5rem;
   text-align: center;
@@ -106,16 +106,17 @@
   padding: 0;
   text-decoration: none;
   width: 1.4rem;
-}
-.btn.btn-clear:hover {
-  opacity: .95;
-}
-.btn.btn-clear:focus {
-  box-shadow: 0 0 0 0.1rem rgba(34, 136, 255, 0.2);
-}
-.btn.btn-clear::before {
-  color: #28f;
-  content: "\2715";
+
+  &:hover {
+    opacity: .95;
+  }
+  &:focus {
+    box-shadow: 0 0 0 0.1rem rgba(34, 136, 255, 0.2);
+  }
+  &::before {
+    color: #28f;
+    content: "\2715";
+  }
 }
 
 @media(max-width: 600px) {

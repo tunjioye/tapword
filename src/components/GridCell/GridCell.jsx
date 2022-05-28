@@ -1,6 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-// import './GridCell.scss'
+import clsx from 'clsx'
+import styles from './GridCell.module.scss'
 import Popover from './../Popover'
 
 const GridCell = (props) => {
@@ -8,7 +9,7 @@ const GridCell = (props) => {
 
   const cellInfo = (
     <div
-      className={`grid-cell ${(props.wordCells.indexOf(cell) !== -1) ? "selected" : ""}`}
+      className={clsx(styles['grid-cell'], { [styles['selected']]: props.wordCells.indexOf(cell) !== -1 })}
       row={props.rowName}
       cell={cell}
       onClick={props.handleCellClick}
@@ -19,14 +20,10 @@ const GridCell = (props) => {
 
   // For Tutorial : show Click This Popover for expected Grid Cell
   if (props.clickThis && props.clickThis === props.cellNumber) {
-    return (
-      <Popover className="click-this">
-        { cellInfo }
-      </Popover>
-    )
+    return <Popover className="click-this">{cellInfo}</Popover>
   }
 
-  return (cellInfo)
+  return cellInfo
 }
 
 GridCell.propTypes = {
@@ -34,14 +31,14 @@ GridCell.propTypes = {
   rowName: PropTypes.string,
   cellNumber: PropTypes.number,
   wordCells: PropTypes.array,
-  handleCellClick: PropTypes.func
+  handleCellClick: PropTypes.func,
 }
 
 GridCell.defaultProps = {
   letter: 'T',
   rowName: 'r0',
   cellNumber: 0,
-  wordCells: []
+  wordCells: [],
 }
 
 export default GridCell

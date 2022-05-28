@@ -2,8 +2,7 @@
 // import spellcheck from './spellcheck'
 // import Loading from './components/Loading'
 // // import Topbar from './components/Topbar';
-// import GridNew from './components/GridNew'
-// // import Grid from './components/Grid';
+// import Grid from './components/Grid'
 // import Score from './components/Score'
 // import Selection from './components/Selection'
 // import Sidebar from './components/Sidebar'
@@ -323,8 +322,6 @@
 //     if (props.generate) {setRows(randomLetters())}
 //   }, [])
 
-
-
 //   const wordCells = word.map((x) => x.cell)
 
 //   return (
@@ -349,7 +346,7 @@
 //           <div style={{ minHeight: '8px', maxHeight: '8px' }}>&nbsp;</div>
 
 //           <div className="grid-flex">
-//             <GridNew clickThis={tutorialSteps[currentStep]} wordCells={wordCells} handleCellClick={handleCellClick} />
+//             <Grid clickThis={tutorialSteps[currentStep]} wordCells={wordCells} handleCellClick={handleCellClick} />
 //             <Sidebar
 //               clickThis={tutorialSteps[currentStep]}
 //               nextTutorialStep={nextTutorialStep}
@@ -407,8 +404,7 @@ import React from 'react'
 import spellcheck from './spellcheck'
 import Loading from './components/Loading'
 // import Topbar from './components/Topbar';
-import GridNew from './components/GridNew'
-// import Grid from './components/Grid';
+import Grid from './components/Grid'
 import Score from './components/Score'
 import Selection from './components/Selection'
 import Sidebar from './components/Sidebar'
@@ -776,7 +772,7 @@ class Tutorial extends React.Component {
             <div style={{ minHeight: '8px', maxHeight: '8px' }}>&nbsp;</div>
 
             <div className="grid-flex">
-              <GridNew
+              <Grid
                 clickThis={this.state.tutorialSteps[this.state.currentStep]}
                 wordCells={wordCells}
                 handleCellClick={this.handleCellClick}

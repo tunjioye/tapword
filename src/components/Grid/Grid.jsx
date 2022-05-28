@@ -2,7 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import GridRow from '../GridRow'
 
-const GridNew = (props) => {
+const Grid = (props) => {
   let rows = []
   for (let i = 0; i < props.size; i++) {
     rows[i] = (
@@ -20,30 +20,22 @@ const GridNew = (props) => {
 
   return (
     <div className="grid-container">
-      <div className="grid-new">
-        {rows}
-      </div>
+      <div className="grid-new">{rows}</div>
     </div>
   )
 }
 
-GridNew.propTypes = {
+Grid.propTypes = {
   size: PropTypes.number,
   rows: PropTypes.array,
   wordCells: PropTypes.array,
-  handleCellClick: PropTypes.func
+  handleCellClick: PropTypes.func,
 }
 
-GridNew.defaultProps = {
+Grid.defaultProps = {
   size: 5,
-  rows: [
-    'TAP',
-    'WORD',
-    'GAME',
-    'BY',
-    'TUNJI',
-  ],
-  wordCells: []
+  rows: ['TAP', 'WORD', 'GAME', 'BY', 'TUNJI'],
+  wordCells: [],
 }
 
-export default GridNew
+export default Grid

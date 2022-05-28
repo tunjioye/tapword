@@ -9,19 +9,15 @@ const GridRow = (props) => {
       <GridCell
         key={i.toString()}
         rowName={`r${props.rowNumber}`}
-        cellNumber={((props.rowNumber * props.size) + i)}
-        letter={(props.letters[i]) ? props.letters[i] : ' '}
+        cellNumber={props.rowNumber * props.size + i}
+        letter={props.letters[i] ? props.letters[i] : ' '}
         clickThis={props.clickThis}
         wordCells={props.wordCells}
         handleCellClick={props.handleCellClick}
       />
     )
   }
-  return (
-    <>
-      {rowLetters}
-    </>
-  )
+  return <>{rowLetters}</>
 }
 
 GridRow.propTypes = {
@@ -29,14 +25,14 @@ GridRow.propTypes = {
   rowNumber: PropTypes.number,
   letters: PropTypes.string,
   wordCells: PropTypes.array,
-  handleCellClick: PropTypes.func
+  handleCellClick: PropTypes.func,
 }
 
 GridRow.defaultProps = {
   size: 5,
   rowNumber: 0,
   letters: 'TAPWD',
-  wordCells: []
+  wordCells: [],
 }
 
 export default GridRow

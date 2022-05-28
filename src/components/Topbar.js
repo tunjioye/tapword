@@ -1,8 +1,8 @@
 import React from 'react'
 
 function Topbar() {
-  const menuIconRef = useRef(null)
-  const menuRef = useRef(null)
+  const menuIconRef = React.useRef(null)
+  const menuRef = React.useRef(null)
 
   function toggleMenu() {
     menuIconRef.current.classList.toggle('active')

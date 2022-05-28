@@ -74,9 +74,6 @@ function Countdown(props) {
   //   }
   // }
 
-
-  
-
   const { m, s } = time
 
   return (

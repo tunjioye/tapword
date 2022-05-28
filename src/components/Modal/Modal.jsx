@@ -1,30 +1,25 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-// import './Modal.scss'
+import styles from './Modal.module.scss'
 
 const Modal = ({ id, transparent, canClose, title, children, footer }) => (
-  <div className="modal" id={id}>
-    {!transparent
-      ? <span className="modal-overlay" style={{ background: 'rgb(25, 28, 34)' }}></span>
-      : <a href="#close" className="modal-overlay" aria-label="Close"> </a>
-    }
-    <div className="modal-container">
-      <div className="modal-header">
-        {canClose &&
-          <a href="#close" className="btn btn-clear" aria-label="Close"> </a>
-        }
-        <div className="modal-title">
-          <strong style={spacedTypo}>{ title }</strong>
+  <div className={styles['modal']} id={id}>
+    {!transparent ? (
+      <span className={styles['modal-overlay']} style={{ background: 'rgb(25, 28, 34)' }}></span>
+    ) : (
+      <a href="#close" className={styles['modal-overlay']} aria-label="Close" />
+    )}
+    <div className={styles['modal-container']}>
+      <div className={styles['modal-header']}>
+        {canClose && <a href="#close" className={styles['modal-close-btn']} aria-label="Close" />}
+        <div className={styles['modal-title']}>
+          <strong style={spacedTypo}>{title}</strong>
         </div>
       </div>
-      <div className="modal-body">
-        <div className="content">
-          { children }
-        </div>
+      <div className={styles['modal-body']}>
+        <div className="content">{children}</div>
       </div>
-      <div className="modal-footer">
-        { footer }
-      </div>
+      <div className={styles['modal-footer']}>{footer}</div>
     </div>
   </div>
 )
@@ -34,7 +29,7 @@ const spacedTypo = {
   wordSpacing: '0.2rem',
   textTransform: 'uppercase',
   margin: 0,
-  fontWeight: 600
+  fontWeight: 600,
 }
 
 Modal.propTypes = {
@@ -43,7 +38,7 @@ Modal.propTypes = {
   id: PropTypes.string,
   footer: PropTypes.node,
   transparent: PropTypes.bool,
-  canClose: PropTypes.bool
+  canClose: PropTypes.bool,
 }
 
 Modal.defaultProps = {
@@ -52,7 +47,7 @@ Modal.defaultProps = {
   id: 'modal',
   footer: '',
   transparent: true,
-  canClose: true
+  canClose: true,
 }
 
 export default Modal

@@ -1,17 +1,16 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-// import './Loading.scss';
+import React from 'react'
+import PropTypes from 'prop-types'
+import clsx from 'clsx'
+import styles from './Loading.module.scss'
 
-const Loading = (props) => (
-  <div className={(props.large ? 'loading' : 'loading loading-lg')}></div>
-);
+const Loading = (props) => <div className={clsx(styles['loading'], { [styles['loading-lg']]: props.large })}></div>
 
 Loading.propTypes = {
-  large: PropTypes.bool
-};
+  large: PropTypes.bool,
+}
 
 Loading.defaultProps = {
-  large: false
-};
+  large: false,
+}
 
-export default Loading;
+export default Loading

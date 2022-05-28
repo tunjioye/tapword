@@ -6,10 +6,12 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "format": "prettier --write '**/*.{js,jsx}'"
   },
   "dependencies": {
     "axios": "^0.26.1",
+    "clsx": "^1.1.1",
     "gh-pages": "^3.2.3",
     "next": "12.1.0",
     "node-sass": "^7.0.1",
